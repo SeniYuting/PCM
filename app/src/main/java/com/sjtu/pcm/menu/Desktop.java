@@ -306,11 +306,11 @@ public class Desktop {
 		private String[] mName = { "名片设计", "名片交换", "人脉排程", "名片识别", "联系我们",
 				"注销登录" };
 		private int[] mIcon = { R.drawable.card_design, R.drawable.card_exchange,
-				R.drawable.schedule, R.drawable.contact, R.drawable.recognize,
+				R.drawable.schedule, R.drawable.recognize, R.drawable.contact,
 				R.drawable.logout };
 		private int[] mIconPressed = { R.drawable.card_design_h, R.drawable.card_exchange_h,
-				R.drawable.schedule_h, R.drawable.contact_h,
-				R.drawable.recognize_h, R.drawable.logout_h };
+				R.drawable.schedule_h, R.drawable.recognize_h,
+				R.drawable.contact_h, R.drawable.logout_h };
 		private int mChoose = 0;
 
 		private DesktopAdapter(Context context) {
