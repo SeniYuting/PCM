@@ -3,12 +3,15 @@ package com.sjtu.pcm.menu;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
+import com.sjtu.pcm.MyApplication;
 import com.sjtu.pcm.R;
 import com.sjtu.pcm.anim.MyViewGroup.OnOpenListener;
 
@@ -22,7 +25,11 @@ public class Contact {
 	private View mHome;
 	// 布局控件
 	private Button mMenu;
+	private EditText mStar;
+	private EditText mComment;
+	private Button mSubmit;
 
+	private MyApplication mapp;
 	private OnOpenListener mOnOpenListener;
 
 	private TextView mTopText;
@@ -31,6 +38,8 @@ public class Contact {
 	public Contact(Context context, Activity activity) {
 		// 绑定布局到当前View
 		mHome = LayoutInflater.from(context).inflate(R.layout.contact, null);
+
+		mapp = (MyApplication) activity.getApplication();
 
 		findViewById();
 		setListener();
@@ -43,6 +52,10 @@ public class Contact {
 	private void findViewById() {
 		mMenu = (Button) mHome.findViewById(R.id.menu);
 		mTopText = (TextView) mHome.findViewById(R.id.top_text);
+
+		mStar = (EditText) mHome.findViewById(R.id.contact_star);
+		mComment = (EditText) mHome.findViewById(R.id.contact_comment);
+		mSubmit = (Button) mHome.findViewById(R.id.contact_submit);
 	}
 
 	/**
@@ -55,6 +68,20 @@ public class Contact {
 				if (mOnOpenListener != null) {
 					mOnOpenListener.open();
 				}
+			}
+		});
+
+		mSubmit.setOnClickListener(new OnClickListener() {
+
+			public void onClick(View v) {
+				String star = mStar.getText().toString();
+				String comment = mComment.getText().toString();
+
+				Log.i("star", star);
+				Log.i("comment", comment);
+				Log.i("user_id", mapp.getUserId());
+
+				// TODO
 			}
 		});
 	}
