@@ -38,7 +38,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="8dip"
-                    android:text="名片管理"
+                    android:text="联系我们"
                     android:textColor="#ffffff"
                     android:textSize="18sp" />
             </LinearLayout>
@@ -48,6 +48,94 @@
                 android:layout_height="fill_parent"
                 android:layout_marginRight="8dip"
                 android:background="@drawable/title_refresh_button" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dip"
+            android:layout_marginRight="8dip"
+            android:layout_marginTop="20dip"
+            android:background="@drawable/about_top_bg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="8dip" >
+
+            <TextView
+                android:layout_width="60dip"
+                android:layout_height="30dip"
+                android:layout_marginLeft="8dip"
+                android:gravity="center_vertical"
+                android:text="星级"
+                android:textColor="#222222"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/contact_star"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="#00000000"
+                android:gravity="top"
+                android:padding="0dip"
+                android:textColor="#333333" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="200dip"
+            android:layout_marginLeft="8dip"
+            android:layout_marginRight="8dip"
+            android:background="@drawable/about_bottom_bg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="8dip" >
+
+            <TextView
+                android:layout_width="60dip"
+                android:layout_height="30dip"
+                android:layout_marginLeft="8dip"
+                android:gravity="center_vertical"
+                android:text="评价"
+                android:textColor="#222222"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/contact_comment"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="#00000000"
+                android:gravity="top"
+                android:padding="0dip"
+                android:textColor="#333333" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="right"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/contact_submit"
+                android:layout_width="fill_parent"
+                android:layout_height="45dip"
+                android:layout_marginLeft="8dip"
+                android:layout_marginRight="8dip"
+                android:background="@drawable/login_btn"
+                android:enabled="true"
+                android:shadowColor="#7f000000"
+                android:shadowDx="0.0"
+                android:shadowDy="1.0"
+                android:shadowRadius="1.0"
+                android:text="提交"
+                android:textColor="#ffffff"
+                android:textSize="18sp" />
+
         </LinearLayout>
 
     </LinearLayout>

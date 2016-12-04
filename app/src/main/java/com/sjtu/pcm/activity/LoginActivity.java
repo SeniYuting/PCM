@@ -24,8 +24,7 @@ import android.widget.TextView;
 
 /**
  * 登录界面
- * 
- * @author CaoyYuting
+ *
  * 
  */
 @SuppressWarnings("deprecation")

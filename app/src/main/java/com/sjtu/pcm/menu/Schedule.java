@@ -14,8 +14,7 @@ import com.sjtu.pcm.anim.MyViewGroup.OnOpenListener;
 
 /**
  * 人脉排程类
- * 
- * @author CaoyYuting
+ *
  * 
  */
 public class Schedule {

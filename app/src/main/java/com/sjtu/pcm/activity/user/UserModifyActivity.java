@@ -1,20 +1,15 @@
 package com.sjtu.pcm.activity.user;
 
-import java.io.BufferedReader;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpPut;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.protocol.HTTP;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -25,20 +20,15 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioGroup;
 
 import com.sjtu.pcm.MyApplication;
 import com.sjtu.pcm.R;
-import com.sjtu.pcm.activity.LoginActivity;
 import com.sjtu.pcm.activity.MainActivity;
-import com.sjtu.pcm.activity.RegisterActivity;
-import com.sjtu.pcm.menu.User;
 
 /**
  * 修改个人信息类
- * 
- * @author CaoyYuting
- * 
+ *
+ *
  */
 @SuppressWarnings({ "unused", "deprecation" })
 public class UserModifyActivity extends Activity {
@@ -48,14 +38,14 @@ public class UserModifyActivity extends Activity {
 	private EditText mGender;
 	private EditText mAddress;
 	private EditText mMobile;
-	
+
 	private MyApplication mapp;
 	private ArrayList<String> resultList = new ArrayList<String>();
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.user_modify);
-		
+
 		mapp = (MyApplication) getApplication();
 
 		findViewById();
@@ -89,7 +79,7 @@ public class UserModifyActivity extends Activity {
 				new Thread() {
 					@Override
 					public void run() {
-						
+
 						String name = mName.getText().toString();
 						String gender = mGender.getText().toString();
 						String address = mAddress.getText().toString();
@@ -99,7 +89,7 @@ public class UserModifyActivity extends Activity {
 						Log.i("gender", gender);
 						Log.i("address", address);
 						Log.i("mobile", mobile);
-				
+
 						String uriAPI = "http://112.74.49.183:8080/Entity/U209f9ab73161d8/PCM/User/" + mapp.getUserId();
 						HttpPut httpRequest = new HttpPut(uriAPI);
 						httpRequest.setHeader("Content-type",
@@ -113,7 +103,7 @@ public class UserModifyActivity extends Activity {
 							obj.put("gender", gender);
 							obj.put("address", address);
 							obj.put("mobile", mobile);
-							
+
 							// 中文乱码				
 							httpRequest.setEntity(new StringEntity(obj
 									.toString()));
@@ -128,10 +118,10 @@ public class UserModifyActivity extends Activity {
 				}.start();
 
 				setResult(RESULT_OK);
-				
+
 				startActivity(new Intent(UserModifyActivity.this,
 						MainActivity.class));
-				
+
 //				finish(); // 直接关闭该页面
 			}
 		});
@@ -142,14 +132,14 @@ public class UserModifyActivity extends Activity {
 		Log.i("user_id", mapp.getUserId());
         // 需要setText，必须在同一个thread中
 		new RMPHelper().execute("http://112.74.49.183:8080/Entity/U209f9ab73161d8/PCM/User/" + mapp.getUserId());
-		
+
 	}
-	
+
 	class RMPHelper extends AsyncTask<String, Void, String>{
 
 		@Override
 		protected String doInBackground(String... uriAPI) {
-			
+
 			// 获取用户信息
 			HttpGet httpRequest = new HttpGet(uriAPI[0]);
 			String result = "";
@@ -175,20 +165,20 @@ public class UserModifyActivity extends Activity {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
+
 			return null;
 		}
-		
+
 		@Override
 	    protected void onPostExecute(String result) {
 	        super.onPostExecute(result);
-	        
+
 			mName.setText(resultList.size()>0 ? resultList.get(0) : "");
 			mGender.setText(resultList.size()>1 ? resultList.get(1) : "");
 			mAddress.setText(resultList.size()>2 ? resultList.get(2) : "");
 			mMobile.setText(resultList.size()>3 ? resultList.get(3) : "");
 		}
-		
+
 	}
 }
 

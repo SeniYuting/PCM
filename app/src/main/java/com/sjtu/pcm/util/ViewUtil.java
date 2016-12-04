@@ -3,7 +3,7 @@ package com.sjtu.pcm.util;
 /**
  * Desktop View工具类
  * 
- * @author CaoyYuting
+ * @author CaoYuting
  * 
  */
 public class ViewUtil {

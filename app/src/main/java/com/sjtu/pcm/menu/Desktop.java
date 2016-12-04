@@ -39,8 +39,6 @@ public class Desktop {
 	private View mDesktop;
 	private RelativeLayout mTopLayout;
 
-	@SuppressWarnings("unused")
-	private ImageView mHead;
 	private TextView mName;
 	private TextView mSig;
 	private ListView mDisplay;
@@ -85,12 +83,11 @@ public class Desktop {
 	private void findViewById() {
 		mTopLayout = (RelativeLayout) mDesktop
 				.findViewById(R.id.desktop_top_layout);
-		mHead = (ImageView) mDesktop.findViewById(R.id.desktop_avatar);
 		mName = (TextView) mDesktop.findViewById(R.id.desktop_name);
 		mSig = (TextView) mDesktop.findViewById(R.id.desktop_sig);
 		mDisplay = (ListView) mDesktop.findViewById(R.id.desktop_display);
 
-		mUgcView = (View) mDesktop.findViewById(R.id.desktop_ugc);
+		mUgcView = mDesktop.findViewById(R.id.desktop_ugc);
 		mUgcLayout = (RelativeLayout) mUgcView.findViewById(R.id.ugc_layout);
 		mUgc = (ImageView) mUgcView.findViewById(R.id.ugc);
 		mUgcBg = (ImageView) mUgcView.findViewById(R.id.ugc_bg);
@@ -297,13 +294,13 @@ public class Desktop {
 	 * 切换显示界面的接口
 	 */
 	public interface onChangeViewListener {
-		public abstract void onChangeView(int arg0);
+		void onChangeView(int arg0);
 	}
 
 	/**
 	 * 桌面适配器
 	 */
-	public class DesktopAdapter extends BaseAdapter {
+	private class DesktopAdapter extends BaseAdapter {
 
 		private Context mContext;
 		private String[] mName = { "名片设计", "名片交换", "人脉排程", "名片识别", "联系我们",
@@ -316,7 +313,7 @@ public class Desktop {
 				R.drawable.recognize_h, R.drawable.logout_h };
 		private int mChoose = 0;
 
-		public DesktopAdapter(Context context) {
+		private DesktopAdapter(Context context) {
 			mContext = context;
 		}
 
@@ -332,13 +329,13 @@ public class Desktop {
 			return 0;
 		}
 
-		public void setChoose(int choose) {
+		private void setChoose(int choose) {
 			mChoose = choose;
 		}
 
 		public View getView(final int position, View convertView,
 				ViewGroup parent) {
-			ViewHolder holder = null;
+			ViewHolder holder;
 			if (convertView == null) {
 				convertView = LayoutInflater.from(mContext).inflate(
 						R.layout.desktop_item, null);

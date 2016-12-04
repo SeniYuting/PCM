@@ -9,7 +9,7 @@ import android.app.Application;
 /**
  * application类
  * 
- * @author CaoyYuting
+ * @author CaoYuting
  * 
  */
 public class MyApplication extends Application {
@@ -53,7 +53,7 @@ public class MyApplication extends Application {
 			throws Exception {
 		BufferedReader bufferedReader = new BufferedReader(
 				new InputStreamReader(inputStream));
-		String line = "";
+		String line;
 		String result = "";
 		while ((line = bufferedReader.readLine()) != null)
 			result += line;

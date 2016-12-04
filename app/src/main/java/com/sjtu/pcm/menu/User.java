@@ -28,8 +28,7 @@ import com.sjtu.pcm.anim.MyViewGroup.OnOpenListener;
 
 /**
  * 用户信息类
- * 
- * @author CaoyYuting
+ *
  * 
  */
 @SuppressWarnings("deprecation")
@@ -53,7 +52,7 @@ public class User {
 	private MyApplication mapp;
 	private OnOpenListener mOnOpenListener;
 
-	private ArrayList<String> resultList = new ArrayList<String>();
+	private ArrayList<String> resultList = new ArrayList<>();
 
 	@SuppressLint("InflateParams")
 	public User(Context context, Activity activity) {
@@ -141,7 +140,7 @@ public class User {
 		return mHome;
 	}
 
-	class RMPHelper extends AsyncTask<String, Void, String> {
+	private class RMPHelper extends AsyncTask<String, Void, String> {
 
 		@Override
 		protected String doInBackground(String... uriAPI) {

@@ -1,6 +1,5 @@
 package com.sjtu.pcm.anim;
 
-import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.view.animation.AlphaAnimation;
@@ -17,19 +16,14 @@ import android.widget.RelativeLayout;
 /**
  * Path动画类
  * 
- * @author CaoyYuting
+ * @author CaoYuting
  * 
  */
 public class UgcAnimations {
 	private static int xOffset = 15;
 	private static int yOffset = -13;
 
-	public static void initOffset(Context context) {
-		xOffset = (int) (15 * context.getResources().getDisplayMetrics().density);
-		yOffset = -(int) (13 * context.getResources().getDisplayMetrics().density);
-	}
-
-	public static Animation getRotateAnimation(float fromDegrees,
+	private static Animation getRotateAnimation(float fromDegrees,
 			float toDegrees, long durationMillis) {
 		RotateAnimation rotate = new RotateAnimation(fromDegrees, toDegrees,
 				Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,
@@ -39,7 +33,7 @@ public class UgcAnimations {
 		return rotate;
 	}
 
-	public static Animation getAlphaAnimation(float fromAlpha, float toAlpha,
+	private static Animation getAlphaAnimation(float fromAlpha, float toAlpha,
 			long durationMillis) {
 		AlphaAnimation alpha = new AlphaAnimation(fromAlpha, toAlpha);
 		alpha.setDuration(durationMillis);
@@ -47,7 +41,7 @@ public class UgcAnimations {
 		return alpha;
 	}
 
-	public static Animation getScaleAnimation(long durationMillis) {
+	private static Animation getScaleAnimation(long durationMillis) {
 		ScaleAnimation scale = new ScaleAnimation(1.0f, 1.5f, 1.0f, 1.5f,
 				Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,
 				0.5f);
@@ -55,7 +49,7 @@ public class UgcAnimations {
 		return scale;
 	}
 
-	public static Animation getTranslateAnimation(float fromXDelta,
+	private static Animation getTranslateAnimation(float fromXDelta,
 			float toXDelta, float fromYDelta, float toYDelta,
 			long durationMillis) {
 		TranslateAnimation translate = new TranslateAnimation(fromXDelta,

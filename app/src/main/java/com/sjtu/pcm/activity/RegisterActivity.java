@@ -19,8 +19,7 @@ import com.sjtu.pcm.R;
 
 /**
  * 注册界面
- * 
- * @author CaoyYuting
+ *
  * 
  */
 @SuppressWarnings("deprecation")

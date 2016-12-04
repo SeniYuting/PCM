@@ -25,7 +25,6 @@ import com.sjtu.pcm.util.ViewUtil;
 /**
  * 主界面
  *
- * @author CaoyYuting
  *
  */
 public class MainActivity extends Activity implements OnOpenListener {

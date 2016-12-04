@@ -26,9 +26,6 @@ public class CardDesign {
 	private OnOpenListener mOnOpenListener;
 
 	private TextView mTopText;
-	
-	// 是否是名片设计
-	private boolean mIsCardDesign = true;
 
 	@SuppressLint("InflateParams")
 	public CardDesign(Context context, Activity activity) {

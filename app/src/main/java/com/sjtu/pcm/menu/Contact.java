@@ -14,8 +14,7 @@ import com.sjtu.pcm.anim.MyViewGroup.OnOpenListener;
 
 /**
  * 联系我们类
- * 
- * @author CaoyYuting
+ *
  * 
  */
 public class Contact {

@@ -14,8 +14,7 @@ import com.sjtu.pcm.anim.MyViewGroup.OnOpenListener;
 
 /**
  * 名片识别类
- * 
- * @author CaoyYuting
+ *
  * 
  */
 public class Recognize {

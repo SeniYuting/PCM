@@ -14,7 +14,7 @@ import android.widget.Scroller;
 /**
  * 重写的ViewGroup,用于滑动切换界面使用
  * 
- * @author CaoyYuting
+ * @author CaoYuting
  * 
  */
 @SuppressLint("ClickableViewAccessibility")
