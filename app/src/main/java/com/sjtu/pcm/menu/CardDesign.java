@@ -13,18 +13,15 @@ import com.sjtu.pcm.R;
 import com.sjtu.pcm.anim.MyViewGroup.OnOpenListener;
 
 /**
- * 名片管理类
- * 
- * @author CaoyYuting
+ * 名片设计类
+ *
  * 
  */
-public class Card {
+public class CardDesign {
 	// 当前界面的View
 	private View mHome;
 	// 布局控件
 	private Button mMenu;
-	private Button mCardDesign;
-	private Button mCardChange;
 
 	private OnOpenListener mOnOpenListener;
 
@@ -34,9 +31,9 @@ public class Card {
 	private boolean mIsCardDesign = true;
 
 	@SuppressLint("InflateParams")
-	public Card(Context context, Activity activity) {
+	public CardDesign(Context context, Activity activity) {
 		// 绑定布局到当前View
-		mHome = LayoutInflater.from(context).inflate(R.layout.card, null);
+		mHome = LayoutInflater.from(context).inflate(R.layout.carddesign, null);
 
 		findViewById();
 		setListener();
@@ -49,9 +46,6 @@ public class Card {
 	private void findViewById() {
 		mMenu = (Button) mHome.findViewById(R.id.menu);
 		mTopText = (TextView) mHome.findViewById(R.id.top_text);
-		
-		mCardDesign = (Button) mHome.findViewById(R.id.card_design);
-		mCardChange = (Button) mHome.findViewById(R.id.card_change);
 	}
 
 	/**
@@ -66,39 +60,13 @@ public class Card {
 				}
 			}
 		});
-		
-		mCardDesign.setOnClickListener(new OnClickListener() {
-
-			public void onClick(View v) {
-				if (!mIsCardDesign) {
-					mIsCardDesign = true;
-					mCardDesign
-							.setBackgroundResource(R.drawable.bottomtabbutton_leftred);
-					mCardChange
-							.setBackgroundResource(R.drawable.bottomtabbutton_rightwhite);
-
-				}
-			}
-		});
-		mCardChange.setOnClickListener(new OnClickListener() {
-
-			public void onClick(View v) {
-				if (mIsCardDesign) {
-					mIsCardDesign = false;
-					mCardDesign
-							.setBackgroundResource(R.drawable.bottomtabbutton_leftwhite);
-					mCardChange
-							.setBackgroundResource(R.drawable.bottomtabbutton_rightred);
-				}
-			}
-		});
 	}
 
 	/**
 	 * 界面初始化
 	 */
 	private void init() {
-		mTopText.setText("名片管理");
+		mTopText.setText("名片设计");
 	}
 
 	public void setOnOpenListener(OnOpenListener onOpenListener) {

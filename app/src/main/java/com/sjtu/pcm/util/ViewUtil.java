@@ -9,10 +9,10 @@ package com.sjtu.pcm.util;
 public class ViewUtil {
 	// 用户管理
 	public static final int USER = -1;
-	// 名片管理：包括名片设计 & 名片交换
-	public static final int CARD = 0;
-	// 用户标签
-	public static final int TAG = 1;
+	// 名片设计
+	public static final int CARDDESIGN = 0;
+	// 名片交换
+	public static final int CAREXDCHANGE = 1;
 	// 人脉排程
 	public static final int SCHEDULE = 2;
 	// 名片识别

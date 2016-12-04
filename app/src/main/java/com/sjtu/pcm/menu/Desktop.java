@@ -29,7 +29,7 @@ import com.sjtu.pcm.R;
 /**
  * 菜单界面
  * 
- * @author CaoyYuting
+ * @author CaoYuting
  * 
  */
 @SuppressLint({ "InflateParams", "ClickableViewAccessibility" })
@@ -147,7 +147,7 @@ public class Desktop {
 				}
 			}
 		});
-		// Path 名片管理监听
+		// Path 名片设计监听
 		mUgcVoice.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
@@ -164,14 +164,14 @@ public class Desktop {
 
 					public void onAnimationEnd(Animation animation) {
 
-						mOnChangeViewListener.onChangeView(ViewUtil.CARD);
+						mOnChangeViewListener.onChangeView(ViewUtil.CARDDESIGN);
 						closeUgc();
 					}
 				});
 				mUgcVoice.startAnimation(anim);
 			}
 		});
-		// Path 用户标签监听
+		// Path 名片交换监听
 		mUgcPhoto.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
@@ -188,7 +188,7 @@ public class Desktop {
 
 					public void onAnimationEnd(Animation animation) {
 
-						mOnChangeViewListener.onChangeView(ViewUtil.TAG);
+						mOnChangeViewListener.onChangeView(ViewUtil.CAREXDCHANGE);
 						closeUgc();
 					}
 				});
@@ -306,12 +306,12 @@ public class Desktop {
 	public class DesktopAdapter extends BaseAdapter {
 
 		private Context mContext;
-		private String[] mName = { "名片管理", "用户标签", "人脉排程", "名片识别", "联系我们",
+		private String[] mName = { "名片设计", "名片交换", "人脉排程", "名片识别", "联系我们",
 				"注销登录" };
-		private int[] mIcon = { R.drawable.card, R.drawable.tag,
+		private int[] mIcon = { R.drawable.card_design, R.drawable.card_exchange,
 				R.drawable.schedule, R.drawable.contact, R.drawable.recognize,
 				R.drawable.logout };
-		private int[] mIconPressed = { R.drawable.card_h, R.drawable.tag_h,
+		private int[] mIconPressed = { R.drawable.card_design_h, R.drawable.card_exchange_h,
 				R.drawable.schedule_h, R.drawable.contact_h,
 				R.drawable.recognize_h, R.drawable.logout_h };
 		private int mChoose = 0;
@@ -361,8 +361,8 @@ public class Desktop {
 			} else {
 				holder.name.setTextColor(Color.parseColor("#7fffffff"));
 				holder.icon.setImageResource(mIcon[position]);
-				holder.layout.setBackgroundResource(Color
-						.parseColor("#00000000"));
+				//noinspection ResourceType
+				holder.layout.setBackgroundResource(Color.parseColor("#00000000"));
 			}
 			convertView.setOnClickListener(new OnClickListener() {
 
@@ -370,11 +370,11 @@ public class Desktop {
 					if (mOnChangeViewListener != null) {
 						switch (position) {
 
-						case ViewUtil.CARD:
-							mOnChangeViewListener.onChangeView(ViewUtil.CARD);
+						case ViewUtil.CARDDESIGN:
+							mOnChangeViewListener.onChangeView(ViewUtil.CARDDESIGN);
 							break;
-						case ViewUtil.TAG:
-							mOnChangeViewListener.onChangeView(ViewUtil.TAG);
+						case ViewUtil.CAREXDCHANGE:
+							mOnChangeViewListener.onChangeView(ViewUtil.CAREXDCHANGE);
 							break;
 						case ViewUtil.SCHEDULE:
 							mOnChangeViewListener
@@ -392,7 +392,7 @@ public class Desktop {
 							mOnChangeViewListener.onChangeView(ViewUtil.LOGOUT);
 							break;
 						default:
-							mOnChangeViewListener.onChangeView(ViewUtil.CARD);
+							mOnChangeViewListener.onChangeView(ViewUtil.CARDDESIGN);
 							break;
 						}
 						mChoose = position;

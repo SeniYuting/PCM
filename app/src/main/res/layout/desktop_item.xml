@@ -12,7 +12,7 @@
 	    android:id="@+id/desktop_item_icon"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
-	    android:src="@drawable/card_h"/>
+	    android:src="@drawable/card_design_h"/>
 	<TextView 
 	    android:id="@+id/desktop_item_name"
 	    android:layout_width="wrap_content"

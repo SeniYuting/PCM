@@ -296,12 +296,7 @@ public class MyViewGroup extends ViewGroup {
 		public abstract void show();
 	}
 
-	public void setOnUgcDismissListener(
-			onUgcDismissListener onUgcDismissListener) {
-		mOnUgcDismissListener = onUgcDismissListener;
-	}
-
-	public void setOnUgcShowListener(onUgcShowListener onUgcShowListener) {
+	private void setOnUgcShowListener(onUgcShowListener onUgcShowListener) {
 		mOnUgcShowListener = onUgcShowListener;
 	}
 }

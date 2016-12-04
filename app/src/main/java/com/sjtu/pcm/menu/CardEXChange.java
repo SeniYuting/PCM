@@ -13,12 +13,11 @@ import com.sjtu.pcm.R;
 import com.sjtu.pcm.anim.MyViewGroup.OnOpenListener;
 
 /**
- * 用户标签类
- * 
- * @author CaoyYuting
- * 
+ * 名片交换类
+ *
+ *
  */
-public class Tag {
+public class CardEXChange {
 	// 当前界面的View
 	private View mHome;
 	// 布局控件
@@ -29,9 +28,9 @@ public class Tag {
 	private TextView mTopText;
 
 	@SuppressLint("InflateParams")
-	public Tag(Context context, Activity activity) {
+	public CardEXChange(Context context, Activity activity) {
 		// 绑定布局到当前View
-		mHome = LayoutInflater.from(context).inflate(R.layout.tag, null);
+		mHome = LayoutInflater.from(context).inflate(R.layout.cardexchange, null);
 
 		findViewById();
 		setListener();
@@ -64,7 +63,7 @@ public class Tag {
 	 * 界面初始化
 	 */
 	private void init() {
-		mTopText.setText("用户标签");
+		mTopText.setText("名片交换");
 	}
 
 	public void setOnOpenListener(OnOpenListener onOpenListener) {

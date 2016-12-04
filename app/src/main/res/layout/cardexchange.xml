@@ -38,10 +38,23 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="8dip"
-                    android:text="用户标签"
+                    android:text="名片交换"
                     android:textColor="#ffffff"
                     android:textSize="18sp" />
             </LinearLayout>
+
+            <Button
+                android:id="@+id/card_exchange_add"
+                android:layout_width="61dp"
+                android:layout_height="fill_parent"
+                android:layout_marginBottom="8dip"
+                android:layout_marginRight="8dip"
+                android:layout_marginTop="8dip"
+                android:background="@drawable/title_text_button"
+                android:text="添加"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
             <Button
                 android:layout_width="40dip"

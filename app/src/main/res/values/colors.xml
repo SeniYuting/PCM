@@ -3,5 +3,7 @@
 
     <color name="translucent_20">#20000000</color>
     <color name="translucent_00">#00000000</color>
+    <color name="translucent_7f">#7fffffff</color>
+    <color name="translucent_ff">#ffffffff</color>
 
 </resources>

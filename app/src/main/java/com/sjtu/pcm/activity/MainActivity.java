@@ -13,8 +13,8 @@ import android.widget.Toast;
 import com.sjtu.pcm.menu.Desktop;
 import com.sjtu.pcm.menu.Desktop.onChangeViewListener;
 import com.sjtu.pcm.menu.User;
-import com.sjtu.pcm.menu.Card;
-import com.sjtu.pcm.menu.Tag;
+import com.sjtu.pcm.menu.CardDesign;
+import com.sjtu.pcm.menu.CardEXChange;
 import com.sjtu.pcm.menu.Schedule;
 import com.sjtu.pcm.menu.Recognize;
 import com.sjtu.pcm.menu.Contact;
@@ -24,20 +24,18 @@ import com.sjtu.pcm.util.ViewUtil;
 
 /**
  * 主界面
- * 
+ *
  * @author CaoyYuting
- * 
+ *
  */
 public class MainActivity extends Activity implements OnOpenListener {
 
 	private MyViewGroup mRoot; // 当前显示内容的容器(继承于ViewGroup)
 	private Desktop mDesktop; // 菜单界面
-	@SuppressWarnings("unused")
-	private int mViewPosition;// 当前显示的View的编号
 
 	private User mUserInfo; // 用户管理界面
-	private Card mCard; // 名片管理面
-	private Tag mTag; // 用户标签界面
+	private CardDesign mCardDesign; // 名片设计界面
+	private CardEXChange mCardExchange; // 名片交换界面
 	private Schedule mSchedule; // 人脉排程界面
 	private Recognize mRecognize; // 名片识别界面
 	private Contact mContact; // 联系我们界面
@@ -59,9 +57,9 @@ public class MainActivity extends Activity implements OnOpenListener {
 		mRoot.setLayoutParams(params);
 		// 创建菜单界面和内容首页界面,并添加到容器中,用于初始显示
 		mDesktop = new Desktop(this, this);
-		mCard = new Card(this, this);
+		mCardDesign = new CardDesign(this, this);
 		mRoot.addView(mDesktop.getView(), params);
-		mRoot.addView(mCard.getView(), params);
+		mRoot.addView(mCardDesign.getView(), params);
 		setContentView(mRoot);
 		setListener();
 		mInstance = this;
@@ -76,27 +74,26 @@ public class MainActivity extends Activity implements OnOpenListener {
 	 * UI事件监听
 	 */
 	private void setListener() {
-		mCard.setOnOpenListener(this);
+		mCardDesign.setOnOpenListener(this);
 		// 监听菜单界面切换显示内容(onChangeViewListener接口在Desktop中定义)
 		mDesktop.setOnChangeViewListener(new onChangeViewListener() {
 
 			public void onChangeView(int arg0) {
-				mViewPosition = arg0;
 				switch (arg0) {
 				case ViewUtil.USER:
 					mUserInfo = new User(MainActivity.this, MainActivity.this);
 					mUserInfo.setOnOpenListener(MainActivity.this);
 					mRoot.close(mUserInfo.getView());
 					break;
-				case ViewUtil.CARD:
-					mCard = new Card(MainActivity.this, MainActivity.this);
-					mCard.setOnOpenListener(MainActivity.this);
-					mRoot.close(mCard.getView());
+				case ViewUtil.CARDDESIGN:
+					mCardDesign = new CardDesign(MainActivity.this, MainActivity.this);
+					mCardDesign.setOnOpenListener(MainActivity.this);
+					mRoot.close(mCardDesign.getView());
 					break;
-				case ViewUtil.TAG:
-					mTag = new Tag(MainActivity.this, MainActivity.this);
-					mTag.setOnOpenListener(MainActivity.this);
-					mRoot.close(mTag.getView());
+				case ViewUtil.CAREXDCHANGE:
+					mCardExchange = new CardEXChange(MainActivity.this, MainActivity.this);
+					mCardExchange.setOnOpenListener(MainActivity.this);
+					mRoot.close(mCardExchange.getView());
 					break;
 				case ViewUtil.SCHEDULE:
 					mSchedule = new Schedule(MainActivity.this,
