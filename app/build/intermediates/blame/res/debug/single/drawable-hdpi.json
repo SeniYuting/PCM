@@ -1,0 +1,378 @@
+[
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\abc_ic_menu_moreoverflow_mtrl_alpha.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable-hdpi\\abc_ic_menu_moreoverflow_mtrl_alpha.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\abc_ab_share_pack_mtrl_alpha.9.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable-hdpi\\abc_ab_share_pack_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\ic_launcher.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\src\\main\\res\\drawable-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\abc_list_longpressed_holo.9.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable-hdpi\\abc_list_longpressed_holo.9.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\login_btn_login_press.9.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\src\\main\\res\\drawable-hdpi\\login_btn_login_press.9.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\abc_ic_menu_copy_mtrl_am_alpha.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable-hdpi\\abc_ic_menu_copy_mtrl_am_alpha.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\abc_list_divider_mtrl_alpha.9.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable-hdpi\\abc_list_divider_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\ugc_btn_quill_close.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\src\\main\\res\\drawable-hdpi\\ugc_btn_quill_close.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\card_h.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\src\\main\\res\\drawable-hdpi\\card_h.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\profile_avatar_frame_bg.9.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\src\\main\\res\\drawable-hdpi\\profile_avatar_frame_bg.9.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\logout.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\src\\main\\res\\drawable-hdpi\\logout.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\contact.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\src\\main\\res\\drawable-hdpi\\contact.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\global_top_background.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\src\\main\\res\\drawable-hdpi\\global_top_background.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\bottomtabbutton_leftwhite.9.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\src\\main\\res\\drawable-hdpi\\bottomtabbutton_leftwhite.9.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\logout_h.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\src\\main\\res\\drawable-hdpi\\logout_h.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\abc_tab_indicator_mtrl_alpha.9.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable-hdpi\\abc_tab_indicator_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\image1.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\src\\main\\res\\drawable-hdpi\\image1.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\recognize_h.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\src\\main\\res\\drawable-hdpi\\recognize_h.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\title_bar_center_button_pressed.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\src\\main\\res\\drawable-hdpi\\title_bar_center_button_pressed.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\ugc_opened_bg.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\src\\main\\res\\drawable-hdpi\\ugc_opened_bg.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\abc_ic_menu_paste_mtrl_am_alpha.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable-hdpi\\abc_ic_menu_paste_mtrl_am_alpha.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\abc_menu_hardkey_panel_mtrl_mult.9.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable-hdpi\\abc_menu_hardkey_panel_mtrl_mult.9.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\abc_ic_search_api_mtrl_alpha.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable-hdpi\\abc_ic_search_api_mtrl_alpha.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\abc_ic_go_search_api_mtrl_alpha.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable-hdpi\\abc_ic_go_search_api_mtrl_alpha.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\global_home_normal.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\src\\main\\res\\drawable-hdpi\\global_home_normal.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\refresh_icon.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\src\\main\\res\\drawable-hdpi\\refresh_icon.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\icon.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\src\\main\\res\\drawable-hdpi\\icon.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\title_text_button_bg_pressed.9.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\src\\main\\res\\drawable-hdpi\\title_text_button_bg_pressed.9.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\abc_switch_track_mtrl_alpha.9.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable-hdpi\\abc_switch_track_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\login_input.9.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\src\\main\\res\\drawable-hdpi\\login_input.9.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\title_text_button_bg.9.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\src\\main\\res\\drawable-hdpi\\title_text_button_bg.9.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\titlewritemessagebutton_pressed.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\src\\main\\res\\drawable-hdpi\\titlewritemessagebutton_pressed.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\bottomtabbutton_separation.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\src\\main\\res\\drawable-hdpi\\bottomtabbutton_separation.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\abc_ic_menu_cut_mtrl_alpha.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable-hdpi\\abc_ic_menu_cut_mtrl_alpha.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\abc_btn_radio_to_on_mtrl_015.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable-hdpi\\abc_btn_radio_to_on_mtrl_015.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\abc_btn_switch_to_on_mtrl_00001.9.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable-hdpi\\abc_btn_switch_to_on_mtrl_00001.9.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\title_bar_center_button_normal.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\src\\main\\res\\drawable-hdpi\\title_bar_center_button_normal.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\abc_btn_check_to_on_mtrl_000.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable-hdpi\\abc_btn_check_to_on_mtrl_000.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\sidebar_dividing_line.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\src\\main\\res\\drawable-hdpi\\sidebar_dividing_line.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\sidebar_bg_black.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\src\\main\\res\\drawable-hdpi\\sidebar_bg_black.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\schedule_h.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\src\\main\\res\\drawable-hdpi\\schedule_h.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\tag.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\src\\main\\res\\drawable-hdpi\\tag.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\abc_btn_rating_star_off_mtrl_alpha.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable-hdpi\\abc_btn_rating_star_off_mtrl_alpha.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\abc_btn_switch_to_on_mtrl_00012.9.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable-hdpi\\abc_btn_switch_to_on_mtrl_00012.9.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\sidebar_icon_set_up_pressed.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\src\\main\\res\\drawable-hdpi\\sidebar_icon_set_up_pressed.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\about_mid_bg.9.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\src\\main\\res\\drawable-hdpi\\about_mid_bg.9.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\abc_list_focused_holo.9.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable-hdpi\\abc_list_focused_holo.9.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\ugc_btn_quill_close_pressed.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\src\\main\\res\\drawable-hdpi\\ugc_btn_quill_close_pressed.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\head_default.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\src\\main\\res\\drawable-hdpi\\head_default.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\abc_popup_background_mtrl_mult.9.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable-hdpi\\abc_popup_background_mtrl_mult.9.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\refresh_icon_pressed.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\src\\main\\res\\drawable-hdpi\\refresh_icon_pressed.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\image3.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\src\\main\\res\\drawable-hdpi\\image3.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\login_icon_account.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\src\\main\\res\\drawable-hdpi\\login_icon_account.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\abc_textfield_search_activated_mtrl_alpha.9.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable-hdpi\\abc_textfield_search_activated_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\global_home_pressed.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\src\\main\\res\\drawable-hdpi\\global_home_pressed.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\abc_list_selector_disabled_holo_dark.9.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable-hdpi\\abc_list_selector_disabled_holo_dark.9.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\abc_ic_menu_share_mtrl_alpha.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable-hdpi\\abc_ic_menu_share_mtrl_alpha.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\titlewritemessagebutton.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\src\\main\\res\\drawable-hdpi\\titlewritemessagebutton.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\tag_h.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\src\\main\\res\\drawable-hdpi\\tag_h.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\abc_ic_ab_back_mtrl_am_alpha.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable-hdpi\\abc_ic_ab_back_mtrl_am_alpha.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\bottomtabbutton_leftred.9.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\src\\main\\res\\drawable-hdpi\\bottomtabbutton_leftred.9.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\login_btn_login.9.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\src\\main\\res\\drawable-hdpi\\login_btn_login.9.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\abc_btn_check_to_on_mtrl_015.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable-hdpi\\abc_btn_check_to_on_mtrl_015.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\abc_textfield_default_mtrl_alpha.9.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable-hdpi\\abc_textfield_default_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\abc_ic_menu_selectall_mtrl_alpha.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable-hdpi\\abc_ic_menu_selectall_mtrl_alpha.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\abc_btn_rating_star_on_mtrl_alpha.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable-hdpi\\abc_btn_rating_star_on_mtrl_alpha.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\image4.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\src\\main\\res\\drawable-hdpi\\image4.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\abc_btn_radio_to_on_mtrl_000.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable-hdpi\\abc_btn_radio_to_on_mtrl_000.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\abc_textfield_search_default_mtrl_alpha.9.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable-hdpi\\abc_textfield_search_default_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\sidebar_dividing_line_middle.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\src\\main\\res\\drawable-hdpi\\sidebar_dividing_line_middle.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\abc_text_cursor_mtrl_alpha.9.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable-hdpi\\abc_text_cursor_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\about_bottom_bg.9.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\src\\main\\res\\drawable-hdpi\\about_bottom_bg.9.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\abc_ic_clear_mtrl_alpha.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable-hdpi\\abc_ic_clear_mtrl_alpha.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\abc_cab_background_top_mtrl_alpha.9.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable-hdpi\\abc_cab_background_top_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\abc_textfield_activated_mtrl_alpha.9.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable-hdpi\\abc_textfield_activated_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\schedule.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\src\\main\\res\\drawable-hdpi\\schedule.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\abc_ic_voice_search_api_mtrl_alpha.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable-hdpi\\abc_ic_voice_search_api_mtrl_alpha.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\sidebar_icon_set_up.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\src\\main\\res\\drawable-hdpi\\sidebar_icon_set_up.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\login_icon_enter.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\src\\main\\res\\drawable-hdpi\\login_icon_enter.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\card.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\src\\main\\res\\drawable-hdpi\\card.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\abc_spinner_mtrl_am_alpha.9.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable-hdpi\\abc_spinner_mtrl_am_alpha.9.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\abc_list_pressed_holo_dark.9.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable-hdpi\\abc_list_pressed_holo_dark.9.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\contact_h.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\src\\main\\res\\drawable-hdpi\\contact_h.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\bottombg.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\src\\main\\res\\drawable-hdpi\\bottombg.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\login_icon_password.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\src\\main\\res\\drawable-hdpi\\login_icon_password.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\abc_list_selector_disabled_holo_light.9.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable-hdpi\\abc_list_selector_disabled_holo_light.9.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\abc_ic_commit_search_api_mtrl_alpha.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable-hdpi\\abc_ic_commit_search_api_mtrl_alpha.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\bottomtabbutton_rightred.9.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\src\\main\\res\\drawable-hdpi\\bottomtabbutton_rightred.9.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\cover_head.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\src\\main\\res\\drawable-hdpi\\cover_head.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\bottomtabbutton_rightwhite.9.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\src\\main\\res\\drawable-hdpi\\bottomtabbutton_rightwhite.9.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\abc_list_pressed_holo_light.9.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\drawable-hdpi\\abc_list_pressed_holo_light.9.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\recognize.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\src\\main\\res\\drawable-hdpi\\recognize.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\about_top_bg.9.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\src\\main\\res\\drawable-hdpi\\about_top_bg.9.png"
+    },
+    {
+        "merged": "F:\\project\\AndroidStudio\\PCM\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\image2.png",
+        "source": "F:\\project\\AndroidStudio\\PCM\\app\\src\\main\\res\\drawable-hdpi\\image2.png"
+    }
+]
