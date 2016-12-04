@@ -31,7 +31,7 @@ import android.widget.TextView;
 @SuppressWarnings("deprecation")
 public class LoginActivity extends Activity {
 
-	// 登录按钮
+	// 登录
 	private Button mLogin;
 	private EditText accountText;
 	private EditText passwordText;
