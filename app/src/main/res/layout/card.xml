@@ -9,7 +9,8 @@
         android:layout_height="fill_parent"
         android:background="#fff"
         android:clickable="true"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:weightSum="1">
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -49,7 +50,7 @@
                 android:layout_marginRight="8dip"
                 android:background="@drawable/title_refresh_button" />
         </LinearLayout>
-        
+
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -88,6 +89,216 @@
                 android:textColor="#333333"
                 android:textSize="16sp" />
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:padding="8dip"
+                android:text="姓名:        "
+                android:textColor="#808080"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/card_name"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="#00000000"
+                android:gravity="top"
+                android:padding="8dip"
+                android:textColor="#333333" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1px"
+            android:background="#80333333" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:padding="8dip"
+                android:text="公司:        "
+                android:textColor="#808080"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/card_company"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="#00000000"
+                android:gravity="top"
+                android:padding="8dip"
+                android:textColor="#333333" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1px"
+            android:background="#80333333" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:padding="8dip"
+                android:text="职位:        "
+                android:textColor="#808080"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/card_job"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="#00000000"
+                android:gravity="top"
+                android:padding="8dip"
+                android:textColor="#333333" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1px"
+            android:background="#80333333" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:padding="8dip"
+                android:text="公司电话:"
+                android:textColor="#808080"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/card_c_number"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="#00000000"
+                android:gravity="top"
+                android:padding="8dip"
+                android:textColor="#333333" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1px"
+            android:background="#80333333" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:padding="8dip"
+                android:text="公司地址:"
+                android:textColor="#808080"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/card_c_address"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="#00000000"
+                android:gravity="top"
+                android:padding="8dip"
+                android:textColor="#333333" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1px"
+            android:background="#80333333" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:padding="8dip"
+                android:text="传真:        "
+                android:textColor="#808080"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/card_fax"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="#00000000"
+                android:gravity="top"
+                android:padding="8dip"
+                android:textColor="#333333" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1px"
+            android:background="#80333333" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:padding="8dip"
+                android:text="公司邮箱:"
+                android:textColor="#808080"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/card_c_email"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="#00000000"
+                android:gravity="top"
+                android:padding="8dip"
+                android:textColor="#333333" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1px"
+            android:background="#80333333" />
 
     </LinearLayout>
 
