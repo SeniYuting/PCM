@@ -38,6 +38,14 @@
             android:name=".activity.user.UserModifyActivity"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name=".activity.card_design.CardModifyActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.card_exchange.FriendCardView"
+            android:screenOrientation="portrait" >
+        </activity>
     </application>
 
 </manifest>

@@ -18,11 +18,17 @@
             android:background="@drawable/global_top_background" >
 
             <Button
-                android:id="@+id/menu"
-                android:layout_width="40dip"
+                android:id="@+id/friend_card_view_return"
+                android:layout_width="61dp"
                 android:layout_height="fill_parent"
+                android:layout_marginBottom="8dip"
                 android:layout_marginLeft="8dip"
-                android:background="@drawable/title_home_button" />
+                android:layout_marginTop="8dip"
+                android:background="@drawable/title_text_button"
+                android:text="返回"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:id="@+id/top_layout"
@@ -35,27 +41,26 @@
                 android:orientation="horizontal" >
 
                 <TextView
-                    android:id="@+id/top_text"
+                    android:id="@+id/friend_card_view_top_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="8dip"
-                    android:text="名片设计"
                     android:textColor="#ffffff"
                     android:textSize="18sp" />
             </LinearLayout>
 
             <Button
-                android:layout_width="40dip"
+                android:id="@+id/friend_card_view_delete"
+                android:layout_width="61dp"
                 android:layout_height="fill_parent"
+                android:layout_marginBottom="8dip"
                 android:layout_marginRight="8dip"
-                android:background="@drawable/title_refresh_button" />
-
-            <Button
-                android:id="@+id/card_edit"
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:layout_marginRight="8dip"
-                android:background="@drawable/title_write_message_button" />
+                android:layout_marginTop="8dip"
+                android:background="@drawable/title_text_button"
+                android:text="删除"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
@@ -78,7 +83,7 @@
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/card_name"
+                android:id="@+id/friend_card_name"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
@@ -107,7 +112,7 @@
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/card_company"
+                android:id="@+id/friend_card_company"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
@@ -136,7 +141,7 @@
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/card_job"
+                android:id="@+id/friend_card_job"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
@@ -165,7 +170,7 @@
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/card_c_number"
+                android:id="@+id/friend_card_c_number"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
@@ -194,7 +199,7 @@
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/card_c_address"
+                android:id="@+id/friend_card_c_address"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
@@ -223,7 +228,7 @@
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/card_fax"
+                android:id="@+id/friend_card_fax"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
@@ -252,7 +257,7 @@
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/card_c_email"
+                android:id="@+id/friend_card_c_email"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
