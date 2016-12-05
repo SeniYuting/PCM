@@ -48,6 +48,7 @@ public class User {
 	private TextView mGender;
 	private TextView mAddress;
 	private TextView mMobile;
+	private TextView mTag;
 
 	private MyApplication mapp;
 	private OnOpenListener mOnOpenListener;
@@ -82,6 +83,7 @@ public class User {
 		mGender = (TextView) mHome.findViewById(R.id.user_gender);
 		mAddress = (TextView) mHome.findViewById(R.id.user_address);
 		mMobile = (TextView) mHome.findViewById(R.id.user_mobile);
+		mTag = (TextView) mHome.findViewById(R.id.user_tag);
 	}
 
 	/**
@@ -166,6 +168,8 @@ public class User {
 				resultList.add(result_json.get("address").toString());
 				resultList.add(result_json.get("mobile").toString());
 
+				// TODO 获取标签，并添加到resultList
+
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -182,6 +186,7 @@ public class User {
 			mGender.setText(resultList.size()>2 ? resultList.get(2) : "");
 			mAddress.setText(resultList.size()>3 ? resultList.get(3) : "");
 			mMobile.setText(resultList.size()>4 ? resultList.get(4) : "");
+			mTag.setText(resultList.size()>5 ? resultList.get(5) : "");
 		}
 
 	}

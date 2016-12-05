@@ -70,15 +70,39 @@
                 android:textColor="#222222"
                 android:textSize="14sp" />
 
-            <EditText
+            <RadioGroup
                 android:id="@+id/contact_star"
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:background="#00000000"
-                android:gravity="top"
-                android:padding="0dip"
-                android:textColor="#333333" />
+                android:orientation="horizontal" >
+
+                <RadioButton
+                    android:id="@+id/good"
+                    android:layout_width="100dip"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="优"
+                    android:textColor="#333333" >
+                </RadioButton>
+
+                <RadioButton
+                    android:id="@+id/medium"
+                    android:layout_width="100dip"
+                    android:layout_height="wrap_content"
+                    android:text="中"
+                    android:textColor="#333333" >
+                </RadioButton>
+
+                <RadioButton
+                    android:id="@+id/bad"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="差"
+                    android:textColor="#333333" >
+                </RadioButton>
+            </RadioGroup>
 
         </LinearLayout>
 

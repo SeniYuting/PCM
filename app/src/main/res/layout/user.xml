@@ -247,7 +247,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dip"
             android:layout_marginRight="8dip"
-            android:background="@drawable/about_bottom_bg"
+            android:background="@drawable/about_mid_bg"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:padding="8dip" >
@@ -263,6 +263,36 @@
 
             <TextView
                 android:id="@+id/user_mobile"
+                android:layout_width="fill_parent"
+                android:layout_height="30dip"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:paddingLeft="8dip"
+                android:textColor="#333333"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dip"
+            android:layout_marginRight="8dip"
+            android:background="@drawable/about_bottom_bg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="8dip" >
+
+            <TextView
+                android:layout_width="60dip"
+                android:layout_height="30dip"
+                android:layout_marginLeft="8dip"
+                android:gravity="center_vertical"
+                android:text="标签"
+                android:textColor="#222222"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/user_tag"
                 android:layout_width="fill_parent"
                 android:layout_height="30dip"
                 android:layout_weight="1"

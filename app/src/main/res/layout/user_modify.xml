@@ -79,7 +79,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
-                    android:padding="8dip"
+                    android:padding="12dip"
                     android:text="昵称:"
                     android:textColor="#808080"
                     android:textSize="16sp" />
@@ -109,20 +109,36 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
-                    android:padding="8dip"
+                    android:padding="12dip"
                     android:text="性别:"
                     android:textColor="#808080"
                     android:textSize="16sp" />
 
-                <EditText
+                <RadioGroup
                     android:id="@+id/gender"
                     android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
                     android:background="#00000000"
-                    android:gravity="top"
-                    android:padding="8dip"
-                    android:textColor="#333333" />
+                    android:orientation="horizontal" >
+
+                    <RadioButton
+                        android:id="@+id/male"
+                        android:layout_width="100dip"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="男"
+                        android:textColor="#333333" >
+                    </RadioButton>
+
+                    <RadioButton
+                        android:id="@+id/female"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="女"
+                        android:textColor="#333333" >
+                    </RadioButton>
+                </RadioGroup>
             </LinearLayout>
 
             <View
@@ -139,7 +155,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
-                    android:padding="8dip"
+                    android:padding="12dip"
                     android:text="地址:"
                     android:textColor="#808080"
                     android:textSize="16sp" />
@@ -151,7 +167,7 @@
                     android:layout_weight="1"
                     android:background="#00000000"
                     android:gravity="top"
-                    android:padding="8dip"
+                    android:padding="12dip"
                     android:textColor="#333333" />
             </LinearLayout>
 
@@ -169,7 +185,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
-                    android:padding="8dip"
+                    android:padding="12dip"
                     android:text="手机:"
                     android:textColor="#808080"
                     android:textSize="16sp" />
@@ -181,8 +197,49 @@
                     android:layout_weight="1"
                     android:background="#00000000"
                     android:gravity="top"
-                    android:padding="8dip"
+                    android:padding="12dip"
                     android:textColor="#333333" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1px"
+                android:background="#80333333" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:padding="12dip"
+                    android:text="标签:"
+                    android:textColor="#808080"
+                    android:textSize="16sp" />
+
+                <CheckBox
+                    android:id="@+id/user_tag_1"
+                    android:layout_width="100dip"
+                    android:layout_height="wrap_content"
+                    android:text="标签1"
+                    android:textColor="#000" />
+
+                <CheckBox
+                    android:id="@+id/user_tag_2"
+                    android:layout_width="100dip"
+                    android:layout_height="wrap_content"
+                    android:text="标签2"
+                    android:textColor="#000" />
+
+                <CheckBox
+                    android:id="@+id/user_tag_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="标签3"
+                    android:textColor="#000" />
             </LinearLayout>
            
         </LinearLayout>

@@ -14,7 +14,7 @@ import com.sjtu.pcm.menu.Desktop;
 import com.sjtu.pcm.menu.Desktop.onChangeViewListener;
 import com.sjtu.pcm.menu.User;
 import com.sjtu.pcm.menu.CardDesign;
-import com.sjtu.pcm.menu.CardEXChange;
+import com.sjtu.pcm.menu.CardExchange;
 import com.sjtu.pcm.menu.Schedule;
 import com.sjtu.pcm.menu.Recognize;
 import com.sjtu.pcm.menu.Contact;
@@ -34,7 +34,7 @@ public class MainActivity extends Activity implements OnOpenListener {
 
 	private User mUserInfo; // 用户管理界面
 	private CardDesign mCardDesign; // 名片设计界面
-	private CardEXChange mCardExchange; // 名片交换界面
+	private CardExchange mCardExchange; // 名片交换界面
 	private Schedule mSchedule; // 人脉排程界面
 	private Recognize mRecognize; // 名片识别界面
 	private Contact mContact; // 联系我们界面
@@ -90,7 +90,7 @@ public class MainActivity extends Activity implements OnOpenListener {
 					mRoot.close(mCardDesign.getView());
 					break;
 				case ViewUtil.CAREXDCHANGE:
-					mCardExchange = new CardEXChange(MainActivity.this, MainActivity.this);
+					mCardExchange = new CardExchange(MainActivity.this, MainActivity.this);
 					mCardExchange.setOnOpenListener(MainActivity.this);
 					mRoot.close(mCardExchange.getView());
 					break;

@@ -1,6 +1,5 @@
 package com.sjtu.pcm.menu;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -31,7 +30,7 @@ import java.util.ArrayList;
  *
  *
  */
-public class CardEXChange {
+public class CardExchange {
 	private Context cEContext;
 	// 当前界面的View
 	private View mHome;
@@ -46,8 +45,7 @@ public class CardEXChange {
 	private TextView mTopText;
 	private List<Map<String, Object>> resultList = new ArrayList<>();
 
-	@SuppressLint("InflateParams")
-	public CardEXChange(Context context, Activity activity) {
+	public CardExchange(Context context, Activity activity) {
 		cEContext = context;
 		// 绑定布局到当前View
 		mHome = LayoutInflater.from(context).inflate(R.layout.cardexchange, null);
@@ -106,8 +104,6 @@ public class CardEXChange {
 		mTopText.setText("名片交换");
 
 		//现将所有用户好友数据存入resultList TODO
-		new RMPHelper()
-				.execute();
 
 		//测试数据，后面将会用resultList中的数据 TODO
 		Map<String, Object> map = new HashMap<>();

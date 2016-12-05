@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.sjtu.pcm.MyApplication;
@@ -25,7 +27,7 @@ public class Contact {
 	private View mHome;
 	// 布局控件
 	private Button mMenu;
-	private EditText mStar;
+	private RadioGroup mStar;
 	private EditText mComment;
 	private Button mSubmit;
 
@@ -53,7 +55,7 @@ public class Contact {
 		mMenu = (Button) mHome.findViewById(R.id.menu);
 		mTopText = (TextView) mHome.findViewById(R.id.top_text);
 
-		mStar = (EditText) mHome.findViewById(R.id.contact_star);
+		mStar = (RadioGroup) mHome.findViewById(R.id.contact_star);
 		mComment = (EditText) mHome.findViewById(R.id.contact_comment);
 		mSubmit = (Button) mHome.findViewById(R.id.contact_submit);
 	}
@@ -74,8 +76,10 @@ public class Contact {
 		mSubmit.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				String star = mStar.getText().toString();
-				String comment = mComment.getText().toString();
+				RadioButton starButton = (RadioButton) mHome.findViewById(mStar.getCheckedRadioButtonId());
+				String star = starButton.getText().toString();
+
+                String comment = mComment.getText().toString();
 
 				Log.i("star", star);
 				Log.i("comment", comment);
