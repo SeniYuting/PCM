@@ -17,11 +17,17 @@
             android:background="@drawable/global_top_background" >
 
             <Button
-                android:id="@+id/menu"
-                android:layout_width="40dip"
+                android:id="@+id/card_exchange_send_return"
+                android:layout_width="62dp"
                 android:layout_height="fill_parent"
+                android:layout_marginBottom="8dip"
                 android:layout_marginLeft="8dip"
-                android:background="@drawable/title_home_button" />
+                android:layout_marginTop="8dip"
+                android:background="@drawable/title_text_button"
+                android:text="返回"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:id="@+id/top_layout"
@@ -38,31 +44,66 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="8dip"
-                    android:text="名片交换"
+                    android:layout_marginRight="30dip"
+                    android:text="发送名片"
                     android:textColor="#ffffff"
                     android:textSize="18sp" />
             </LinearLayout>
 
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingTop="5dip">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:padding="8dip"
+                android:text="用户姓名:"
+                android:gravity="center_vertical"
+                android:textColor="#222222"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/card_exchange_send_search_text"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="#00000000"
+                android:gravity="center_vertical"
+                android:padding="8dip"
+                android:textColor="#333333" />
+
             <Button
-                android:id="@+id/card_exchange_send"
+                android:id="@+id/card_exchange_send_search_button"
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:layout_marginBottom="8dip"
                 android:layout_marginRight="8dip"
                 android:layout_marginTop="8dip"
                 android:background="@drawable/title_text_button"
-                android:text="发送名片"
+                android:text="搜索"
                 android:textColor="#FFFFFF"
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
 
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1px"
+            android:background="#80333333"
+            android:layout_marginTop="5dip"/>
+
         <ListView
-            android:id="@+id/card_exchange_list_view"
+            android:id="@+id/card_exchange_send_user_list_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"></ListView>
-
 
     </LinearLayout>
 

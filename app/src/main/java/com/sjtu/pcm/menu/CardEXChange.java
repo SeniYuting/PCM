@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.sjtu.pcm.MyApplication;
 import com.sjtu.pcm.R;
+import com.sjtu.pcm.activity.card_exchange.CardExchangeSend;
 import com.sjtu.pcm.activity.card_exchange.FriendCardView;
 import com.sjtu.pcm.anim.MyViewGroup.OnOpenListener;
 
@@ -36,6 +37,7 @@ public class CardExchange {
 	private View mHome;
 	// 布局控件
 	private Button mMenu;
+	private Button cESend;
 	private ListView cEListView;
 
 
@@ -66,6 +68,7 @@ public class CardExchange {
 		mMenu = (Button) mHome.findViewById(R.id.menu);
 		mTopText = (TextView) mHome.findViewById(R.id.top_text);
 		cEListView = (ListView) mHome.findViewById(R.id.card_exchange_list_view);
+		cESend = (Button) mHome.findViewById(R.id.card_exchange_send);
 	}
 
 	/**
@@ -87,10 +90,21 @@ public class CardExchange {
 
 				Intent intent = new Intent(cEContext, FriendCardView.class);
 				Bundle bundle = new Bundle();
-				Log.e("friendId", (String) resultList.get(i).get("card_exchange_list_view_id"));
-				bundle.putString("friendId", (String) resultList.get(i).get("card_exchange_list_view_id"));
+				Log.e("friendId", (String) resultList.get(i).get("user_id"));
+				bundle.putString("friendId", (String) resultList.get(i).get("user_id"));
 				bundle.putString("friendName", (String) resultList.get(i).get("card_exchange_list_view_name"));
 				intent.putExtras(bundle);
+				cEContext.startActivity(intent);
+
+			}
+		});
+
+		cESend.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View view) {
+
+				Intent intent = new Intent();
+				intent.setClass(cEContext, CardExchangeSend.class);
 				cEContext.startActivity(intent);
 
 			}
@@ -109,7 +123,7 @@ public class CardExchange {
 		Map<String, Object> map = new HashMap<>();
 		map.put("card_exchange_list_view_portrait", R.drawable.portrait_1);
 		map.put("card_exchange_list_view_name", "周汉辰");
-		map.put("card_exchange_list_view_id", "1");
+		map.put("user_id", "1");
 		resultList.add(map);
 
 		//将数据加载到ListView中
