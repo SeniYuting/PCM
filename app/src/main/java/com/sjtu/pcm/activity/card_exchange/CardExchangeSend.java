@@ -41,6 +41,8 @@ public class CardExchangeSend extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cardexchange_send);
 
+        mApp = (MyApplication) getApplication();
+
         findViewById();
         setListener();
         init();
