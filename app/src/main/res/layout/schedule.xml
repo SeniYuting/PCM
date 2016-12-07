@@ -63,6 +63,209 @@
                 android:background="@drawable/title_refresh_button" />
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dip"
+            android:layout_marginRight="8dip"
+            android:layout_marginTop="20dip"
+            android:background="@drawable/about_top_bg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="8dip" >
+
+            <TextView
+                android:layout_width="60dip"
+                android:layout_height="30dip"
+                android:layout_marginLeft="8dip"
+                android:gravity="center_vertical"
+                android:text="好友"
+                android:textColor="#222222"
+                android:textSize="14sp" />
+
+            <Spinner
+                android:id="@+id/schedule_friend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#fff"
+                android:background="@drawable/title_text_button"
+                android:entries="@array/friends" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dip"
+            android:layout_marginRight="8dip"
+            android:background="@drawable/about_mid_bg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="8dip" >
+
+            <TextView
+                android:layout_width="60dip"
+                android:layout_height="30dip"
+                android:layout_marginLeft="8dip"
+                android:gravity="center_vertical"
+                android:text="时间"
+                android:textColor="#222222"
+                android:textSize="14sp" />
+
+            <DatePicker
+                android:id="@+id/schedule_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dip"
+            android:layout_marginRight="8dip"
+            android:background="@drawable/about_mid_bg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="8dip" >
+
+            <TextView
+                android:layout_width="60dip"
+                android:layout_height="30dip"
+                android:layout_marginLeft="8dip"
+                android:gravity="center_vertical"
+                android:text="地点"
+                android:textColor="#222222"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/schedule_place"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="#00000000"
+                android:gravity="top"
+                android:padding="0dip"
+                android:textColor="#333333" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dip"
+            android:layout_marginRight="8dip"
+            android:background="@drawable/about_mid_bg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="8dip" >
+
+            <TextView
+                android:layout_width="60dip"
+                android:layout_height="30dip"
+                android:layout_marginLeft="8dip"
+                android:gravity="center_vertical"
+                android:text="话题"
+                android:textColor="#222222"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/schedule_topic"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="#00000000"
+                android:gravity="top"
+                android:padding="0dip"
+                android:textColor="#333333" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="120dip"
+            android:layout_marginLeft="8dip"
+            android:layout_marginRight="8dip"
+            android:background="@drawable/about_mid_bg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="8dip" >
+
+            <TextView
+                android:layout_width="100dip"
+                android:layout_height="30dip"
+                android:layout_marginLeft="8dip"
+                android:gravity="center_vertical"
+                android:text="我的想法"
+                android:textColor="#222222"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/schedule_unote"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="#00000000"
+                android:gravity="top"
+                android:padding="0dip"
+                android:textColor="#333333" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="120dip"
+            android:layout_marginLeft="8dip"
+            android:layout_marginRight="8dip"
+            android:background="@drawable/about_bottom_bg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="8dip" >
+
+            <TextView
+                android:layout_width="100dip"
+                android:layout_height="30dip"
+                android:layout_marginLeft="8dip"
+                android:gravity="center_vertical"
+                android:text="Ta的想法"
+                android:textColor="#222222"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/schedule_pnote"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="#00000000"
+                android:gravity="top"
+                android:padding="0dip"
+                android:textColor="#333333" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="right"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/schedule_submit"
+                android:layout_width="fill_parent"
+                android:layout_height="45dip"
+                android:layout_marginLeft="8dip"
+                android:layout_marginRight="8dip"
+                android:background="@drawable/login_btn"
+                android:enabled="true"
+                android:shadowColor="#7f000000"
+                android:shadowDx="0.0"
+                android:shadowDy="1.0"
+                android:shadowRadius="1.0"
+                android:text="提交"
+                android:textColor="#ffffff"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
     </LinearLayout>
 
 </LinearLayout>

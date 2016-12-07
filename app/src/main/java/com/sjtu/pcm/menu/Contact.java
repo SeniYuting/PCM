@@ -31,7 +31,7 @@ public class Contact {
 	private EditText mComment;
 	private Button mSubmit;
 
-	private MyApplication mapp;
+	private MyApplication mApp;
 	private OnOpenListener mOnOpenListener;
 
 	private TextView mTopText;
@@ -41,7 +41,7 @@ public class Contact {
 		// 绑定布局到当前View
 		mHome = LayoutInflater.from(context).inflate(R.layout.contact, null);
 
-		mapp = (MyApplication) activity.getApplication();
+		mApp = (MyApplication) activity.getApplication();
 
 		findViewById();
 		setListener();
@@ -83,7 +83,7 @@ public class Contact {
 
 				Log.i("star", star);
 				Log.i("comment", comment);
-				Log.i("user_id", mapp.getUserId());
+				Log.i("user_id", mApp.getUserId());
 
 				// TODO
 			}

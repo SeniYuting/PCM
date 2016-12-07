@@ -4,4 +4,11 @@
     <string name="app_name">PCM</string>
     <string name="action_settings">Settings</string>
 
+    <string-array name="friends">
+        <item>好友1</item>
+        <item>好友2</item>
+        <item>好友3</item>
+        <item>好友4</item>
+    </string-array>
+
 </resources>
