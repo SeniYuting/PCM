@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="top"
+    android:background="#fff"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|left"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="137dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/plaza_photo_bg" >
+
+            <ImageView
+                android:id="@+id/history_schedule_portrait"
+                android:layout_width="fill_parent"
+                android:layout_height="120dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/portrait_1"
+                android:scaleType="centerCrop" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dip"
+            android:layout_weight="0.61"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dip"
+                    android:ellipsize="end"
+                    android:paddingRight="7dip"
+                    android:text="好友："
+                    android:textColor="#ffbbbbbb"
+                    android:textSize="12sp"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/history_schedule_name"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:paddingRight="7dip"
+                    android:text="好友名字"
+                    android:textColor="#ffbbbbbb"
+                    android:textSize="12sp"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dip"
+                    android:ellipsize="end"
+                    android:paddingRight="7dip"
+                    android:text="时间："
+                    android:textColor="#6495ED"
+                    android:textSize="12sp"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/history_schedule_time"
+                    android:layout_width="84dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.13"
+                    android:ellipsize="end"
+                    android:paddingRight="7dip"
+                    android:text="2016-12-07"
+                    android:textColor="#6495ED"
+                    android:textSize="12sp"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dip"
+                    android:ellipsize="end"
+                    android:paddingRight="7dip"
+                    android:text="地点："
+                    android:textColor="#ffbbbbbb"
+                    android:textSize="12sp"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/history_schedule_place"
+                    android:layout_width="84dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.13"
+                    android:ellipsize="end"
+                    android:paddingRight="7dip"
+                    android:text="上海交通大学"
+                    android:textColor="#ffbbbbbb"
+                    android:textSize="12sp"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dip"
+                    android:ellipsize="end"
+                    android:paddingRight="7dip"
+                    android:text="话题："
+                    android:textColor="#ffbbbbbb"
+                    android:textSize="12sp"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/history_schedule_topic"
+                    android:layout_width="84dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.13"
+                    android:ellipsize="end"
+                    android:paddingRight="7dip"
+                    android:text="XXX"
+                    android:textColor="#ffbbbbbb"
+                    android:textSize="12sp"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dip"
+                    android:ellipsize="end"
+                    android:paddingRight="7dip"
+                    android:text="我的idea："
+                    android:textColor="#ffbbbbbb"
+                    android:textSize="12sp"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/history_schedule_unote"
+                    android:layout_width="84dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.13"
+                    android:ellipsize="end"
+                    android:paddingRight="7dip"
+                    android:text="XXX 我的idea"
+                    android:textColor="#ffbbbbbb"
+                    android:textSize="12sp"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dip"
+                    android:ellipsize="end"
+                    android:paddingRight="7dip"
+                    android:text="Ta的idea："
+                    android:textColor="#EE3B3B"
+                    android:textSize="12sp"
+                    android:visibility="visible" />
+
+            <TextView
+                    android:id="@+id/history_schedule_pnote"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginLeft="6dip"
+                    android:ellipsize="end"
+                    android:paddingRight="7dip"
+                    android:text="  XXX Ta的idea"
+                    android:textColor="#ffbbbbbb"
+                    android:textSize="12sp"
+                    android:visibility="visible" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right" >
+
+        <Button
+            android:id="@+id/invite_item_delete"
+            android:layout_width="62dip"
+            android:layout_height="fill_parent"
+            android:layout_marginBottom="8dip"
+            android:layout_marginRight="8dip"
+            android:layout_marginTop="8dip"
+            android:background="@drawable/title_text_button"
+            android:text="删除"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</LinearLayout>

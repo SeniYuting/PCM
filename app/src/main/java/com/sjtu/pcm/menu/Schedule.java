@@ -3,6 +3,7 @@ package com.sjtu.pcm.menu;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 
 import com.sjtu.pcm.MyApplication;
 import com.sjtu.pcm.R;
+import com.sjtu.pcm.activity.schedule.HistorySchedule;
 import com.sjtu.pcm.anim.MyViewGroup.OnOpenListener;
 
 import java.util.ArrayList;
@@ -31,6 +33,7 @@ public class Schedule {
 	private View mHome;
 	// 布局控件
 	private Button mMenu;
+	private Button mHistory;
 
 	private Spinner mPartner;
 	private DatePicker mDate;
@@ -65,6 +68,7 @@ public class Schedule {
 	private void findViewById() {
 		mMenu = (Button) mHome.findViewById(R.id.menu);
 		mTopText = (TextView) mHome.findViewById(R.id.top_text);
+		mHistory = (Button) mHome.findViewById(R.id.schedule_history);
 
 		mPartner = (Spinner) mHome.findViewById(R.id.schedule_friend);
 		mDate = (DatePicker) mHome.findViewById(R.id.schedule_date);
@@ -85,6 +89,16 @@ public class Schedule {
 				if (mOnOpenListener != null) {
 					mOnOpenListener.open();
 				}
+			}
+		});
+
+		mHistory.setOnClickListener(new OnClickListener() {
+
+			public void onClick(View v) {
+				// 跳转到历史排程界面
+				Intent intent = new Intent();
+				intent.setClass(sContext, HistorySchedule.class);
+				sContext.startActivity(intent);
 			}
 		});
 

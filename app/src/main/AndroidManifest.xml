@@ -50,6 +50,10 @@
             android:name=".activity.card_exchange.CardExchangeSend"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name=".activity.schedule.HistorySchedule"
+            android:screenOrientation="portrait" >
+        </activity>
     </application>
 
 </manifest>
