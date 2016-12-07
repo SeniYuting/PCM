@@ -3,21 +3,18 @@ package com.sjtu.pcm.activity.card_exchange;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.AdapterView;
 
 import com.sjtu.pcm.MyApplication;
 import com.sjtu.pcm.R;
-import com.sjtu.pcm.menu.CardExchange;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -1,11 +1,5 @@
 package com.sjtu.pcm.activity;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.json.JSONObject;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,7 +9,14 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.sjtu.pcm.MyApplication;
 import com.sjtu.pcm.R;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONObject;
 
 /**
  * 注册界面
@@ -30,10 +31,13 @@ public class RegisterActivity extends Activity {
 	private Button cancel;
 	private EditText accountText;
 	private EditText passwordText;
+	private MyApplication mapp;
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.register);
+
+		mapp = (MyApplication) getApplication();
 
 		findViewById();
 		setListener();
@@ -81,7 +85,7 @@ public class RegisterActivity extends Activity {
 						Log.i("password", password);
 
 						// 保存注册信息
-						String uriAPI = "http://112.74.49.183:8080/Entity/U209f9ab73161d8/PCM/User/";
+						String uriAPI = mapp.getProjectUrl() + "User/";
 						HttpPost httpRequest = new HttpPost(uriAPI);
 						httpRequest.setHeader("Content-type",
 								"application/json");

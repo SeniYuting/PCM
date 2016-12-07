@@ -1,17 +1,5 @@
 package com.sjtu.pcm.activity;
 
-import java.io.InputStream;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
-
-import com.sjtu.pcm.MyApplication;
-import com.sjtu.pcm.R;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,6 +9,18 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.sjtu.pcm.MyApplication;
+import com.sjtu.pcm.R;
+
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+
+import java.io.InputStream;
 
 /**
  * 登录界面
@@ -75,7 +75,7 @@ public class LoginActivity extends Activity {
 						String password = passwordText.getText().toString();
 
 						// 获取用户信息
-						String uriAPI = "http://112.74.49.183:8080/Entity/U209f9ab73161d8/PCM/User/?User.account="
+						String uriAPI = mapp.getProjectUrl() + "User/?User.account="
 								+ account;
 						HttpGet httpRequest = new HttpGet(uriAPI);
 						String result = "";

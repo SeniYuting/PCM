@@ -1,14 +1,5 @@
 package com.sjtu.pcm.menu;
 
-import java.io.InputStream;
-import java.util.ArrayList;
-
-import net.sf.json.JSONObject;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -25,6 +16,15 @@ import com.sjtu.pcm.MyApplication;
 import com.sjtu.pcm.R;
 import com.sjtu.pcm.activity.user.UserModifyActivity;
 import com.sjtu.pcm.anim.MyViewGroup.OnOpenListener;
+
+import net.sf.json.JSONObject;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+
+import java.io.InputStream;
+import java.util.ArrayList;
 
 /**
  * 用户信息类
@@ -126,7 +126,7 @@ public class User {
 
 		// 需要setText，必须在同一个thread中
 		new RMPHelper()
-				.execute("http://112.74.49.183:8080/Entity/U209f9ab73161d8/PCM/User/"
+				.execute(mapp.getProjectUrl() + "User/"
 						+ mapp.getUserId());
 	}
 
@@ -162,11 +162,11 @@ public class User {
 				Log.e("user_result", result);
 
 				JSONObject result_json = JSONObject.fromObject(result);
-				resultList.add(result_json.get("account").toString());
-				resultList.add(result_json.get("name").toString());
-				resultList.add(result_json.get("gender").toString());
-				resultList.add(result_json.get("address").toString());
-				resultList.add(result_json.get("mobile").toString());
+				resultList.add(result_json.get("account")==null ? "" : result_json.get("account")+"");
+				resultList.add(result_json.get("name")==null ? "" : result_json.get("name")+"");
+				resultList.add(result_json.get("gender")==null ? "" : result_json.get("gender")+"");
+				resultList.add(result_json.get("address")==null ? "" : result_json.get("address")+"");
+				resultList.add(result_json.get("mobile")==null ? "" : result_json.get("mobile")+"");
 
 				// TODO 获取标签，并添加到resultList
 

@@ -1,10 +1,10 @@
 package com.sjtu.pcm;
 
+import android.app.Application;
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-
-import android.app.Application;
 
 /**
  * application类
@@ -13,6 +13,7 @@ import android.app.Application;
  * 
  */
 public class MyApplication extends Application {
+	String project_url;
 	String user_id;
 	String account;
 	String password; // 应加密
@@ -20,9 +21,14 @@ public class MyApplication extends Application {
 	@Override
 	public void onCreate() {
 		super.onCreate();
+		project_url = "http://112.74.49.183:8080/Entity/U31b61aa24b0ae/PCM/";
 		user_id = "";
 		account = "";
 		password = "";
+	}
+
+	public String getProjectUrl() {
+		return project_url;
 	}
 
 	public String getUserId() {

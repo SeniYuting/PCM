@@ -1,16 +1,5 @@
 package com.sjtu.pcm.activity.user;
 
-import java.io.InputStream;
-import java.util.ArrayList;
-
-import net.sf.json.JSONObject;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPut;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.DefaultHttpClient;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -27,6 +16,17 @@ import android.widget.RadioGroup;
 import com.sjtu.pcm.MyApplication;
 import com.sjtu.pcm.R;
 import com.sjtu.pcm.activity.MainActivity;
+
+import net.sf.json.JSONObject;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPut;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.DefaultHttpClient;
+
+import java.io.InputStream;
+import java.util.ArrayList;
 
 /**
  * 修改个人信息类
@@ -108,7 +108,9 @@ public class UserModifyActivity extends Activity {
 						Log.i("address", address);
 						Log.i("mobile", mobile);
 
-						String uriAPI = "http://112.74.49.183:8080/Entity/U209f9ab73161d8/PCM/User/" + mApp.getUserId();
+						Log.i("url", mApp.getProjectUrl());
+
+						String uriAPI = mApp.getProjectUrl() + "User/" + mApp.getUserId();
 						HttpPut httpRequest = new HttpPut(uriAPI);
 						httpRequest.setHeader("Content-type",
 								"application/json");
@@ -149,7 +151,7 @@ public class UserModifyActivity extends Activity {
 		// 初始化用户信息
 		Log.i("user_id", mApp.getUserId());
         // 需要setText，必须在同一个thread中
-		new RMPHelper().execute("http://112.74.49.183:8080/Entity/U209f9ab73161d8/PCM/User/" + mApp.getUserId());
+		new RMPHelper().execute(mApp.getProjectUrl() + "User/" + mApp.getUserId());
 
 	}
 
@@ -175,10 +177,10 @@ public class UserModifyActivity extends Activity {
 
 				JSONObject result_json = JSONObject
 						.fromObject(result);
-				resultList.add(result_json.get("name").toString());
-				resultList.add(result_json.get("gender").toString());
-				resultList.add(result_json.get("address").toString());
-				resultList.add(result_json.get("mobile").toString());
+				resultList.add(result_json.get("name")==null ? "" : result_json.get("name")+"");
+				resultList.add(result_json.get("gender")==null ? "" : result_json.get("gender")+"");
+				resultList.add(result_json.get("address")==null ? "" : result_json.get("address")+"");
+				resultList.add(result_json.get("mobile")==null ? "" : result_json.get("mobile")+"");
 
 			} catch (Exception e) {
 				e.printStackTrace();
