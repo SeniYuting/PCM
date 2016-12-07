@@ -46,6 +46,10 @@
             android:name=".activity.card_exchange.FriendCardView"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name=".activity.card_exchange.CardExchangeSend"
+            android:screenOrientation="portrait" >
+        </activity>
     </application>
 
 </manifest>
