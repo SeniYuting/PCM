@@ -213,7 +213,7 @@
         android:gravity="right" >
 
         <Button
-            android:id="@+id/invite_item_delete"
+            android:id="@+id/history_schedule_item_delete"
             android:layout_width="62dip"
             android:layout_height="fill_parent"
             android:layout_marginBottom="8dip"

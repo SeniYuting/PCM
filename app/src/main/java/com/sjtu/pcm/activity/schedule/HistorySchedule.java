@@ -1,10 +1,13 @@
 package com.sjtu.pcm.activity.schedule;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -101,7 +104,41 @@ public class HistorySchedule extends Activity {
 				        R.id.history_schedule_place, R.id.history_schedule_topic, R.id.history_schedule_unote,
 				        R.id.history_schedule_pnote
 				}
-		);
+		){
+			// item 响应事件
+			public View getView(int position, View convertView, ViewGroup parent) {
+				final int p = position;
+				final View view=super.getView(position, convertView, parent);
+				Button button=(Button)view.findViewById(R.id.history_schedule_item_delete);
+				button.setOnClickListener(new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						Log.e("p", p + "");
+
+						new AlertDialog.Builder(HistorySchedule.this).setTitle("确认删除该历史排程吗？")
+								.setIcon(android.R.drawable.ic_dialog_info)
+								.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+
+									@Override
+									public void onClick(DialogInterface dialog, int which) {
+										// 点击“确认”后删除该用户 TODO
+										Log.i("history_schedule_name", resultList.get(p).get("history_schedule_name")+"");
+
+									}
+								})
+								.setNegativeButton("返回", new DialogInterface.OnClickListener() {
+
+									@Override
+									public void onClick(DialogInterface dialog, int which) {
+										// 点击“返回”后的操作,这里不设置没有任何操作
+									}
+								}).show();
+					}
+				});
+				return view;
+			}
+		};
 		shListView.setAdapter(adapter);
 
 	}

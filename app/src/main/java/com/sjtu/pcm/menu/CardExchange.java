@@ -3,7 +3,6 @@ package com.sjtu.pcm.menu;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,10 +20,10 @@ import com.sjtu.pcm.activity.card_exchange.CardExchangeSend;
 import com.sjtu.pcm.activity.card_exchange.FriendCardView;
 import com.sjtu.pcm.anim.MyViewGroup.OnOpenListener;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.ArrayList;
 
 /**
  * 名片交换类
@@ -142,42 +141,6 @@ public class CardExchange {
 	 */
 	public View getView() {
 		return mHome;
-	}
-
-	private class RMPHelper extends AsyncTask<String, Void, String> {
-
-		@Override
-		protected String doInBackground(String... uriAPI) {
-
-			// 获取用户名片信息 TODO
-//			HttpGet httpRequest = new HttpGet(uriAPI[0]);
-//			String result = "";
-
-			try {
-//				HttpResponse httpResponse = new DefaultHttpClient()
-//						.execute(httpRequest);
-//
-//				InputStream inputStream = httpResponse.getEntity().getContent();
-//				if (inputStream != null)
-//					result = mApp.convertInputStreamToString(inputStream);
-//
-//				Log.e("user_result", result);
-//
-//				JSONObject result_json = JSONObject.fromObject(result);
-				//这里会返回很多个对象，resultList里需要全部数据
-//				resultList.add(result_json.get("account").toString());
-//				resultList.add(result_json.get("name").toString());
-//				resultList.add(result_json.get("gender").toString());
-//				resultList.add(result_json.get("address").toString());
-//				resultList.add(result_json.get("mobile").toString());
-
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-
-			return null;
-		}
-
 	}
 
 }
