@@ -108,7 +108,7 @@ public class UserModifyActivity extends Activity {
 						Log.i("address", address);
 						Log.i("mobile", mobile);
 
-						Log.i("url", mApp.getProjectUrl());
+						Log.i("url", mApp.getProjectUrl() + "User/" + mApp.getUserId());
 
 						String uriAPI = mApp.getProjectUrl() + "User/" + mApp.getUserId();
 						HttpPut httpRequest = new HttpPut(uriAPI);
@@ -129,6 +129,8 @@ public class UserModifyActivity extends Activity {
 									.toString()));
 							HttpResponse httpResponse = new DefaultHttpClient()
 									.execute(httpRequest);
+
+							Log.i("httpResponse", "" + httpResponse);
 
 						} catch (Exception e) {
 							e.printStackTrace();

@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.sjtu.pcm.MyApplication;
@@ -43,6 +44,7 @@ public class User {
 	private Button mUserWrite;
 	private TextView mHead_Name;
 	private TextView mHead_Declaration;
+	private ImageView mPortrait;
 
 	private TextView mName;
 	private TextView mGender;
@@ -78,6 +80,7 @@ public class User {
 
 		mHead_Name = (TextView) mHome.findViewById(R.id.user_info_head_name);
 		mHead_Declaration = (TextView) mHome.findViewById(R.id.declaration);
+		mPortrait = (ImageView) mHome.findViewById(R.id.user_info_portrait);
 
 		mName = (TextView) mHome.findViewById(R.id.user_name);
 		mGender = (TextView) mHome.findViewById(R.id.user_gender);
@@ -167,8 +170,8 @@ public class User {
 				resultList.add(result_json.get("gender")==null ? "" : result_json.get("gender")+"");
 				resultList.add(result_json.get("address")==null ? "" : result_json.get("address")+"");
 				resultList.add(result_json.get("mobile")==null ? "" : result_json.get("mobile")+"");
-
 				// TODO 获取标签，并添加到resultList
+				resultList.add("");
 
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -181,12 +184,20 @@ public class User {
 		protected void onPostExecute(String result) {
 			super.onPostExecute(result);
 
-			mHead_Name.setText(resultList.size()>0 ? resultList.get(0) : "");
-			mName.setText(resultList.size()>1 ? resultList.get(1) : "");
-			mGender.setText(resultList.size()>2 ? resultList.get(2) : "");
-			mAddress.setText(resultList.size()>3 ? resultList.get(3) : "");
-			mMobile.setText(resultList.size()>4 ? resultList.get(4) : "");
-			mTag.setText(resultList.size()>5 ? resultList.get(5) : "");
+			mHead_Name.setText(resultList.get(0));
+			mName.setText(resultList.get(1));
+			mGender.setText(resultList.get(2));
+
+			// 修改头像
+			if(resultList.get(2).equals("男")) {
+				mPortrait.setImageResource(R.drawable.portrait_1);
+			} else if(resultList.get(2).equals("女")){
+				mPortrait.setImageResource(R.drawable.portrait_2);
+			}
+
+			mAddress.setText(resultList.get(3));
+			mMobile.setText(resultList.get(4));
+			mTag.setText(resultList.get(5));
 		}
 
 	}
