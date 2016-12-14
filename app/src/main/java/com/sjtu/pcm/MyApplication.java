@@ -17,7 +17,7 @@ public class MyApplication extends Application {
 	String user_id;
 	String account;
 	String password; // 应加密
-	int gender;
+	UserEntity user;
 
 	@Override
 	public void onCreate() {
@@ -32,6 +32,23 @@ public class MyApplication extends Application {
 	public String getProjectUrl() {
 		return project_url;
 	}
+
+	public String getUserUrl() {
+		return project_url+"User/";
+	}
+
+	public String getCardUrl() {
+		return project_url+"Card/";
+
+	}
+	public UserEntity getUser() {
+		return user;
+	}
+
+	public void setUser(UserEntity user) {
+		this.user = user;
+	}
+
 
 	public String getUserId() {
 		return user_id;

@@ -110,9 +110,8 @@ public class UserModifyActivity extends Activity {
 						Log.i("address", address);
 						Log.i("mobile", mobile);
 
-						Log.i("url", mApp.getProjectUrl() + "User/" + mApp.getUserId());
 
-						String uriAPI = mApp.getProjectUrl() + "User/" + mApp.getUserId();
+						String uriAPI = mApp.getUserUrl() + mApp.getUserId();
 						HttpPut httpRequest = new HttpPut(uriAPI);
 						httpRequest.setHeader("Content-Type",
 								"application/json");
@@ -153,7 +152,7 @@ public class UserModifyActivity extends Activity {
 		// 初始化用户信息
 		Log.i("user_id", mApp.getUserId());
         // 需要setText，必须在同一个thread中
-		new RMPHelper().execute(mApp.getProjectUrl() + "User/" + mApp.getUserId());
+		new RMPHelper().execute(mApp.getUserUrl() + mApp.getUserId());
 
 	}
 

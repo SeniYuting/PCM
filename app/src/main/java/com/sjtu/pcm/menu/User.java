@@ -129,8 +129,7 @@ public class User {
 
 		// 需要setText，必须在同一个thread中
 		new RMPHelper()
-				.execute(mapp.getProjectUrl() + "User/"
-						+ mapp.getUserId());
+				.execute(mapp.getUserUrl() + mapp.getUserId());
 	}
 
 	public void setOnOpenListener(OnOpenListener onOpenListener) {

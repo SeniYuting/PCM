@@ -9,9 +9,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.gson.Gson;
 import com.sjtu.pcm.MyApplication;
 import com.sjtu.pcm.R;
 import com.sjtu.pcm.activity.MainActivity;
+import com.sjtu.pcm.entity.CardEntity;
+import com.sjtu.pcm.util.HttpUtil;
 
 import java.util.ArrayList;
 
@@ -94,6 +97,27 @@ public class CardModifyActivity extends Activity {
                         Log.i("cardEmail", cardEmail);
 
                         //网络通信，修改用户名片信息 TODO
+                        try {
+//                            JSONObject obj = new JSONObject();
+//                            obj.put("name", cardName);
+//                            obj.put("company", cardCompany);
+//                            obj.put("job", cardJob);
+//                            obj.put("number", cardNumber);
+//                            obj.put("address", cardAddress);
+//                            obj.put("fax", cardFax);
+//                            obj.put("email", cardEmail);
+
+                            CardEntity card = new CardEntity(cardName, cardCompany, cardJob,
+                                    cardNumber, cardAddress, cardFax, cardEmail);
+
+                            String uriAPI = mApp.getCardUrl();
+
+                            HttpUtil.postRequest(uriAPI, new Gson().toJson(card));
+
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+                        }
+
 
                     }
                 }.start();

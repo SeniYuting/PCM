@@ -9,13 +9,12 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.gson.Gson;
 import com.sjtu.pcm.MyApplication;
 import com.sjtu.pcm.R;
+import com.sjtu.pcm.entity.UserEntity;
+import com.sjtu.pcm.util.HttpUtil;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONObject;
 
 /**
@@ -85,19 +84,22 @@ public class RegisterActivity extends Activity {
 						Log.i("password", password);
 
 						// 保存注册信息
-						String uriAPI = mapp.getProjectUrl() + "User/";
-						HttpPost httpRequest = new HttpPost(uriAPI);
-						httpRequest.setHeader("Content-type",
-								"application/json");
+						String uriAPI = mapp.getUserUrl();
 
 						try {
-							JSONObject obj = new JSONObject();
-							obj.put("account", account);
-							obj.put("password", password);
-							httpRequest.setEntity(new StringEntity(obj
-									.toString()));
-							HttpResponse httpResponse = new DefaultHttpClient()
-									.execute(httpRequest);
+//							JSONObject obj = new JSONObject();
+//							obj.put("account", account);
+////							obj.put("account","快啦");
+//							obj.put("password", password);
+//							HttpUtil.postRequest(uriAPI,obj);
+
+							UserEntity user = new UserEntity();
+							user.setAccount(account);
+							user.setPassword(password);
+
+							String userStr = new Gson().toJson(user);
+
+							HttpUtil.postRequest(uriAPI,userStr);
 
 							startActivity(new Intent(RegisterActivity.this,
 									LoginActivity.class));
