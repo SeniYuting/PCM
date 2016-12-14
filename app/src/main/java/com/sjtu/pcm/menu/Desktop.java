@@ -41,6 +41,7 @@ public class Desktop {
 
 	private TextView mName;
 	private TextView mSig;
+	private ImageView mPortrait;
 	private ListView mDisplay;
 	private View mUgcView;
 	private RelativeLayout mUgcLayout;
@@ -85,6 +86,7 @@ public class Desktop {
 				.findViewById(R.id.desktop_top_layout);
 		mName = (TextView) mDesktop.findViewById(R.id.desktop_name);
 		mSig = (TextView) mDesktop.findViewById(R.id.desktop_sig);
+		mPortrait = (ImageView) mDesktop.findViewById(R.id.desktop_avatar);
 		mDisplay = (ListView) mDesktop.findViewById(R.id.desktop_display);
 
 		mUgcView = mDesktop.findViewById(R.id.desktop_ugc);
@@ -254,6 +256,12 @@ public class Desktop {
 	private void init() {
 		mName.setText(mapp.getAccount());
 		mSig.setText("Welcome !");
+
+		if(mapp.getGender() == 0) {
+			mPortrait.setImageResource(R.drawable.portrait_1);
+		} else if(mapp.getGender() == 1){
+			mPortrait.setImageResource(R.drawable.portrait_2);
+		}
 
 		mAdapter = new DesktopAdapter(mContext);
 		mDisplay.setAdapter(mAdapter);

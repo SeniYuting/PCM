@@ -17,6 +17,7 @@ public class MyApplication extends Application {
 	String user_id;
 	String account;
 	String password; // 应加密
+	int gender;
 
 	@Override
 	public void onCreate() {
@@ -25,6 +26,7 @@ public class MyApplication extends Application {
 		user_id = "";
 		account = "";
 		password = "";
+		gender = -1;
 	}
 
 	public String getProjectUrl() {
@@ -53,6 +55,14 @@ public class MyApplication extends Application {
 	
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public int getGender() {
+		return gender;
+	}
+
+	public void setGender(int gender) {
+		this.gender = gender;
 	}
 
 	public String convertInputStreamToString(InputStream inputStream)

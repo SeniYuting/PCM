@@ -186,12 +186,12 @@ public class User {
 
 			mHead_Name.setText(resultList.get(0));
 			mName.setText(resultList.get(1));
-			mGender.setText(resultList.get(2));
+			mGender.setText(resultList.get(2).equals("0")?"男":"女");
 
 			// 修改头像
-			if(resultList.get(2).equals("男")) {
+			if(resultList.get(2).equals("0")) {
 				mPortrait.setImageResource(R.drawable.portrait_1);
-			} else if(resultList.get(2).equals("女")){
+			} else if(resultList.get(2).equals("1")){
 				mPortrait.setImageResource(R.drawable.portrait_2);
 			}
 

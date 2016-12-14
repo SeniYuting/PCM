@@ -103,6 +103,8 @@ public class UserModifyActivity extends Activity {
 						String address = mAddress.getText().toString();
 						String mobile = mMobile.getText().toString();
 
+						mApp.setGender(gender.equals("男") ? 0 : 1);
+
 						Log.i("name", name);
 						Log.i("gender", gender);
 						Log.i("address", address);
@@ -112,7 +114,7 @@ public class UserModifyActivity extends Activity {
 
 						String uriAPI = mApp.getProjectUrl() + "User/" + mApp.getUserId();
 						HttpPut httpRequest = new HttpPut(uriAPI);
-						httpRequest.setHeader("Content-type",
+						httpRequest.setHeader("Content-Type",
 								"application/json");
 
 						try {
@@ -120,7 +122,7 @@ public class UserModifyActivity extends Activity {
 							obj.put("account", mApp.getAccount());
 							obj.put("password", mApp.getPassword());
 							obj.put("name", name);
-							obj.put("gender", gender);
+							obj.put("gender", gender.equals("男") ? 0 : 1);
 							obj.put("address", address);
 							obj.put("mobile", mobile);
 
@@ -129,8 +131,6 @@ public class UserModifyActivity extends Activity {
 									.toString()));
 							HttpResponse httpResponse = new DefaultHttpClient()
 									.execute(httpRequest);
-
-							Log.i("httpResponse", "" + httpResponse);
 
 						} catch (Exception e) {
 							e.printStackTrace();
@@ -195,17 +195,14 @@ public class UserModifyActivity extends Activity {
 	    protected void onPostExecute(String result) {
 	        super.onPostExecute(result);
 
-			mName.setText(resultList.size()>0 ? resultList.get(0) : "");
-			if(resultList.size()>1) {
-				String gender = resultList.get(1);
-				if(gender.equals("女")) {
-					mGender.check(mFemale.getId());
-				} else {
-					mGender.check(mMale.getId());
-				}
+			mName.setText(resultList.get(0));
+			if(resultList.get(1).equals("1")) {
+				mGender.check(mFemale.getId());
+			} else {
+				mGender.check(mMale.getId());
 			}
-			mAddress.setText(resultList.size()>2 ? resultList.get(2) : "");
-			mMobile.setText(resultList.size()>3 ? resultList.get(3) : "");
+			mAddress.setText(resultList.get(2));
+			mMobile.setText(resultList.get(3));
 		}
 
 	}
