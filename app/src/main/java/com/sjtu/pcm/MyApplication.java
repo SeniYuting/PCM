@@ -2,9 +2,13 @@ package com.sjtu.pcm;
 
 import android.app.Application;
 
+import com.sjtu.pcm.entity.UserEntity;
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+
+import static com.sjtu.pcm.R.id.gender;
 
 /**
  * application类
@@ -18,6 +22,7 @@ public class MyApplication extends Application {
 	String account;
 	String password; // 应加密
 	UserEntity user;
+	int gender;
 
 	@Override
 	public void onCreate() {
