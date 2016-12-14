@@ -17,11 +17,18 @@ import com.sjtu.pcm.MyApplication;
 import com.sjtu.pcm.R;
 import com.sjtu.pcm.anim.MyViewGroup.OnOpenListener;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONObject;
+
 /**
  * 联系我们类
  *
  * 
  */
+@SuppressWarnings("ALL")
 public class Contact {
 	// 当前界面的View
 	private View mHome;
@@ -76,16 +83,56 @@ public class Contact {
 		mSubmit.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				RadioButton starButton = (RadioButton) mHome.findViewById(mStar.getCheckedRadioButtonId());
-				String star = starButton.getText().toString();
 
-                String comment = mComment.getText().toString();
+				// 专门线程进行网络访问
+				new Thread() {
+					@Override
+					public void run() {
 
-				Log.i("star", star);
-				Log.i("comment", comment);
-				Log.i("user_id", mApp.getUserId());
+						RadioButton starButton = (RadioButton) mHome.findViewById(mStar.getCheckedRadioButtonId());
+						String star = starButton.getText().toString();
+						int starNum = -1;
+						switch(star) {
+							case "优":
+								starNum = 0;
+								break;
+							case "中":
+								starNum = 1;
+							case "差":
+								starNum = 2;
+							default:
+						}
 
-				// TODO
+						String comment = mComment.getText().toString();
+
+						Log.i("star", star);
+						Log.i("comment", comment);
+						Log.i("user_id", mApp.getUserId());
+
+
+						// 保存注册信息
+						String uriAPI = mApp.getProjectUrl() + "Comment/";
+						HttpPost httpRequest = new HttpPost(uriAPI);
+						httpRequest.setHeader("Content-type",
+								"application/json");
+
+						try {
+							JSONObject obj = new JSONObject();
+							obj.put("user_id", Long.parseLong(mApp.getUserId()));
+							obj.put("star", starNum);
+							obj.put("content", comment);
+							httpRequest.setEntity(new StringEntity(obj
+									.toString()));
+							HttpResponse httpResponse = new DefaultHttpClient()
+									.execute(httpRequest);
+
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+
+					}
+				}.start();
+
 			}
 		});
 	}
