@@ -98,8 +98,10 @@ public class Contact {
 								break;
 							case "中":
 								starNum = 1;
+								break;
 							case "差":
 								starNum = 2;
+								break;
 							default:
 						}
 
