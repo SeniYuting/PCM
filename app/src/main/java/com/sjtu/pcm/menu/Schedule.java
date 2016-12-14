@@ -20,6 +20,12 @@ import com.sjtu.pcm.R;
 import com.sjtu.pcm.activity.schedule.HistorySchedule;
 import com.sjtu.pcm.anim.MyViewGroup.OnOpenListener;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 /**
@@ -27,6 +33,7 @@ import java.util.ArrayList;
  *
  * 
  */
+@SuppressWarnings("ALL")
 public class Schedule {
 	private Context sContext;
 	// 当前界面的View
@@ -105,22 +112,56 @@ public class Schedule {
 		mSubmit.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				String partner = (String)mPartner.getSelectedItem();
-				String date = mDate.getYear() + "-" + mDate.getMonth() + "-" + mDate.getDayOfMonth();
-				String place = mPlace.getText().toString();
-				String topic = mTopic.getText().toString();
-				String uNote = mUNote.getText().toString();
-				String pNote = mPNote.getText().toString();
 
-				Log.i("partner", partner);
-                Log.i("date", date);
-				Log.i("place", place);
-				Log.i("topic", topic);
-				Log.i("uNote", uNote);
-				Log.i("pNote", pNote);
-				Log.i("user_id", mApp.getUserId());
+				// 专门线程进行网络访问
+				new Thread() {
+					@Override
+					public void run() {
 
-				// TODO
+						String partner = (String)mPartner.getSelectedItem();
+						String date = mDate.getYear() + "-" + mDate.getMonth() + "-" + mDate.getDayOfMonth();
+						String place = mPlace.getText().toString();
+						String topic = mTopic.getText().toString();
+						String uNote = mUNote.getText().toString();
+						String pNote = mPNote.getText().toString();
+
+						Log.i("partner", partner);
+						Log.i("date", date);
+						Log.i("place", place);
+						Log.i("topic", topic);
+						Log.i("uNote", uNote);
+						Log.i("pNote", pNote);
+						Log.i("user_id", mApp.getUserId());
+
+						// 保存注册信息
+						String uriAPI = mApp.getProjectUrl() + "Schedule/";
+						HttpPost httpRequest = new HttpPost(uriAPI);
+						httpRequest.setHeader("Content-type",
+								"application/json");
+
+						try {
+							JSONObject obj = new JSONObject();
+							obj.put("suer_id", Long.parseLong(mApp.getUserId()));
+							// TODO 修改partner_id
+							obj.put("partner_id", Long.parseLong(mApp.getUserId()));
+							obj.put("date", date);
+							obj.put("place", place);
+							obj.put("topic", topic);
+							obj.put("user_note", uNote);
+							obj.put("partner_note", pNote);
+
+							httpRequest.setEntity(new StringEntity(obj
+									.toString()));
+							HttpResponse httpResponse = new DefaultHttpClient()
+									.execute(httpRequest);
+
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+
+					}
+				}.start();
+
 			}
 		});
 	}
