@@ -187,23 +187,23 @@ public class CardExchange {
             super.onPostExecute(result);
 
             //测试数据，后面将会用resultList中的数据
-            Map<String, Object> map = new HashMap<>();
-            map.put("card_exchange_list_view_portrait", R.drawable.portrait_1);
-            map.put("card_exchange_list_view_name", "周汉辰");
-            map.put("card_exchange_list_view_user_id", "1");
-            resultList.add(map);
-
-            map = new HashMap<>();
-            map.put("card_exchange_list_view_portrait", R.drawable.portrait_2);
-            map.put("card_exchange_list_view_name", "沈佳梅");
-            map.put("card_exchange_list_view_user_id", "2");
-            resultList.add(map);
-
-            map = new HashMap<>();
-            map.put("card_exchange_list_view_portrait", R.drawable.portrait_3);
-            map.put("card_exchange_list_view_name", "曹雨婷");
-            map.put("card_exchange_list_view_user_id", "3");
-            resultList.add(map);
+//            Map<String, Object> map = new HashMap<>();
+//            map.put("card_exchange_list_view_portrait", R.drawable.portrait_1);
+//            map.put("card_exchange_list_view_name", "周汉辰");
+//            map.put("card_exchange_list_view_user_id", "1");
+//            resultList.add(map);
+//
+//            map = new HashMap<>();
+//            map.put("card_exchange_list_view_portrait", R.drawable.portrait_2);
+//            map.put("card_exchange_list_view_name", "沈佳梅");
+//            map.put("card_exchange_list_view_user_id", "2");
+//            resultList.add(map);
+//
+//            map = new HashMap<>();
+//            map.put("card_exchange_list_view_portrait", R.drawable.portrait_3);
+//            map.put("card_exchange_list_view_name", "曹雨婷");
+//            map.put("card_exchange_list_view_user_id", "3");
+//            resultList.add(map);
 
             //将数据加载到ListView中
             SimpleAdapter adapter = new SimpleAdapter(cEContext, resultList, R.layout.cardexchange_listview_item, new String[]{"card_exchange_list_view_portrait", "card_exchange_list_view_name"}, new int[]{R.id.card_exchange_list_view_portrait,R.id.card_exchange_list_view_name});
