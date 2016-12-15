@@ -111,7 +111,7 @@ public class Contact {
 						String uriAPI = mApp.getCommentUrl();
 						try {
 
-							CommentEntity comment = new CommentEntity(mApp.getUser().getId().toString(), starNum+"", content);
+							CommentEntity comment = new CommentEntity(mApp.getUser().getId(), content, starNum);
 							String commentStr = new Gson().toJson(comment);
 							HttpUtil.postRequest(uriAPI, commentStr);
 

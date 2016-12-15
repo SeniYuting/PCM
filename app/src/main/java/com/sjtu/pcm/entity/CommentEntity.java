@@ -5,39 +5,31 @@ package com.sjtu.pcm.entity;
  */
 
 public class CommentEntity {
-    String id;
-    String user_id;
-    String star;
+    Long id;
+    Long user_id;
     String content;
+    Integer star;
 
-    public CommentEntity(String user_id, String star, String content) {
+    public CommentEntity(Long user_id, String content, Integer star) {
         this.user_id = user_id;
         this.star = star;
         this.content = content;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public String getUser_id() {
+    public Long getUser_id() {
         return user_id;
     }
 
-    public void setUser_id(String user_id) {
+    public void setUser_id(Long user_id) {
         this.user_id = user_id;
-    }
-
-    public String getStar() {
-        return star;
-    }
-
-    public void setStar(String star) {
-        this.star = star;
     }
 
     public String getContent() {
@@ -46,6 +38,14 @@ public class CommentEntity {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public Integer getStar() {
+        return star;
+    }
+
+    public void setStar(Integer star) {
+        this.star = star;
     }
 
 }
