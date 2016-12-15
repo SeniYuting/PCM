@@ -13,8 +13,14 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
+import com.google.gson.Gson;
 import com.sjtu.pcm.MyApplication;
 import com.sjtu.pcm.R;
+import com.sjtu.pcm.entity.CardEntity;
+import com.sjtu.pcm.entity.CardExchangeEntity;
+import com.sjtu.pcm.entity.UserEntity;
+import com.sjtu.pcm.entity.UserList;
+import com.sjtu.pcm.util.HttpUtil;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,6 +41,8 @@ public class CardExchangeSend extends Activity {
 
     private MyApplication mApp;
     private List<Map<String, Object>> resultList;
+    private int selectNum;
+    private UserList userList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,22 +89,35 @@ public class CardExchangeSend extends Activity {
                 }
 
                 // 查找所有的userName，并放入resultList中 TODO
-                new CardExchangeSend.RMPHelper().execute();
+                new RMPHelper().execute(mApp.getUserUrl() + "?User.account=" + userName);
 
                 //重新为listview设置监听器
                 cESUserListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
+                        selectNum = i;
                         new AlertDialog.Builder(CardExchangeSend.this)
-                                .setTitle("确认向" + resultList.get(i).get("card_exchange_send_list_view_name") + "发送名片吗？")
+                                .setTitle("确认向" + resultList.get(selectNum).get("card_exchange_send_list_view_name") + "发送名片吗？")
                                 .setIcon(android.R.drawable.ic_dialog_info)
                                 .setPositiveButton("确定", new DialogInterface.OnClickListener() {
 
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        // 点击“确认”后向该用户发送名片该用户 TODO
 
+                                        new Thread(){
+
+                                            @Override
+                                            public void run() {
+                                                CardExchangeEntity cardExchangeEntity = new CardExchangeEntity(mApp.getUser().getId(), (Long)resultList.get(selectNum).get("user_id"), "");
+
+                                                String uriAPI = mApp.getCardExchangeUrl();
+
+                                                Log.e("cardExchange post", new Gson().toJson(cardExchangeEntity));
+
+                                                HttpUtil.postRequest(uriAPI, new Gson().toJson(cardExchangeEntity));
+                                            }
+                                        }.start();
 
                                     }
                                 })
@@ -125,33 +146,20 @@ public class CardExchangeSend extends Activity {
 
         @Override
         protected String doInBackground(String... uriAPI) {
+            String result_array = HttpUtil.getRequest(uriAPI[0]);
 
-            // 获取用户名片信息
-//            HttpGet httpRequest = new HttpGet(uriAPI[0]);
-//            String result = "";
+            Log.e("result_array", result_array);
 
-            try {
-//                HttpResponse httpResponse = new DefaultHttpClient()
-//                        .execute(httpRequest);
-//
-//                InputStream inputStream = httpResponse.getEntity()
-//                        .getContent();
-//                if (inputStream != null)
-//                    result = mapp.convertInputStreamToString(inputStream);
-//
-//                Log.e("result", result);
-//
-//                JSONObject result_json = JSONObject
-//                        .fromObject(result);
-//                resultList.add(result_json.get("name").toString());
-//                resultList.add(result_json.get("gender").toString());
-//                resultList.add(result_json.get("address").toString());
-//                resultList.add(result_json.get("mobile").toString());
+            if (result_array != null){
+                userList = new Gson().fromJson(result_array, UserList.class);
 
-            } catch (Exception e) {
-                e.printStackTrace();
+                if (userList!= null && userList.getUser()!= null
+                        && userList.getUser().size()> 0) {
+
+                    Log.e("cardList", userList.getUser().size()+"");
+
+                }
             }
-
             return null;
         }
 
@@ -161,27 +169,25 @@ public class CardExchangeSend extends Activity {
 
             resultList = new ArrayList<>();
 
-            //测试数据，后面将会用resultList中的数据 TODO
-            Map<String, Object> map = new HashMap<>();
-            map.put("card_exchange_send_list_view_portrait", R.drawable.portrait_1);
-            map.put("card_exchange_send_list_view_name", "周汉辰");
-            map.put("user_id", "1");
-            resultList.add(map);
+            for (int i = 0; i < userList.getUser().size(); i++) {
 
-            map = new HashMap<>();
-            map.put("card_exchange_send_list_view_portrait", R.drawable.portrait_2);
-            map.put("card_exchange_send_list_view_name", "沈佳梅");
-            map.put("user_id", "2");
-            resultList.add(map);
+                Log.e("user", new Gson().toJson(userList.getUser().get(i)));
 
-            map = new HashMap<>();
-            map.put("card_exchange_send_list_view_portrait", R.drawable.portrait_2);
-            map.put("card_exchange_send_list_view_name", "曹雨婷");
-            map.put("user_id", "3");
-            resultList.add(map);
+                Map<String, Object> map = new HashMap<>();
+                if(userList.getUser().get(i).getGender() == null)
+                    map.put("card_exchange_send_list_view_portrait", R.drawable.portrait_3);
+                else if(userList.getUser().get(i).getGender() == 0)
+                    map.put("card_exchange_send_list_view_portrait", R.drawable.portrait_1);
+                else if(userList.getUser().get(i).getGender() == 1)
+                    map.put("card_exchange_send_list_view_portrait", R.drawable.portrait_2);
+                map.put("card_exchange_send_list_view_name", userList.getUser().get(i).getName() == null ? "" : userList.getUser().get(i).getName());
+                map.put("user_id", userList.getUser().get(i).getId());
+                resultList.add(map);
+
+            }
 
             //将数据加载到ListView中
-            SimpleAdapter adapter = new SimpleAdapter(CardExchangeSend.this, resultList, R.layout.cardexchange_listview_item, new String[]{"card_exchange_send_list_view_portrait", "card_exchange_send_list_view_name"}, new int[]{R.id.card_exchange_send_list_view_portrait,R.id.card_exchange_send_list_view_name});
+            SimpleAdapter adapter = new SimpleAdapter(CardExchangeSend.this, resultList, R.layout.cardexchange_send_listview_item, new String[]{"card_exchange_send_list_view_portrait", "card_exchange_send_list_view_name"}, new int[]{R.id.card_exchange_send_list_view_portrait,R.id.card_exchange_send_list_view_name});
             cESUserListView.setAdapter(adapter);
 
         }

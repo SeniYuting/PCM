@@ -12,12 +12,17 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.sjtu.pcm.MyApplication;
 import com.sjtu.pcm.R;
 import com.sjtu.pcm.activity.card_design.CardModifyActivity;
 import com.sjtu.pcm.anim.MyViewGroup.OnOpenListener;
+import com.sjtu.pcm.entity.CardEntity;
+import com.sjtu.pcm.entity.CardList;
+import com.sjtu.pcm.util.HttpUtil;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * 名片设计类
@@ -46,7 +51,7 @@ public class CardDesign {
 
 	private TextView mTopText;
 
-	private ArrayList<String> resultList = new ArrayList<>();
+	private CardEntity cardEntity = new CardEntity();
 
 	@SuppressLint("InflateParams")
 	public CardDesign(Context context, Activity activity) {
@@ -108,9 +113,8 @@ public class CardDesign {
 	 */
 	private void init() {
 		mTopText.setText("名片设计");
-
-		new RMPHelper()
-				.execute();
+		Log.e("init", "cardDesign");
+		new RMPHelper().execute(mApp.getCardUrl() + "?Card.user_id=" + mApp.getUser().getId());
 	}
 
 	public void setOnOpenListener(OnOpenListener onOpenListener) {
@@ -130,29 +134,23 @@ public class CardDesign {
 		@Override
 		protected String doInBackground(String... uriAPI) {
 
-			// 获取用户名片信息 TODO
-//			HttpGet httpRequest = new HttpGet(uriAPI[0]);
-//			String result = "";
+			String result_array = HttpUtil.getRequest(uriAPI[0]);
 
-			try {
-//				HttpResponse httpResponse = new DefaultHttpClient()
-//						.execute(httpRequest);
-//
-//				InputStream inputStream = httpResponse.getEntity().getContent();
-//				if (inputStream != null)
-//					result = mApp.convertInputStreamToString(inputStream);
-//
-//				Log.e("user_result", result);
-//
-//				JSONObject result_json = JSONObject.fromObject(result);
-//				resultList.add(result_json.get("account").toString());
-//				resultList.add(result_json.get("name").toString());
-//				resultList.add(result_json.get("gender").toString());
-//				resultList.add(result_json.get("address").toString());
-//				resultList.add(result_json.get("mobile").toString());
+			Log.e("result_array", result_array);
 
-			} catch (Exception e) {
-				e.printStackTrace();
+			if (result_array != null){
+				CardList cardList = new Gson().fromJson(result_array, CardList.class);
+
+				if (cardList!= null && cardList.getCard()!= null
+						&& cardList.getCard().size()> 0) {
+
+					Log.e("cardList", cardList.getCard().size()+"");
+
+					cardEntity = cardList.getCard().get(0);
+
+					Log.e("card", new Gson().toJson(cardEntity));
+
+				}
 			}
 
 			return null;
@@ -162,13 +160,13 @@ public class CardDesign {
 		protected void onPostExecute(String result) {
 			super.onPostExecute(result);
 
-			cName.setText(resultList.size()>0 ? resultList.get(0) : "");
-			cCompany.setText(resultList.size()>1 ? resultList.get(1) : "");
-			cJob.setText(resultList.size()>2 ? resultList.get(2) : "");
-			cCNumber.setText(resultList.size()>3 ? resultList.get(3) : "");
-			cCAddress.setText(resultList.size()>4 ? resultList.get(4) : "");
-			cFax.setText(resultList.size()>5 ? resultList.get(5) : "");
-			cCEmail.setText(resultList.size()>6 ? resultList.get(6) : "");
+			cName.setText(cardEntity.getName());
+			cCompany.setText(cardEntity.getCompany());
+			cJob.setText(cardEntity.getJob());
+			cCNumber.setText(cardEntity.getC_number());
+			cCAddress.setText(cardEntity.getC_address());
+			cFax.setText(cardEntity.getC_fax());
+			cCEmail.setText(cardEntity.getC_email());
 		}
 
 	}

@@ -11,8 +11,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.sjtu.pcm.MyApplication;
 import com.sjtu.pcm.R;
 import com.sjtu.pcm.activity.MainActivity;
+import com.sjtu.pcm.entity.CardEntity;
+import com.sjtu.pcm.entity.CardExchangeEntity;
+import com.sjtu.pcm.entity.CardList;
+import com.sjtu.pcm.util.HttpUtil;
 
 import java.util.ArrayList;
 
@@ -33,15 +39,20 @@ public class FriendCardView extends Activity {
     private TextView fCFax;
     private TextView fCCEmail;
 
-    private ArrayList<String> resultList = new ArrayList<>();
+    private MyApplication mApp;
+    private CardEntity cardEntity = new CardEntity();
     private String friendId;
     private String friendName;
+    private String recordId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.friend_card_view);
 
+        mApp = (MyApplication) getApplication();
+
+        recordId = getIntent().getExtras().getString("recordId");
         friendId = getIntent().getExtras().getString("friendId");
         friendName = getIntent().getExtras().getString("friendName");
 
@@ -83,10 +94,22 @@ public class FriendCardView extends Activity {
 
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                // 点击“确认”后删除该用户 TODO
 
-                                startActivity(new Intent(FriendCardView.this,
-                                        MainActivity.class));
+                                new Thread(){
+                                    @Override
+                                    public void run() {
+                                        CardExchangeEntity cardExchangeEntity = new CardExchangeEntity(new Long(0),new Long(0),"");
+
+                                        String uriAPI = mApp.getCardExchangeUrl() + recordId;
+
+                                        Log.e("card put", new Gson().toJson(cardExchangeEntity).toString());
+
+                                        HttpUtil.putRequest(uriAPI, new Gson().toJson(cardExchangeEntity));
+
+                                        startActivity(new Intent(FriendCardView.this,
+                                                MainActivity.class));
+                                    }
+                                }.start();
 
                             }
                         })
@@ -108,8 +131,8 @@ public class FriendCardView extends Activity {
 
         fCVTopText.setText(friendName + "的名片");
 
-        // 需要setText，必须在同一个thread中 TODO
-        new FriendCardView.RMPHelper().execute();
+        // 需要setText，必须在同一个thread中
+        new RMPHelper().execute(mApp.getCardUrl() + "?Card.user_id=" + friendId);
 
     }
 
@@ -118,30 +141,23 @@ public class FriendCardView extends Activity {
         @Override
         protected String doInBackground(String... uriAPI) {
 
-            // 获取用户名片信息
-//            HttpGet httpRequest = new HttpGet(uriAPI[0]);
-//            String result = "";
+            String result_array = HttpUtil.getRequest(uriAPI[0]);
 
-            try {
-//                HttpResponse httpResponse = new DefaultHttpClient()
-//                        .execute(httpRequest);
-//
-//                InputStream inputStream = httpResponse.getEntity()
-//                        .getContent();
-//                if (inputStream != null)
-//                    result = mapp.convertInputStreamToString(inputStream);
-//
-//                Log.e("result", result);
-//
-//                JSONObject result_json = JSONObject
-//                        .fromObject(result);
-//                resultList.add(result_json.get("name").toString());
-//                resultList.add(result_json.get("gender").toString());
-//                resultList.add(result_json.get("address").toString());
-//                resultList.add(result_json.get("mobile").toString());
+            Log.e("result_array", result_array);
 
-            } catch (Exception e) {
-                e.printStackTrace();
+            if (result_array != null){
+                CardList cardList = new Gson().fromJson(result_array, CardList.class);
+
+                if (cardList!= null && cardList.getCard()!= null
+                        && cardList.getCard().size()> 0) {
+
+                    Log.e("cardList", cardList.getCard().size()+"");
+
+                    cardEntity = cardList.getCard().get(0);
+
+                    Log.e("card", new Gson().toJson(cardEntity));
+
+                }
             }
 
             return null;
@@ -151,13 +167,14 @@ public class FriendCardView extends Activity {
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
 
-            fCName.setText(resultList.size() > 0 ? resultList.get(0) : "");
-            fCCompany.setText(resultList.size() > 1 ? resultList.get(1) : "");
-            fCJob.setText(resultList.size() > 2 ? resultList.get(2) : "");
-            fCCNumber.setText(resultList.size() > 3 ? resultList.get(3) : "");
-            fCCAddress.setText(resultList.size() > 4 ? resultList.get(4) : "");
-            fCFax.setText(resultList.size() > 5 ? resultList.get(5) : "");
-            fCCEmail.setText(resultList.size() > 6 ? resultList.get(6) : "");
+            fCName.setText(cardEntity.getName());
+            fCCompany.setText(cardEntity.getCompany());
+            fCJob.setText(cardEntity.getJob());
+            fCCNumber.setText(cardEntity.getC_number());
+            fCCAddress.setText(cardEntity.getC_address());
+            fCFax.setText(cardEntity.getC_fax());
+            fCCEmail.setText(cardEntity.getC_email());
+
         }
     }
 

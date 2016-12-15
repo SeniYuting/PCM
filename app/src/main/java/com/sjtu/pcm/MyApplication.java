@@ -37,6 +37,10 @@ public class MyApplication extends Application {
 		return project_url + "Comment/";
 	}
 
+	public String getCardExchangeUrl() {
+		return project_url + "Card_exchange/";
+	}
+
 	public UserEntity getUser() {
 		return user;
 	}

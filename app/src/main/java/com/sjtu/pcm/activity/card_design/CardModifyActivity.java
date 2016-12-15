@@ -14,6 +14,7 @@ import com.sjtu.pcm.MyApplication;
 import com.sjtu.pcm.R;
 import com.sjtu.pcm.activity.MainActivity;
 import com.sjtu.pcm.entity.CardEntity;
+import com.sjtu.pcm.entity.CardList;
 import com.sjtu.pcm.util.HttpUtil;
 
 import java.util.ArrayList;
@@ -35,7 +36,7 @@ public class CardModifyActivity extends Activity {
     private EditText cMCEmail;
 
     private MyApplication mApp;
-    private ArrayList<String> resultList = new ArrayList<>();
+    private CardEntity cardEntity = new CardEntity();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,8 +97,7 @@ public class CardModifyActivity extends Activity {
                         Log.i("cardFax", cardFax);
                         Log.i("cardEmail", cardEmail);
 
-                        //网络通信，修改用户名片信息 TODO
-                        try {
+
 //                            JSONObject obj = new JSONObject();
 //                            obj.put("name", cardName);
 //                            obj.put("company", cardCompany);
@@ -107,27 +107,37 @@ public class CardModifyActivity extends Activity {
 //                            obj.put("fax", cardFax);
 //                            obj.put("email", cardEmail);
 
-                            CardEntity card = new CardEntity(cardName, cardCompany, cardJob,
+                        if(cardEntity.getId() == 0){
+
+                            CardEntity card = new CardEntity(mApp.getUser().getId(), cardName, cardCompany, cardJob,
                                     cardNumber, cardAddress, cardFax, cardEmail);
 
                             String uriAPI = mApp.getCardUrl();
 
+                            Log.e("card psot", new Gson().toJson(card).toString());
+
                             HttpUtil.postRequest(uriAPI, new Gson().toJson(card));
 
-                        } catch (Exception ex) {
-                            ex.printStackTrace();
+                        } else {
+
+                            CardEntity card = new CardEntity(mApp.getUser().getId(), cardName, cardCompany, cardJob,
+                                    cardNumber, cardAddress, cardFax, cardEmail);
+
+                            String uriAPI = mApp.getCardUrl() + cardEntity.getId();
+
+                            Log.e("card put", new Gson().toJson(card).toString());
+
+                            HttpUtil.putRequest(uriAPI, new Gson().toJson(card));
+
                         }
 
+                        setResult(RESULT_OK);
+
+                        startActivity(new Intent(CardModifyActivity.this,
+                                MainActivity.class));
 
                     }
                 }.start();
-
-                setResult(RESULT_OK);
-
-                startActivity(new Intent(CardModifyActivity.this,
-                        MainActivity.class));
-
-//				finish(); // 直接关闭该页面
             }
         });
     }
@@ -136,7 +146,8 @@ public class CardModifyActivity extends Activity {
         // 初始化用户名片信息
         Log.i("user_id", mApp.getUser().getId() + "");
         // 需要setText，必须在同一个thread中
-        new CardModifyActivity.RMPHelper().execute("http://112.74.49.183:8080/Entity/U209f9ab73161d8/PCM/Card/" + mApp.getUser().getId());
+        Log.e("init", "cardModify");
+        new RMPHelper().execute(mApp.getCardUrl() + "?Card.user_id=" + mApp.getUser().getId());
 
     }
 
@@ -145,30 +156,23 @@ public class CardModifyActivity extends Activity {
         @Override
         protected String doInBackground(String... uriAPI) {
 
-            // 获取用户名片信息 TODO
-//            HttpGet httpRequest = new HttpGet(uriAPI[0]);
-//            String result = "";
+            String result_array = HttpUtil.getRequest(uriAPI[0]);
 
-            try {
-//                HttpResponse httpResponse = new DefaultHttpClient()
-//                        .execute(httpRequest);
-//
-//                InputStream inputStream = httpResponse.getEntity()
-//                        .getContent();
-//                if (inputStream != null)
-//                    result = mapp.convertInputStreamToString(inputStream);
-//
-//                Log.e("result", result);
-//
-//                JSONObject result_json = JSONObject
-//                        .fromObject(result);
-//                resultList.add(result_json.get("name").toString());
-//                resultList.add(result_json.get("gender").toString());
-//                resultList.add(result_json.get("address").toString());
-//                resultList.add(result_json.get("mobile").toString());
+            Log.e("result_array", result_array);
 
-            } catch (Exception e) {
-                e.printStackTrace();
+            if (result_array != null){
+                CardList cardList = new Gson().fromJson(result_array, CardList.class);
+
+                if (cardList!= null && cardList.getCard()!= null
+                        && cardList.getCard().size()> 0) {
+
+                    Log.e("cardList", cardList.getCard().size()+"");
+
+                    cardEntity = cardList.getCard().get(0);
+
+                    Log.e("card", new Gson().toJson(cardEntity));
+
+                }
             }
 
             return null;
@@ -178,13 +182,14 @@ public class CardModifyActivity extends Activity {
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
 
-            cMName.setText(resultList.size() > 0 ? resultList.get(0) : "");
-            cMCompany.setText(resultList.size() > 1 ? resultList.get(1) : "");
-            cMJob.setText(resultList.size() > 2 ? resultList.get(2) : "");
-            cMCNumber.setText(resultList.size() > 3 ? resultList.get(3) : "");
-            cMCAddress.setText(resultList.size() > 4 ? resultList.get(4) : "");
-            cMFax.setText(resultList.size() > 5 ? resultList.get(5) : "");
-            cMCEmail.setText(resultList.size() > 6 ? resultList.get(6) : "");
+            cMName.setText(cardEntity.getName());
+            cMCompany.setText(cardEntity.getCompany());
+            cMJob.setText(cardEntity.getJob());
+            cMCNumber.setText(cardEntity.getC_number());
+            cMCAddress.setText(cardEntity.getC_address());
+            cMFax.setText(cardEntity.getC_fax());
+            cMCEmail.setText(cardEntity.getC_email());
+
         }
     }
 }
