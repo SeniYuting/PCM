@@ -36,7 +36,7 @@ public class Recognize {
 		mHome = LayoutInflater.from(context).inflate(R.layout.recognize, null);
 
 		mapp = (MyApplication) activity.getApplication();
-		Log.i("user_id", mapp.getUserId());
+		Log.i("user_id", mapp.getUser().getId() + "");
 
 		findViewById();
 		setListener();

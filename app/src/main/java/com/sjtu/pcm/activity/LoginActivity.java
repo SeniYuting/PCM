@@ -12,19 +12,8 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.sjtu.pcm.MyApplication;
 import com.sjtu.pcm.R;
-import com.sjtu.pcm.entity.UserEntity;
 import com.sjtu.pcm.entity.UserList;
 import com.sjtu.pcm.util.HttpUtil;
-
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.protocol.HTTP;
-
-import java.io.InputStream;
 
 /**
  * 登录界面
@@ -38,13 +27,13 @@ public class LoginActivity extends Activity {
     private EditText passwordText;
     private TextView register;
 
-    private MyApplication mapp;
+    private MyApplication mApp;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
 
-        mapp = (MyApplication) getApplication();
+        mApp = (MyApplication) getApplication();
 
         findViewById();
         setListener();
@@ -77,8 +66,7 @@ public class LoginActivity extends Activity {
                         String password = passwordText.getText().toString();
 
                         // 获取用户信息
-                        String uriAPI = mapp.getUserUrl() + "?User.account="
-                                + account;
+                        String uriAPI = mApp.getUserUrl() + "?User.account=" + account;
 
                         try {
 
@@ -89,11 +77,7 @@ public class LoginActivity extends Activity {
                                 if (userList!= null && userList.getUser()!= null && userList.getUser().size()> 0
                                 &&  userList.getUser().get(0).getPassword().equals(password)) {
 
-                                    mapp.setUser(userList.getUser().get(0));
-                                    mapp.setAccount(userList.getUser().get(0).getAccount());
-//                                mapp.setUserId(user_id);
-//                                mapp.setAccount(account);
-//                                mapp.setPassword(password); // 应加密
+                                    mApp.setUser(userList.getUser().get(0));
 
                                     startActivity(new Intent(LoginActivity.this,
                                             MainActivity.class));
@@ -101,26 +85,6 @@ public class LoginActivity extends Activity {
                                     finish();
                                 }
                             }
-
-
-//                            String result_password = (String) result_array
-//                                    .getJSONObject(0).get("password");
-//
-//                            if (result_password.equals(password)) {
-//
-//                                UserEntity userEntity = new Gson().fr
-//
-//                                String user_id = result_array.getJSONObject(0)
-//                                        .get("id") + "";
-//                                mapp.setUserId(user_id);
-//                                mapp.setAccount(account);
-//                                mapp.setPassword(password); // 应加密
-//
-//                                startActivity(new Intent(LoginActivity.this,
-//                                        MainActivity.class));
-//
-//                                finish();
-//                            }
 
                         } catch (Exception e) {
                             e.printStackTrace();

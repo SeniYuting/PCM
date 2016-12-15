@@ -2,7 +2,6 @@ package com.sjtu.pcm.activity.user;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,19 +12,13 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import com.google.gson.Gson;
 import com.sjtu.pcm.MyApplication;
 import com.sjtu.pcm.R;
 import com.sjtu.pcm.activity.MainActivity;
+import com.sjtu.pcm.entity.UserEntity;
+import com.sjtu.pcm.util.HttpUtil;
 
-import net.sf.json.JSONObject;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPut;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.DefaultHttpClient;
-
-import java.io.InputStream;
 import java.util.ArrayList;
 
 /**
@@ -103,37 +96,25 @@ public class UserModifyActivity extends Activity {
 						String address = mAddress.getText().toString();
 						String mobile = mMobile.getText().toString();
 
-						mApp.setGender(gender.equals("男") ? 0 : 1);
+						UserEntity user = mApp.getUser();
 
-						Log.i("name", name);
-						Log.i("gender", gender);
-						Log.i("address", address);
-						Log.i("mobile", mobile);
+						String uriAPI = mApp.getUserUrl() + "?User.id=" + user.getId();
 
+						Log.e("uriAPI", uriAPI);
 
-						String uriAPI = mApp.getUserUrl() + mApp.getUserId();
-						HttpPut httpRequest = new HttpPut(uriAPI);
-						httpRequest.setHeader("Content-Type",
-								"application/json");
+						user.setName(name);
+//						user.setGender(gender.equals("男") ? 0 : 1);
+//						user.setAddress(address);
+//						user.setMobile(mobile);
 
-						try {
-							JSONObject obj = new JSONObject();
-							obj.put("account", mApp.getAccount());
-							obj.put("password", mApp.getPassword());
-							obj.put("name", name);
-							obj.put("gender", gender.equals("男") ? 0 : 1);
-							obj.put("address", address);
-							obj.put("mobile", mobile);
+						String userStr = new Gson().toJson(user);
 
-							// 中文乱码				
-							httpRequest.setEntity(new StringEntity(obj
-									.toString()));
-							HttpResponse httpResponse = new DefaultHttpClient()
-									.execute(httpRequest);
+						Log.e("userStr", userStr);
 
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
+						HttpUtil.putRequest(uriAPI, userStr);
+
+						// 更新User信息
+						mApp.setUser(user);
 
 					}
 				}.start();
@@ -150,60 +131,20 @@ public class UserModifyActivity extends Activity {
 
 	private void init() {
 		// 初始化用户信息
-		Log.i("user_id", mApp.getUserId());
-        // 需要setText，必须在同一个thread中
-		new RMPHelper().execute(mApp.getUserUrl() + mApp.getUserId());
+		Log.i("user_id", mApp.getUser().getId() + "");
 
-	}
+		UserEntity user = mApp.getUser();
 
-	class RMPHelper extends AsyncTask<String, Void, String>{
-
-		@Override
-		protected String doInBackground(String... uriAPI) {
-
-			// 获取用户信息
-			HttpGet httpRequest = new HttpGet(uriAPI[0]);
-			String result = "";
-
-			try {
-				HttpResponse httpResponse = new DefaultHttpClient()
-						.execute(httpRequest);
-
-				InputStream inputStream = httpResponse.getEntity()
-						.getContent();
-				if (inputStream != null)
-					result = mApp.convertInputStreamToString(inputStream);
-
-				Log.e("result", result);
-
-				JSONObject result_json = JSONObject
-						.fromObject(result);
-				resultList.add(result_json.get("name")==null ? "" : result_json.get("name")+"");
-				resultList.add(result_json.get("gender")==null ? "" : result_json.get("gender")+"");
-				resultList.add(result_json.get("address")==null ? "" : result_json.get("address")+"");
-				resultList.add(result_json.get("mobile")==null ? "" : result_json.get("mobile")+"");
-
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-
-			return null;
+		mName.setText(user.getName());
+		if(user.getGender()== "男") {
+			mGender.check(mFemale.getId());
+		} else {
+			mGender.check(mMale.getId());
 		}
 
-		@Override
-	    protected void onPostExecute(String result) {
-	        super.onPostExecute(result);
-
-			mName.setText(resultList.get(0));
-			if(resultList.get(1).equals("1")) {
-				mGender.check(mFemale.getId());
-			} else {
-				mGender.check(mMale.getId());
-			}
-			mAddress.setText(resultList.get(2));
-			mMobile.setText(resultList.get(3));
-		}
-
+		mAddress.setText(user.getAddress());
+		mMobile.setText(user.getMobile());
 	}
+
 }
 

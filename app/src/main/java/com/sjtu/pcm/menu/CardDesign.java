@@ -55,7 +55,7 @@ public class CardDesign {
 		mHome = LayoutInflater.from(context).inflate(R.layout.carddesign, null);
 
 		mApp = (MyApplication) activity.getApplication();
-		Log.i("user_id", mApp.getUserId());
+		Log.i("user_id", mApp.getUser().getId()+"");
 
 		findViewById();
 		setListener();

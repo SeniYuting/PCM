@@ -117,7 +117,7 @@ public class CardExchangeSend extends Activity {
 
     private void init() {
         // 初始化用户名片信息
-        Log.i("friend_id", mApp.getUserId());
+        Log.i("friend_id", mApp.getUser().getId() + "");
 
     }
 

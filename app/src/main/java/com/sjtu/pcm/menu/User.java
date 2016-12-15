@@ -1,11 +1,8 @@
 package com.sjtu.pcm.menu;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -17,15 +14,7 @@ import com.sjtu.pcm.MyApplication;
 import com.sjtu.pcm.R;
 import com.sjtu.pcm.activity.user.UserModifyActivity;
 import com.sjtu.pcm.anim.MyViewGroup.OnOpenListener;
-
-import net.sf.json.JSONObject;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-
-import java.io.InputStream;
-import java.util.ArrayList;
+import com.sjtu.pcm.entity.UserEntity;
 
 /**
  * 用户信息类
@@ -52,18 +41,15 @@ public class User {
 	private TextView mMobile;
 	private TextView mTag;
 
-	private MyApplication mapp;
+	private MyApplication mApp;
 	private OnOpenListener mOnOpenListener;
 
-	private ArrayList<String> resultList = new ArrayList<>();
-
-	@SuppressLint("InflateParams")
 	public User(Context context, Activity activity) {
 		mContext = context;
 		// 绑定布局到当前View
 		mHome = LayoutInflater.from(context).inflate(R.layout.user, null);
 
-		mapp = (MyApplication) activity.getApplication();
+		mApp = (MyApplication) activity.getApplication();
 
 		findViewById();
 		setListener();
@@ -127,9 +113,22 @@ public class User {
 	private void init() {
 		mHead_Declaration.setText("welcome!");
 
-		// 需要setText，必须在同一个thread中
-		new RMPHelper()
-				.execute(mapp.getUserUrl() + mapp.getUserId());
+		UserEntity user = mApp.getUser();
+
+		mHead_Name.setText(user.getAccount());
+		mName.setText(user.getName());
+		mGender.setText(user.getGender());
+
+		// 修改头像
+		if(user.getGender()== "男") {
+			mPortrait.setImageResource(R.drawable.portrait_1);
+		} else if(user.getGender()== "女"){
+			mPortrait.setImageResource(R.drawable.portrait_2);
+		}
+
+		mAddress.setText(user.getAddress());
+		mMobile.setText(user.getMobile());
+		mTag.setText("tag");
 	}
 
 	public void setOnOpenListener(OnOpenListener onOpenListener) {
@@ -143,62 +142,4 @@ public class User {
 	public View getView() {
 		return mHome;
 	}
-
-	private class RMPHelper extends AsyncTask<String, Void, String> {
-
-		@Override
-		protected String doInBackground(String... uriAPI) {
-
-			// 获取用户信息
-			HttpGet httpRequest = new HttpGet(uriAPI[0]);
-			String result = "";
-
-			try {
-				HttpResponse httpResponse = new DefaultHttpClient()
-						.execute(httpRequest);
-
-				InputStream inputStream = httpResponse.getEntity().getContent();
-				if (inputStream != null)
-					result = mapp.convertInputStreamToString(inputStream);
-
-				Log.e("user_result", result);
-
-				JSONObject result_json = JSONObject.fromObject(result);
-				resultList.add(result_json.get("account")==null ? "" : result_json.get("account")+"");
-				resultList.add(result_json.get("name")==null ? "" : result_json.get("name")+"");
-				resultList.add(result_json.get("gender")==null ? "" : result_json.get("gender")+"");
-				resultList.add(result_json.get("address")==null ? "" : result_json.get("address")+"");
-				resultList.add(result_json.get("mobile")==null ? "" : result_json.get("mobile")+"");
-				// TODO 获取标签，并添加到resultList
-				resultList.add("");
-
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-
-			return null;
-		}
-
-		@Override
-		protected void onPostExecute(String result) {
-			super.onPostExecute(result);
-
-			mHead_Name.setText(resultList.get(0));
-			mName.setText(resultList.get(1));
-			mGender.setText(resultList.get(2).equals("0")?"男":"女");
-
-			// 修改头像
-			if(resultList.get(2).equals("0")) {
-				mPortrait.setImageResource(R.drawable.portrait_1);
-			} else if(resultList.get(2).equals("1")){
-				mPortrait.setImageResource(R.drawable.portrait_2);
-			}
-
-			mAddress.setText(resultList.get(3));
-			mMobile.setText(resultList.get(4));
-			mTag.setText(resultList.get(5));
-		}
-
-	}
-
 }

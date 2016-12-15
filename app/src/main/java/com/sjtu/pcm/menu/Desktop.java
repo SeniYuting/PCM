@@ -254,12 +254,12 @@ public class Desktop {
 	 * 界面初始化
 	 */
 	private void init() {
-		mName.setText(mapp.getAccount());
+		mName.setText(mapp.getUser().getAccount());
 		mSig.setText("Welcome !");
 
-		if(mapp.getGender() == 0) {
+		if(mapp.getUser().getGender() == "男") {
 			mPortrait.setImageResource(R.drawable.portrait_1);
-		} else if(mapp.getGender() == 1){
+		} else if(mapp.getUser().getGender()== "女"){
 			mPortrait.setImageResource(R.drawable.portrait_2);
 		}
 

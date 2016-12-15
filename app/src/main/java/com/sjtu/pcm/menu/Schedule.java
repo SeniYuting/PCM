@@ -15,16 +15,13 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.sjtu.pcm.MyApplication;
 import com.sjtu.pcm.R;
 import com.sjtu.pcm.activity.schedule.HistorySchedule;
 import com.sjtu.pcm.anim.MyViewGroup.OnOpenListener;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.json.JSONObject;
+import com.sjtu.pcm.entity.ScheduleEntity;
+import com.sjtu.pcm.util.HttpUtil;
 
 import java.util.ArrayList;
 
@@ -62,7 +59,6 @@ public class Schedule {
 		mHome = LayoutInflater.from(context).inflate(R.layout.schedule, null);
 
 		mApp = (MyApplication) activity.getApplication();
-		Log.i("user_id", mApp.getUserId());
 
 		findViewById();
 		setListener();
@@ -131,29 +127,16 @@ public class Schedule {
 						Log.i("topic", topic);
 						Log.i("uNote", uNote);
 						Log.i("pNote", pNote);
-						Log.i("user_id", mApp.getUserId());
+						Log.i("user_id", mApp.getUser().getId() + "");
 
 						// 保存注册信息
-						String uriAPI = mApp.getProjectUrl() + "Schedule/";
-						HttpPost httpRequest = new HttpPost(uriAPI);
-						httpRequest.setHeader("Content-type",
-								"application/json");
+						String uriAPI = mApp.getScheduleUrl();
 
 						try {
-							JSONObject obj = new JSONObject();
-							obj.put("suer_id", Long.parseLong(mApp.getUserId()));
 							// TODO 修改partner_id
-							obj.put("partner_id", Long.parseLong(mApp.getUserId()));
-							obj.put("date", date);
-							obj.put("place", place);
-							obj.put("topic", topic);
-							obj.put("user_note", uNote);
-							obj.put("partner_note", pNote);
-
-							httpRequest.setEntity(new StringEntity(obj
-									.toString()));
-							HttpResponse httpResponse = new DefaultHttpClient()
-									.execute(httpRequest);
+							ScheduleEntity schedule = new ScheduleEntity(mApp.getUser().getId(), mApp.getUser().getId(), date, place, topic, uNote, pNote);
+							String scheduleStr = new Gson().toJson(schedule);
+							HttpUtil.postRequest(uriAPI, scheduleStr);
 
 						} catch (Exception e) {
 							e.printStackTrace();

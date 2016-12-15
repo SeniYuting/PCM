@@ -15,8 +15,6 @@ import com.sjtu.pcm.R;
 import com.sjtu.pcm.entity.UserEntity;
 import com.sjtu.pcm.util.HttpUtil;
 
-import org.json.JSONObject;
-
 /**
  * 注册界面
  *
@@ -30,13 +28,13 @@ public class RegisterActivity extends Activity {
 	private Button cancel;
 	private EditText accountText;
 	private EditText passwordText;
-	private MyApplication mapp;
+	private MyApplication mApp;
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.register);
 
-		mapp = (MyApplication) getApplication();
+		mApp = (MyApplication) getApplication();
 
 		findViewById();
 		setListener();
@@ -84,22 +82,14 @@ public class RegisterActivity extends Activity {
 						Log.i("password", password);
 
 						// 保存注册信息
-						String uriAPI = mapp.getUserUrl();
+						String uriAPI = mApp.getUserUrl();
 
 						try {
-//							JSONObject obj = new JSONObject();
-//							obj.put("account", account);
-////							obj.put("account","快啦");
-//							obj.put("password", password);
-//							HttpUtil.postRequest(uriAPI,obj);
+							// TODO 检查是否已注册过
 
-							UserEntity user = new UserEntity();
-							user.setAccount(account);
-							user.setPassword(password);
-
+							UserEntity user = new UserEntity(account, password);
 							String userStr = new Gson().toJson(user);
-
-							HttpUtil.postRequest(uriAPI,userStr);
+							HttpUtil.postRequest(uriAPI, userStr);
 
 							startActivity(new Intent(RegisterActivity.this,
 									LoginActivity.class));

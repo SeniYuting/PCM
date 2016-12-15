@@ -134,9 +134,9 @@ public class CardModifyActivity extends Activity {
 
     private void init() {
         // 初始化用户名片信息
-        Log.i("user_id", mApp.getUserId());
+        Log.i("user_id", mApp.getUser().getId() + "");
         // 需要setText，必须在同一个thread中
-        new CardModifyActivity.RMPHelper().execute("http://112.74.49.183:8080/Entity/U209f9ab73161d8/PCM/Card/" + mApp.getUserId());
+        new CardModifyActivity.RMPHelper().execute("http://112.74.49.183:8080/Entity/U209f9ab73161d8/PCM/Card/" + mApp.getUser().getId());
 
     }
 

@@ -14,16 +14,10 @@ public class UserEntity {
     private String address;
     private String mobile;
 
-    public UserEntity(String id, String account, String password) {
-        this.id = id;
+    public UserEntity(String account, String password) {
         this.account = account;
         this.password = password;
     }
-
-    public UserEntity() {
-    }
-
-
 
     public String getId() {
         return id;

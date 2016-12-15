@@ -51,7 +51,7 @@ public class CardExchange {
         mHome = LayoutInflater.from(context).inflate(R.layout.cardexchange, null);
 
         mapp = (MyApplication) activity.getApplication();
-        Log.i("user_id", mapp.getUserId());
+        Log.i("user_id", mapp.getUser().getId()+"");
 
         findViewById();
         init();

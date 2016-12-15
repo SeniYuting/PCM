@@ -13,15 +13,12 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.sjtu.pcm.MyApplication;
 import com.sjtu.pcm.R;
 import com.sjtu.pcm.anim.MyViewGroup.OnOpenListener;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.json.JSONObject;
+import com.sjtu.pcm.entity.CommentEntity;
+import com.sjtu.pcm.util.HttpUtil;
 
 /**
  * 联系我们类
@@ -105,28 +102,18 @@ public class Contact {
 							default:
 						}
 
-						String comment = mComment.getText().toString();
+						String content = mComment.getText().toString();
 
+						Log.i("user_id", mApp.getUser().getId() + "");
 						Log.i("star", star);
-						Log.i("comment", comment);
-						Log.i("user_id", mApp.getUserId());
+						Log.i("content", content);
 
-
-						// 保存注册信息
-						String uriAPI = mApp.getProjectUrl() + "Comment/";
-						HttpPost httpRequest = new HttpPost(uriAPI);
-						httpRequest.setHeader("Content-type",
-								"application/json");
-
+						String uriAPI = mApp.getCommentUrl();
 						try {
-							JSONObject obj = new JSONObject();
-							obj.put("user_id", Long.parseLong(mApp.getUserId()));
-							obj.put("star", starNum);
-							obj.put("content", comment);
-							httpRequest.setEntity(new StringEntity(obj
-									.toString()));
-							HttpResponse httpResponse = new DefaultHttpClient()
-									.execute(httpRequest);
+
+							CommentEntity comment = new CommentEntity(mApp.getUser().getId(), starNum+"", content);
+							String commentStr = new Gson().toJson(comment);
+							HttpUtil.postRequest(uriAPI, commentStr);
 
 						} catch (Exception e) {
 							e.printStackTrace();
