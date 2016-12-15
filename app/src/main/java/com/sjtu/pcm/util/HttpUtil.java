@@ -2,7 +2,6 @@ package com.sjtu.pcm.util;
 
 import net.sf.json.JSONArray;
 
-import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -180,18 +179,6 @@ public class HttpUtil {
         }
     }
 
-
-    public static class UTF8PostMethod extends PostMethod {
-        public UTF8PostMethod(String url) {
-            super(url);
-        }
-
-        @Override
-        public String getRequestCharSet() {
-            //return super.getRequestCharSet();
-            return "UTF-8";
-        }
-    }
 
     private static String convertInputStreamToString(InputStream inputStream)
             throws Exception {

@@ -104,14 +104,14 @@ public class Contact {
 
 						String content = mComment.getText().toString();
 
-						Log.i("user_id", mApp.getUser().getId() + "");
+						Log.i("user_id", mApp.getUser().getId().toString());
 						Log.i("star", star);
 						Log.i("content", content);
 
 						String uriAPI = mApp.getCommentUrl();
 						try {
 
-							CommentEntity comment = new CommentEntity(mApp.getUser().getId(), starNum+"", content);
+							CommentEntity comment = new CommentEntity(mApp.getUser().getId().toString(), starNum+"", content);
 							String commentStr = new Gson().toJson(comment);
 							HttpUtil.postRequest(uriAPI, commentStr);
 

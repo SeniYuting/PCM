@@ -16,6 +16,7 @@ import android.widget.SimpleAdapter;
 import com.google.gson.Gson;
 import com.sjtu.pcm.MyApplication;
 import com.sjtu.pcm.R;
+import com.sjtu.pcm.entity.ScheduleEntity;
 import com.sjtu.pcm.entity.ScheduleList;
 import com.sjtu.pcm.util.HttpUtil;
 
@@ -85,9 +86,22 @@ public class HistorySchedule extends Activity {
 					if (scheduleList!= null && scheduleList.getSchedule()!= null
 							&& scheduleList.getSchedule().size()> 0) {
 
-						// TODO
-						Log.e("scheduleList", scheduleList.getSchedule().size()+"");
+						Map<String, Object> map;
 
+						for(int i=0; i<scheduleList.getSchedule().size(); i++) {
+
+							ScheduleEntity schedule = scheduleList.getSchedule().get(i);
+
+							map = new HashMap<>();
+							map.put("history_schedule_portrait", R.drawable.portrait_1);
+							map.put("history_schedule_name", "周汉辰");
+							map.put("history_schedule_time", schedule.getDate());
+							map.put("history_schedule_place", schedule.getPlace());
+							map.put("history_schedule_topic", schedule.getTopic());
+							map.put("history_schedule_unote", schedule.getUNote());
+							map.put("history_schedule_pnote", "  " + schedule.getPNote());
+							resultList.add(map);
+						}
 					}
 				}
 
@@ -101,37 +115,6 @@ public class HistorySchedule extends Activity {
 		@Override
 		protected void onPostExecute(String result) {
 			super.onPostExecute(result);
-
-			//测试数据，后面将会用resultList中的数据 TODO
-			Map<String, Object> map = new HashMap<>();
-			map.put("history_schedule_portrait", R.drawable.portrait_1);
-			map.put("history_schedule_name", "周汉辰");
-			map.put("history_schedule_time", "2016-12-07");
-			map.put("history_schedule_place", "上海交通大学");
-			map.put("history_schedule_topic", "XXX话题");
-			map.put("history_schedule_unote", "XXX 我的idea");
-			map.put("history_schedule_pnote", "  XXX Ta的idea");
-			resultList.add(map);
-
-			map = new HashMap<>();
-			map.put("history_schedule_portrait", R.drawable.portrait_2);
-			map.put("history_schedule_name", "沈佳梅");
-			map.put("history_schedule_time", "2016-12-07");
-			map.put("history_schedule_place", "上海交通大学");
-			map.put("history_schedule_topic", "XXX话题");
-			map.put("history_schedule_unote", "XXX 我的idea");
-			map.put("history_schedule_pnote", "  XXX Ta的idea");
-			resultList.add(map);
-
-			map = new HashMap<>();
-			map.put("history_schedule_portrait", R.drawable.portrait_2);
-			map.put("history_schedule_name", "曹雨婷");
-			map.put("history_schedule_time", "2016-12-07");
-			map.put("history_schedule_place", "上海交通大学");
-			map.put("history_schedule_topic", "XXX话题");
-			map.put("history_schedule_unote", "XXX 我的idea");
-			map.put("history_schedule_pnote", "  XXX Ta的idea");
-			resultList.add(map);
 
 			//将数据加载到ListView中
 			SimpleAdapter adapter = new SimpleAdapter(HistorySchedule.this, resultList,

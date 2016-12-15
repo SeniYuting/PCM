@@ -133,8 +133,8 @@ public class Schedule {
 						String uriAPI = mApp.getScheduleUrl();
 
 						try {
-							// TODO 修改partner_id
-							ScheduleEntity schedule = new ScheduleEntity(mApp.getUser().getId(), mApp.getUser().getId(), date, place, topic, uNote, pNote);
+							// TODO 修改partner_id, post不成功
+							ScheduleEntity schedule = new ScheduleEntity(mApp.getUser().getId().toString(), mApp.getUser().getId().toString(), date, place, topic, uNote, pNote);
 							String scheduleStr = new Gson().toJson(schedule);
 							HttpUtil.postRequest(uriAPI, scheduleStr);
 

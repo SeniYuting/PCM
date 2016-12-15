@@ -104,7 +104,8 @@ public class UserModifyActivity extends Activity {
 
 						user.setName(name);
 						user.setMobile(mobile);
-						user.setAddress("网络访问");
+						user.setGender(gender.equals("男")? 0 :1);
+						user.setAddress(address);
 
 						String userStr = new Gson().toJson(user);
 
@@ -135,7 +136,7 @@ public class UserModifyActivity extends Activity {
 		UserEntity user = mApp.getUser();
 
 		mName.setText(user.getName());
-		if(user.getGender()== "男") {
+		if(user.getGender()== 0) {
 			mGender.check(mFemale.getId());
 		} else {
 			mGender.check(mMale.getId());

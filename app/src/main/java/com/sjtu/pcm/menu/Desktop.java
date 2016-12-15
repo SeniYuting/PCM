@@ -257,9 +257,9 @@ public class Desktop {
 		mName.setText(mapp.getUser().getAccount());
 		mSig.setText("Welcome !");
 
-		if(mapp.getUser().getGender() == "男") {
+		if(mapp.getUser().getGender() == 0) {
 			mPortrait.setImageResource(R.drawable.portrait_1);
-		} else if(mapp.getUser().getGender()== "女"){
+		} else if(mapp.getUser().getGender()== 1){
 			mPortrait.setImageResource(R.drawable.portrait_2);
 		}
 

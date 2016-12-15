@@ -117,12 +117,12 @@ public class User {
 
 		mHead_Name.setText(user.getAccount());
 		mName.setText(user.getName());
-		mGender.setText(user.getGender());
+		mGender.setText(user.getGender().toString());
 
 		// 修改头像
-		if(user.getGender()== "男") {
+		if(user.getGender()== 0) {
 			mPortrait.setImageResource(R.drawable.portrait_1);
-		} else if(user.getGender()== "女"){
+		} else if(user.getGender()== 1){
 			mPortrait.setImageResource(R.drawable.portrait_2);
 		}
 
