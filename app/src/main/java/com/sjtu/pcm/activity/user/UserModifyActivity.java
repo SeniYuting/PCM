@@ -98,14 +98,13 @@ public class UserModifyActivity extends Activity {
 
 						UserEntity user = mApp.getUser();
 
-						String uriAPI = mApp.getUserUrl() + "?User.id=" + user.getId();
+						String uriAPI = mApp.getUserUrl() + user.getId();
 
 						Log.e("uriAPI", uriAPI);
 
 						user.setName(name);
-//						user.setGender(gender.equals("男") ? 0 : 1);
-//						user.setAddress(address);
-//						user.setMobile(mobile);
+						user.setMobile(mobile);
+						user.setAddress("网络访问");
 
 						String userStr = new Gson().toJson(user);
 
