@@ -97,10 +97,7 @@ public class UserModifyActivity extends Activity {
 						String mobile = mMobile.getText().toString();
 
 						UserEntity user = mApp.getUser();
-
 						String uriAPI = mApp.getUserUrl() + user.getId();
-
-						Log.e("uriAPI", uriAPI);
 
 						user.setName(name);
 						user.setMobile(mobile);
@@ -108,9 +105,6 @@ public class UserModifyActivity extends Activity {
 						user.setAddress(address);
 
 						String userStr = new Gson().toJson(user);
-
-						Log.e("userStr", userStr);
-
 						HttpUtil.putRequest(uriAPI, userStr);
 
 						// 更新User信息
@@ -123,8 +117,6 @@ public class UserModifyActivity extends Activity {
 
 				startActivity(new Intent(UserModifyActivity.this,
 						MainActivity.class));
-
-//				finish(); // 直接关闭该页面
 			}
 		});
 	}
@@ -136,7 +128,7 @@ public class UserModifyActivity extends Activity {
 		UserEntity user = mApp.getUser();
 
 		mName.setText(user.getName());
-		if(user.getGender()== 0) {
+		if(user.getGender()== 1) {
 			mGender.check(mFemale.getId());
 		} else {
 			mGender.check(mMale.getId());

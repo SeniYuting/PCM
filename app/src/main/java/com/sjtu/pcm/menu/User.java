@@ -117,7 +117,7 @@ public class User {
 
 		mHead_Name.setText(user.getAccount());
 		mName.setText(user.getName());
-		mGender.setText(user.getGender().toString());
+		mGender.setText(user.getGender()==0 ? "男" : "女");
 
 		// 修改头像
 		if(user.getGender()== 0) {
@@ -128,6 +128,8 @@ public class User {
 
 		mAddress.setText(user.getAddress());
 		mMobile.setText(user.getMobile());
+
+		// TODO
 		mTag.setText("tag");
 	}
 
