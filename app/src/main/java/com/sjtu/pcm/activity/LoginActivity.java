@@ -2,12 +2,14 @@ package com.sjtu.pcm.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.sjtu.pcm.MyApplication;
@@ -18,7 +20,6 @@ import com.sjtu.pcm.util.HttpUtil;
 /**
  * 登录界面
  */
-@SuppressWarnings("deprecation")
 public class LoginActivity extends Activity {
 
     // 登录
@@ -28,12 +29,14 @@ public class LoginActivity extends Activity {
     private TextView register;
 
     private MyApplication mApp;
+    private boolean isOK;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
 
         mApp = (MyApplication) getApplication();
+        isOK = false;
 
         findViewById();
         setListener();
@@ -57,42 +60,8 @@ public class LoginActivity extends Activity {
         mLogin.setOnClickListener(new OnClickListener() {
 
             public void onClick(View v) {
-                // 专门线程进行网络访问
-                new Thread() {
-
-                    @Override
-                    public void run() {
-                        String account = accountText.getText().toString();
-                        String password = passwordText.getText().toString();
-
-                        // 获取用户信息
-                        String uriAPI = mApp.getUserUrl() + "?User.account=" + account;
-
-                        try {
-
-                            String result_array = HttpUtil.getRequest(uriAPI);
-                            if (result_array != null){
-                                UserList userList = new Gson().fromJson(result_array, UserList.class);
-
-                                if (userList!= null && userList.getUser()!= null && userList.getUser().size()> 0
-                                &&  userList.getUser().get(0).getPassword().equals(password)) {
-
-                                    mApp.setUser(userList.getUser().get(0));
-
-                                    startActivity(new Intent(LoginActivity.this,
-                                            MainActivity.class));
-
-                                    finish();
-                                }
-                            }
-
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-
-                    }
-                }.start();
-
+                String account = accountText.getText().toString();
+                new RMPHelper().execute(mApp.getUserUrl() + "?User.account=" + account);
             }
         });
         // 注册按钮监听
@@ -113,4 +82,44 @@ public class LoginActivity extends Activity {
         android.os.Process.killProcess(android.os.Process.myPid());
         System.exit(0);
     }
+
+    class RMPHelper extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected String doInBackground(String... uriAPI) {
+
+            String password = passwordText.getText().toString();
+
+            String result_array = HttpUtil.getRequest(uriAPI[0]);
+            if (result_array != null){
+                UserList userList = new Gson().fromJson(result_array, UserList.class);
+
+                if (userList!= null && userList.getUser()!= null && userList.getUser().size()> 0
+                        &&  userList.getUser().get(0).getPassword().equals(password)) {
+
+                    isOK = true;
+
+                    mApp.setUser(userList.getUser().get(0));
+                    startActivity(new Intent(LoginActivity.this,
+                            MainActivity.class));
+                    finish();
+                }
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+
+            if(isOK) {
+                Toast.makeText(LoginActivity.this, "登录成功, Welcome!", 2000).show();
+            } else {
+                Toast.makeText(LoginActivity.this, "用户名或密码错误!", 2000).show();
+            }
+
+        }
+    }
+
 }

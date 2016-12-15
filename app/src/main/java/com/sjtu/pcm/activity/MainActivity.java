@@ -170,7 +170,7 @@ public class MainActivity extends Activity implements OnOpenListener {
 	 */
 	private void exit() {
 		if (System.currentTimeMillis() - mExitTime > INTERVAL) {
-			Toast.makeText(this, "再按一次返回键,可直接退出程序", Toast.LENGTH_SHORT).show();
+			Toast.makeText(this, "再按一次返回键,可直接退出程序!", Toast.LENGTH_SHORT).show();
 			mExitTime = System.currentTimeMillis();
 		} else {
 			finish();

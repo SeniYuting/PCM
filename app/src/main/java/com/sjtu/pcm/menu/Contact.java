@@ -3,6 +3,7 @@ package com.sjtu.pcm.menu;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.os.AsyncTask;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.sjtu.pcm.MyApplication;
@@ -27,6 +29,7 @@ import com.sjtu.pcm.util.HttpUtil;
  */
 @SuppressWarnings("ALL")
 public class Contact {
+	private Context mContext;
 	// 当前界面的View
 	private View mHome;
 	// 布局控件
@@ -42,6 +45,7 @@ public class Contact {
 
 	@SuppressLint("InflateParams")
 	public Contact(Context context, Activity activity) {
+		mContext = context;
 		// 绑定布局到当前View
 		mHome = LayoutInflater.from(context).inflate(R.layout.contact, null);
 
@@ -80,47 +84,7 @@ public class Contact {
 		mSubmit.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-
-				// 专门线程进行网络访问
-				new Thread() {
-					@Override
-					public void run() {
-
-						RadioButton starButton = (RadioButton) mHome.findViewById(mStar.getCheckedRadioButtonId());
-						String star = starButton.getText().toString();
-						int starNum = -1;
-						switch(star) {
-							case "优":
-								starNum = 0;
-								break;
-							case "中":
-								starNum = 1;
-								break;
-							case "差":
-								starNum = 2;
-								break;
-							default:
-						}
-
-						String content = mComment.getText().toString();
-
-						Log.i("user_id", mApp.getUser().getId().toString());
-						Log.i("star", star);
-						Log.i("content", content);
-
-						String uriAPI = mApp.getCommentUrl();
-						try {
-
-							CommentEntity comment = new CommentEntity(mApp.getUser().getId().toString(), starNum+"", content);
-							String commentStr = new Gson().toJson(comment);
-							HttpUtil.postRequest(uriAPI, commentStr);
-
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
-
-					}
-				}.start();
+				new RMPHelper().execute(mApp.getCommentUrl());
 
 			}
 		});
@@ -143,6 +107,47 @@ public class Contact {
 	 */
 	public View getView() {
 		return mHome;
+	}
+
+	class RMPHelper extends AsyncTask<String, Void, String> {
+
+		@Override
+		protected String doInBackground(String... uriAPI) {
+
+			RadioButton starButton = (RadioButton) mHome.findViewById(mStar.getCheckedRadioButtonId());
+			String star = starButton.getText().toString();
+			int starNum = -1;
+			switch(star) {
+				case "优":
+					starNum = 0;
+					break;
+				case "中":
+					starNum = 1;
+					break;
+				case "差":
+					starNum = 2;
+					break;
+				default:
+			}
+
+			String content = mComment.getText().toString();
+
+			Log.i("user_id", mApp.getUser().getId().toString());
+			Log.i("star", star);
+			Log.i("content", content);
+
+			CommentEntity comment = new CommentEntity(mApp.getUser().getId(), content, starNum);
+			String commentStr = new Gson().toJson(comment);
+			HttpUtil.postRequest(uriAPI[0], commentStr);
+
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(String result) {
+			super.onPostExecute(result);
+			Toast.makeText(mContext, "提交成功!", 2000).show();
+		}
 	}
 
 }
