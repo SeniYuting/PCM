@@ -117,13 +117,15 @@ public class User {
 
 		mHead_Name.setText(user.getAccount());
 		mName.setText(user.getName());
-		mGender.setText(user.getGender()==0 ? "男" : "女");
+		mGender.setText(user.getGender()==null ? "" : (user.getGender()==0 ? "男" : "女"));
 
-		// 修改头像
-		if(user.getGender()== 0) {
-			mPortrait.setImageResource(R.drawable.portrait_1);
-		} else if(user.getGender()== 1){
-			mPortrait.setImageResource(R.drawable.portrait_2);
+		// 头像
+		if(user.getGender()!=null) {
+			if(user.getGender()== 0) {
+				mPortrait.setImageResource(R.drawable.portrait_1);
+			} else if(user.getGender()== 1){
+				mPortrait.setImageResource(R.drawable.portrait_2);
+			}
 		}
 
 		mAddress.setText(user.getAddress());

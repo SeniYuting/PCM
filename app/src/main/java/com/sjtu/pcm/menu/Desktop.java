@@ -257,10 +257,12 @@ public class Desktop {
 		mName.setText(mapp.getUser().getAccount());
 		mSig.setText("Welcome !");
 
-		if(mapp.getUser().getGender() == 0) {
-			mPortrait.setImageResource(R.drawable.portrait_1);
-		} else if(mapp.getUser().getGender()== 1){
-			mPortrait.setImageResource(R.drawable.portrait_2);
+		if(mapp.getUser().getGender()!=null) {
+			if(mapp.getUser().getGender() == 0) {
+				mPortrait.setImageResource(R.drawable.portrait_1);
+			} else if(mapp.getUser().getGender()== 1){
+				mPortrait.setImageResource(R.drawable.portrait_2);
+			}
 		}
 
 		mAdapter = new DesktopAdapter(mContext);

@@ -128,7 +128,7 @@ public class UserModifyActivity extends Activity {
 		UserEntity user = mApp.getUser();
 
 		mName.setText(user.getName());
-		if(user.getGender()== 1) {
+		if(user.getGender()!=null && user.getGender()== 1) {
 			mGender.check(mFemale.getId());
 		} else {
 			mGender.check(mMale.getId());
