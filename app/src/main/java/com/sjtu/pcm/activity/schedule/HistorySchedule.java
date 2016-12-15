@@ -29,7 +29,6 @@ import java.util.Map;
  * Created by SeniYuting on 2016/12/7.
  */
 
-@SuppressWarnings({ "unused", "deprecation" })
 public class HistorySchedule extends Activity {
 	private Button mBack;
 
@@ -76,37 +75,31 @@ public class HistorySchedule extends Activity {
 		protected String doInBackground(String... uriAPI) {
 
 			Log.e("url", uriAPI[0]);
+			// 获取排程信息
+			String result_array = HttpUtil.getRequest(uriAPI[0]);
+			if (result_array != null){
+				ScheduleList scheduleList = new Gson().fromJson(result_array, ScheduleList.class);
 
-			try {
-				// 获取排程信息
-				String result_array = HttpUtil.getRequest(uriAPI[0]);
-				if (result_array != null){
-					ScheduleList scheduleList = new Gson().fromJson(result_array, ScheduleList.class);
+				if (scheduleList!= null && scheduleList.getSchedule()!= null
+						&& scheduleList.getSchedule().size()> 0) {
 
-					if (scheduleList!= null && scheduleList.getSchedule()!= null
-							&& scheduleList.getSchedule().size()> 0) {
+					Map<String, Object> map;
 
-						Map<String, Object> map;
+					for(int i=0; i<scheduleList.getSchedule().size(); i++) {
 
-						for(int i=0; i<scheduleList.getSchedule().size(); i++) {
+						ScheduleEntity schedule = scheduleList.getSchedule().get(i);
 
-							ScheduleEntity schedule = scheduleList.getSchedule().get(i);
-
-							map = new HashMap<>();
-							map.put("history_schedule_portrait", R.drawable.portrait_1);
-							map.put("history_schedule_name", "周汉辰");
-							map.put("history_schedule_time", schedule.getDate());
-							map.put("history_schedule_place", schedule.getPlace());
-							map.put("history_schedule_topic", schedule.getTopic());
-							map.put("history_schedule_unote", schedule.getUNote());
-							map.put("history_schedule_pnote", "  " + schedule.getPNote());
-							resultList.add(map);
-						}
+						map = new HashMap<>();
+						map.put("history_schedule_portrait", R.drawable.portrait_1);
+						map.put("history_schedule_name", "周汉辰");
+						map.put("history_schedule_time", schedule.getDate());
+						map.put("history_schedule_place", schedule.getPlace());
+						map.put("history_schedule_topic", schedule.getTopic());
+						map.put("history_schedule_unote", schedule.getUser_note());
+						map.put("history_schedule_pnote", "  " + schedule.getPartner_note());
+						resultList.add(map);
 					}
 				}
-
-			} catch (Exception e) {
-				e.printStackTrace();
 			}
 
 			return null;

@@ -2,8 +2,8 @@ package com.sjtu.pcm.activity.user;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -11,6 +11,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.sjtu.pcm.MyApplication;
@@ -19,14 +20,11 @@ import com.sjtu.pcm.activity.MainActivity;
 import com.sjtu.pcm.entity.UserEntity;
 import com.sjtu.pcm.util.HttpUtil;
 
-import java.util.ArrayList;
-
 /**
  * 修改个人信息类
  *
  *
  */
-@SuppressWarnings({ "unused", "deprecation" })
 public class UserModifyActivity extends Activity {
 	private Button mCancel;
 	private Button mSave;
@@ -41,13 +39,14 @@ public class UserModifyActivity extends Activity {
 	private CheckBox mTag3;
 
 	private MyApplication mApp;
-	private ArrayList<String> resultList = new ArrayList<>();
+	private UserEntity user;
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.user_modify);
 
 		mApp = (MyApplication) getApplication();
+		user = mApp.getUser();
 
 		findViewById();
 		setListener();
@@ -83,50 +82,13 @@ public class UserModifyActivity extends Activity {
 
 			public void onClick(View v) {
 				// 保存修改结果
-				// 专门线程进行网络访问
-				new Thread() {
-					@Override
-					public void run() {
-
-						String name = mName.getText().toString();
-
-						RadioButton genderButton = (RadioButton) findViewById(mGender.getCheckedRadioButtonId());
-						String gender = genderButton.getText().toString();
-
-						String address = mAddress.getText().toString();
-						String mobile = mMobile.getText().toString();
-
-						UserEntity user = mApp.getUser();
-						String uriAPI = mApp.getUserUrl() + user.getId();
-
-						user.setName(name);
-						user.setMobile(mobile);
-						user.setGender(gender.equals("男")? 0 :1);
-						user.setAddress(address);
-
-						String userStr = new Gson().toJson(user);
-						HttpUtil.putRequest(uriAPI, userStr);
-
-						// 更新User信息
-						mApp.setUser(user);
-
-					}
-				}.start();
-
-				setResult(RESULT_OK);
-
-				startActivity(new Intent(UserModifyActivity.this,
-						MainActivity.class));
+				new RMPHelper().execute(mApp.getUserUrl() + user.getId());
 			}
 		});
 	}
 
 	private void init() {
 		// 初始化用户信息
-		Log.i("user_id", mApp.getUser().getId() + "");
-
-		UserEntity user = mApp.getUser();
-
 		mName.setText(user.getName());
 		if(user.getGender()!=null && user.getGender()== 1) {
 			mGender.check(mFemale.getId());
@@ -136,6 +98,44 @@ public class UserModifyActivity extends Activity {
 
 		mAddress.setText(user.getAddress());
 		mMobile.setText(user.getMobile());
+	}
+
+	class RMPHelper extends AsyncTask<String, Void, String> {
+
+		@Override
+		protected String doInBackground(String... uriAPI) {
+
+			String name = mName.getText().toString();
+
+			RadioButton genderButton = (RadioButton) findViewById(mGender.getCheckedRadioButtonId());
+			String gender = genderButton.getText().toString();
+
+			String address = mAddress.getText().toString();
+			String mobile = mMobile.getText().toString();
+
+			user.setName(name);
+			user.setMobile(mobile);
+			user.setGender(gender.equals("男")? 0 :1);
+			user.setAddress(address);
+
+			String userStr = new Gson().toJson(user);
+			HttpUtil.putRequest(uriAPI[0], userStr);
+
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(String result) {
+			super.onPostExecute(result);
+			// 更新User信息
+			mApp.setUser(user);
+
+			Toast.makeText(UserModifyActivity.this, "提交成功!", 2000).show();
+
+			setResult(RESULT_OK);
+			startActivity(new Intent(UserModifyActivity.this,
+					MainActivity.class));
+		}
 	}
 
 }

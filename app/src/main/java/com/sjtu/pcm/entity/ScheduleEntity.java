@@ -5,46 +5,46 @@ package com.sjtu.pcm.entity;
  */
 
 public class ScheduleEntity {
-    String id;
-    String suer_id;
-    String partner_id;
+    Long id;
+    Long suer_id;
+    Long partner_id;
     String date;
     String place;
     String topic;
-    String uNote;
-    String pNote;
+    String user_note;
+    String partner_note;
 
-    public ScheduleEntity(String suer_id, String partner_id, String date, String place, String topic, String uNote, String pNote) {
+    public ScheduleEntity(Long suer_id, Long partner_id, String date, String place, String topic, String user_note, String partner_note) {
         this.suer_id = suer_id;
         this.partner_id = partner_id;
         this.date = date;
         this.place = place;
         this.topic = topic;
-        this.uNote = uNote;
-        this.pNote = pNote;
+        this.user_note = user_note;
+        this.partner_note = partner_note;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public String getSuer_id() {
+    public Long getSuer_id() {
         return suer_id;
     }
 
-    public void setSuer_id(String suer_id) {
+    public void setSuer_id(Long suer_id) {
         this.suer_id = suer_id;
     }
 
-    public String getPartner_id() {
+    public Long getPartner_id() {
         return partner_id;
     }
 
-    public void setPartner_id(String partner_id) {
+    public void setPartner_id(Long partner_id) {
         this.partner_id = partner_id;
     }
 
@@ -72,19 +72,19 @@ public class ScheduleEntity {
         this.topic = topic;
     }
 
-    public String getUNote() {
-        return uNote;
+    public String getUser_note() {
+        return user_note;
     }
 
-    public void setUNote(String uNote) {
-        this.uNote = uNote;
+    public void setUser_note(String uNote) {
+        this.user_note = user_note;
     }
 
-    public String getPNote() {
-        return pNote;
+    public String getPartner_note() {
+        return partner_note;
     }
 
-    public void setPNote(String pNote) {
-        this.pNote = pNote;
+    public void setPartner_note(String pNote) {
+        this.partner_note = partner_note;
     }
 }
