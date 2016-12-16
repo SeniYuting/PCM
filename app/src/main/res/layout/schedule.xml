@@ -91,6 +91,17 @@
                 android:background="@drawable/title_text_button"
                 android:entries="@array/friends" />
 
+            <TextView
+                android:id="@+id/schedule_no_friend"
+                android:layout_width="wrap_content"
+                android:layout_height="30dip"
+                android:layout_marginLeft="8dip"
+                android:gravity="center_vertical"
+                android:text="没有好友不能进行人脉排程"
+                android:visibility="invisible"
+                android:textColor="#FF0000"
+                android:textSize="14sp" />
+
         </LinearLayout>
 
         <LinearLayout

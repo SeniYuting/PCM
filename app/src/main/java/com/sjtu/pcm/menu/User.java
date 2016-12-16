@@ -126,6 +126,8 @@ public class User {
 			} else if(user.getGender()== 1){
 				mPortrait.setImageResource(R.drawable.portrait_2);
 			}
+		} else {
+			mPortrait.setImageResource(R.drawable.portrait_3);
 		}
 
 		mAddress.setText(user.getAddress());

@@ -2,6 +2,7 @@ package com.sjtu.pcm.menu;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.graphics.Color;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -23,8 +24,9 @@ import com.sjtu.pcm.R;
 import com.sjtu.pcm.activity.schedule.HistorySchedule;
 import com.sjtu.pcm.anim.MyViewGroup.OnOpenListener;
 import com.sjtu.pcm.entity.CardExchangeEntity;
-import com.sjtu.pcm.entity.ScheduleEntity;
 import com.sjtu.pcm.entity.CardExchangeList;
+import com.sjtu.pcm.entity.ScheduleEntity;
+import com.sjtu.pcm.entity.UserList;
 import com.sjtu.pcm.util.HttpUtil;
 
 import java.util.ArrayList;
@@ -44,6 +46,7 @@ public class Schedule {
 	private Button mHistory;
 
 	private Spinner mPartner;
+	private TextView mNofriend;
 	private DatePicker mDate;
 	private EditText mPlace;
 	private EditText mTopic;
@@ -56,7 +59,8 @@ public class Schedule {
 
 	private TextView mTopText;
 
-	ArrayList<String> friend_list = new ArrayList<>();
+	ArrayList<String> friend_list = new ArrayList<>();  // 好友姓名信息
+	ArrayList<Long> friend_id_list = new ArrayList<>();  // 好友ID信息
 
 	@SuppressLint("InflateParams")
 	public Schedule(Context context, Activity activity) {
@@ -80,6 +84,7 @@ public class Schedule {
 		mHistory = (Button) mHome.findViewById(R.id.schedule_history);
 
 		mPartner = (Spinner) mHome.findViewById(R.id.schedule_friend);
+		mNofriend = (TextView) mHome.findViewById(R.id.schedule_no_friend);
 		mDate = (DatePicker) mHome.findViewById(R.id.schedule_date);
 		mPlace = (EditText) mHome.findViewById(R.id.schedule_place);
 		mTopic = (EditText) mHome.findViewById(R.id.schedule_topic);
@@ -127,7 +132,8 @@ public class Schedule {
 		mTopText.setText("人脉排程");
 
 		new RMPPartnerHelper().execute(mApp.getCardExchangeUrl() + "?Card_exchange.send_user_id=" + mApp.getUser().getId(),
-				mApp.getCardExchangeUrl() + "?Card_exchange.receive_user_id=" + mApp.getUser().getId());
+				mApp.getCardExchangeUrl() + "?Card_exchange.receive_user_id=" + mApp.getUser().getId(),
+				mApp.getUserUrl());
 
 	}
 
@@ -148,10 +154,6 @@ public class Schedule {
 		@Override
 		protected String doInBackground(String... uriAPI) {
 
-			Log.e("url", uriAPI[0]);
-
-			// TODO 改为获取partner姓名信息
-
 			String receive_array = HttpUtil.getRequest(uriAPI[0]);
 			if (receive_array != null){
 				CardExchangeList ceList1 = new Gson().fromJson(receive_array, CardExchangeList.class);
@@ -161,10 +163,20 @@ public class Schedule {
 					for(int i=0; i<ceList1.getCard_exchange().size(); i++) {
 
 						CardExchangeEntity ceEntity1 = ceList1.getCard_exchange().get(i);
-						String partner_id1 = ceEntity1.getReceive_user_id().toString();
+						Long partner_id1 = ceEntity1.getReceive_user_id();
 
-						if(!friend_list.contains(partner_id1)) {
-							friend_list.add(partner_id1);
+						if(!friend_id_list.contains(partner_id1)) {
+
+							// 获得好友姓名
+							String result_array1 = HttpUtil.getRequest(uriAPI[2] + "?User.id=" + partner_id1);
+							if (result_array1 != null){
+								UserList userList = new Gson().fromJson(result_array1, UserList.class);
+								if (userList!= null && userList.getUser()!= null && userList.getUser().size()> 0) {
+									friend_id_list.add(partner_id1);
+									friend_list.add(userList.getUser().get(0).getAccount());
+								}
+							}
+
 						}
 					}
 
@@ -180,10 +192,20 @@ public class Schedule {
 					for(int i=0; i<ceList2.getCard_exchange().size(); i++) {
 
 						CardExchangeEntity ceEntity2 = ceList2.getCard_exchange().get(i);
-						String partner_id2 = ceEntity2.getReceive_user_id().toString();
+						Long partner_id2 = ceEntity2.getReceive_user_id();
 
-						if(!friend_list.contains(partner_id2)) {
-							friend_list.add(partner_id2);
+						if(!friend_id_list.contains(partner_id2)) {
+
+							// 获得好友姓名
+							String result_array2 = HttpUtil.getRequest(uriAPI[2] + "?User.id=" + partner_id2);
+							if (result_array2 != null){
+								UserList userList = new Gson().fromJson(result_array2, UserList.class);
+								if (userList!= null && userList.getUser()!= null && userList.getUser().size()> 0) {
+									friend_id_list.add(partner_id2);
+									friend_list.add(userList.getUser().get(0).getAccount());
+								}
+							}
+
 						}
 					}
 
@@ -202,6 +224,14 @@ public class Schedule {
 			arr_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 			//加载适配器
 			mPartner.setAdapter(arr_adapter);
+
+			if(friend_id_list.size()==0) {
+				// 没有好友，不能进行人脉排程
+				mPartner.setVisibility(View.INVISIBLE);
+				mNofriend.setVisibility(View.VISIBLE);
+				mSubmit.setClickable(false);
+				mSubmit.setBackgroundColor(Color.parseColor("#B0B0B0"));
+			}
 		}
 	}
 
@@ -210,15 +240,16 @@ public class Schedule {
 		@Override
 		protected String doInBackground(String... uriAPI) {
 
-			String partner = (String)mPartner.getSelectedItem();
+//			String partner = (String)mPartner.getSelectedItem();
+			Long partner_id = friend_id_list.get(mPartner.getSelectedItemPosition());
 			String date = mDate.getYear() + "-" + mDate.getMonth() + "-" + mDate.getDayOfMonth();
 			String place = mPlace.getText().toString();
 			String topic = mTopic.getText().toString();
 			String uNote = mUNote.getText().toString();
 			String pNote = mPNote.getText().toString();
 
+			Log.i("selected_item_pos", mPartner.getSelectedItemPosition()+"");
 			Log.i("user_id", mApp.getUser().getId() + "");
-			Log.i("partner", partner);
 			Log.i("date", date);
 			Log.i("place", place);
 			Log.i("topic", topic);
@@ -226,7 +257,7 @@ public class Schedule {
 			Log.i("pNote", pNote);
 
 			// 保存人脉排程信息
-			ScheduleEntity schedule = new ScheduleEntity(mApp.getUser().getId(), Long.parseLong(partner), date, place, topic, uNote, pNote);
+			ScheduleEntity schedule = new ScheduleEntity(mApp.getUser().getId(), partner_id, date, place, topic, uNote, pNote);
 			String scheduleStr = new Gson().toJson(schedule);
 			HttpUtil.postRequest(uriAPI[0], scheduleStr);
 

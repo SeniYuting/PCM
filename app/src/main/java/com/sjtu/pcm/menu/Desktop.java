@@ -263,6 +263,8 @@ public class Desktop {
 			} else if(mapp.getUser().getGender()== 1){
 				mPortrait.setImageResource(R.drawable.portrait_2);
 			}
+		} else {
+			mPortrait.setImageResource(R.drawable.portrait_3);
 		}
 
 		mAdapter = new DesktopAdapter(mContext);
