@@ -22,8 +22,9 @@ import com.sjtu.pcm.MyApplication;
 import com.sjtu.pcm.R;
 import com.sjtu.pcm.activity.schedule.HistorySchedule;
 import com.sjtu.pcm.anim.MyViewGroup.OnOpenListener;
+import com.sjtu.pcm.entity.CardExchangeEntity;
 import com.sjtu.pcm.entity.ScheduleEntity;
-import com.sjtu.pcm.entity.UserList;
+import com.sjtu.pcm.entity.CardExchangeList;
 import com.sjtu.pcm.util.HttpUtil;
 
 import java.util.ArrayList;
@@ -125,7 +126,8 @@ public class Schedule {
 	private void init() {
 		mTopText.setText("人脉排程");
 
-		new RMPUserHelper().execute(mApp.getUserUrl());
+		new RMPPartnerHelper().execute(mApp.getCardExchangeUrl() + "?Card_exchange.send_user_id=" + mApp.getUser().getId(),
+				mApp.getCardExchangeUrl() + "?Card_exchange.receive_user_id=" + mApp.getUser().getId());
 
 	}
 
@@ -141,23 +143,48 @@ public class Schedule {
 		return mHome;
 	}
 
-	class RMPUserHelper extends AsyncTask<String, Void, String> {
+	class RMPPartnerHelper extends AsyncTask<String, Void, String> {
 
 		@Override
 		protected String doInBackground(String... uriAPI) {
 
 			Log.e("url", uriAPI[0]);
 
-			// TODO 改为获取partner信息
+			// TODO 改为获取partner姓名信息
 
-			String result_array = HttpUtil.getRequest(uriAPI[0]);
-			if (result_array != null){
-				UserList userList = new Gson().fromJson(result_array, UserList.class);
+			String receive_array = HttpUtil.getRequest(uriAPI[0]);
+			if (receive_array != null){
+				CardExchangeList ceList1 = new Gson().fromJson(receive_array, CardExchangeList.class);
 
-				if (userList!= null && userList.getUser()!= null && userList.getUser().size()> 0) {
+				if (ceList1!= null && ceList1.getCard_exchange()!= null && ceList1.getCard_exchange().size()> 0) {
 
-					for(int i=0; i<userList.getUser().size(); i++) {
-						friend_list.add(userList.getUser().get(i).getAccount());
+					for(int i=0; i<ceList1.getCard_exchange().size(); i++) {
+
+						CardExchangeEntity ceEntity1 = ceList1.getCard_exchange().get(i);
+						String partner_id1 = ceEntity1.getReceive_user_id().toString();
+
+						if(!friend_list.contains(partner_id1)) {
+							friend_list.add(partner_id1);
+						}
+					}
+
+				}
+			}
+
+			String send_array = HttpUtil.getRequest(uriAPI[1]);
+			if (send_array != null){
+				CardExchangeList ceList2 = new Gson().fromJson(send_array, CardExchangeList.class);
+
+				if (ceList2!= null && ceList2.getCard_exchange()!= null && ceList2.getCard_exchange().size()> 0) {
+
+					for(int i=0; i<ceList2.getCard_exchange().size(); i++) {
+
+						CardExchangeEntity ceEntity2 = ceList2.getCard_exchange().get(i);
+						String partner_id2 = ceEntity2.getReceive_user_id().toString();
+
+						if(!friend_list.contains(partner_id2)) {
+							friend_list.add(partner_id2);
+						}
 					}
 
 				}
@@ -199,8 +226,7 @@ public class Schedule {
 			Log.i("pNote", pNote);
 
 			// 保存人脉排程信息
-			// TODO 修改partner_id
-			ScheduleEntity schedule = new ScheduleEntity(mApp.getUser().getId(), mApp.getUser().getId(), date, place, topic, uNote, pNote);
+			ScheduleEntity schedule = new ScheduleEntity(mApp.getUser().getId(), Long.parseLong(partner), date, place, topic, uNote, pNote);
 			String scheduleStr = new Gson().toJson(schedule);
 			HttpUtil.postRequest(uriAPI[0], scheduleStr);
 

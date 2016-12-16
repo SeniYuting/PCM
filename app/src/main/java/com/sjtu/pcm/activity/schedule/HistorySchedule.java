@@ -3,6 +3,7 @@ package com.sjtu.pcm.activity.schedule;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,6 +19,8 @@ import com.sjtu.pcm.MyApplication;
 import com.sjtu.pcm.R;
 import com.sjtu.pcm.entity.ScheduleEntity;
 import com.sjtu.pcm.entity.ScheduleList;
+import com.sjtu.pcm.entity.UserEntity;
+import com.sjtu.pcm.entity.UserList;
 import com.sjtu.pcm.util.HttpUtil;
 
 import java.util.ArrayList;
@@ -65,7 +68,7 @@ public class HistorySchedule extends Activity {
 	private void init() {
 		// 初始化用户信息
 		Log.i("user_id", mApp.getUser().getId() + "");
-		new RMPHelper().execute(mApp.getScheduleUrl() + "?Schedule.suer_id=" + mApp.getUser().getId());
+		new RMPHelper().execute(mApp.getScheduleUrl() + "?Schedule.suer_id=" + mApp.getUser().getId(), mApp.getUserUrl());
 
 	}
 
@@ -89,15 +92,34 @@ public class HistorySchedule extends Activity {
 
 						ScheduleEntity schedule = scheduleList.getSchedule().get(i);
 
-						map = new HashMap<>();
-						map.put("history_schedule_portrait", R.drawable.portrait_1);
-						map.put("history_schedule_name", "周汉辰");
-						map.put("history_schedule_time", schedule.getDate());
-						map.put("history_schedule_place", schedule.getPlace());
-						map.put("history_schedule_topic", schedule.getTopic());
-						map.put("history_schedule_unote", schedule.getUser_note());
-						map.put("history_schedule_pnote", "  " + schedule.getPartner_note());
-						resultList.add(map);
+						// 获取partner信息
+						String user_array = HttpUtil.getRequest(uriAPI[1] + "?User.id=" + schedule.getPartner_id());
+						if (user_array != null) {
+							UserList userList = new Gson().fromJson(user_array, UserList.class);
+
+							if (userList != null && userList.getUser() != null && userList.getUser().size() > 0) {
+
+								map = new HashMap<>();
+								UserEntity partner = userList.getUser().get(0);
+
+								if(partner.getGender() == null)
+									map.put("history_schedule_portrait", R.drawable.portrait_3);
+								else if(partner.getGender() == 0)
+									map.put("history_schedule_portrait", R.drawable.portrait_1);
+								else if(partner.getGender() == 1)
+									map.put("history_schedule_portrait", R.drawable.portrait_2);
+
+								map.put("history_schedule_name", partner.getName());
+								map.put("history_schedule_time", schedule.getDate());
+								map.put("history_schedule_place", schedule.getPlace());
+								map.put("history_schedule_topic", schedule.getTopic());
+								map.put("history_schedule_unote", schedule.getUser_note());
+								map.put("history_schedule_pnote", "  " + schedule.getPartner_note());
+								map.put("history_schedule_id", schedule.getId());
+								resultList.add(map);
+
+							}
+						}
 					}
 				}
 			}
@@ -114,11 +136,11 @@ public class HistorySchedule extends Activity {
 					R.layout.history_schedule_item,
 					new String[]{"history_schedule_portrait", "history_schedule_name", "history_schedule_time",
 							"history_schedule_place", "history_schedule_topic", "history_schedule_unote",
-							"history_schedule_pnote"
+							"history_schedule_pnote", "history_schedule_id"
 					},
 					new int[]{R.id.history_schedule_portrait, R.id.history_schedule_name, R.id.history_schedule_time,
 							R.id.history_schedule_place, R.id.history_schedule_topic, R.id.history_schedule_unote,
-							R.id.history_schedule_pnote
+							R.id.history_schedule_pnote, R.id.history_schedule_id
 					}
 			){
 				// item 响应事件
@@ -138,8 +160,19 @@ public class HistorySchedule extends Activity {
 
 										@Override
 										public void onClick(DialogInterface dialog, int which) {
-											// 点击“确认”后删除该用户 TODO
-											Log.i("history_schedule_name", resultList.get(p).get("history_schedule_name")+"");
+											// 点击“确认”后删除该用户
+											Log.i("history_schedule_id", resultList.get(p).get("history_schedule_id")+"");
+
+											new Thread(){
+												@Override
+												public void run() {
+
+													ScheduleEntity scheduleEntity = new ScheduleEntity(new Long(0), new Long(0), "", "", "", "", "");
+													String uriDeleteAPI = mApp.getScheduleUrl() + resultList.get(p).get("history_schedule_id");
+													HttpUtil.putRequest(uriDeleteAPI, new Gson().toJson(scheduleEntity));
+													startActivity(new Intent(HistorySchedule.this, HistorySchedule.class));
+												}
+											}.start();
 
 										}
 									})
@@ -156,7 +189,6 @@ public class HistorySchedule extends Activity {
 				}
 			};
 			shListView.setAdapter(adapter);
-
 		}
 	}
 
