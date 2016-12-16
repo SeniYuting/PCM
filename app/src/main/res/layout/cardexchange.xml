@@ -58,6 +58,15 @@
 
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/card_exchange_middle_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="还没有人给你发送名片哦"
+            android:textSize="20sp"
+            android:gravity="center"
+            ></TextView>
+
         <ListView
             android:id="@+id/card_exchange_list_view"
             android:layout_width="match_parent"

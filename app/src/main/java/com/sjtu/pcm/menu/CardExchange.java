@@ -44,7 +44,7 @@ public class CardExchange {
     private Button mMenu;
     private Button cESend;
     private ListView cEListView;
-
+    private TextView cETextView;
 
     private MyApplication mApp;
     private OnOpenListener mOnOpenListener;
@@ -74,6 +74,7 @@ public class CardExchange {
         mTopText = (TextView) mHome.findViewById(R.id.top_text);
         cEListView = (ListView) mHome.findViewById(R.id.card_exchange_list_view);
         cESend = (Button) mHome.findViewById(R.id.card_exchange_send);
+        cETextView = (TextView) mHome.findViewById(R.id.card_exchange_middle_text);
     }
 
     /**
@@ -205,11 +206,13 @@ public class CardExchange {
 //            map.put("card_exchange_list_view_user_id", "3");
 //            resultList.add(map);
 
-            //将数据加载到ListView中
-            SimpleAdapter adapter = new SimpleAdapter(cEContext, resultList, R.layout.cardexchange_listview_item, new String[]{"card_exchange_list_view_portrait", "card_exchange_list_view_name"}, new int[]{R.id.card_exchange_list_view_portrait,R.id.card_exchange_list_view_name});
-            cEListView.setAdapter(adapter);
+            if(resultList.size() != 0){
+                cETextView.setVisibility(View.GONE);
+                //将数据加载到ListView中
+                SimpleAdapter adapter = new SimpleAdapter(cEContext, resultList, R.layout.cardexchange_listview_item, new String[]{"card_exchange_list_view_portrait", "card_exchange_list_view_name"}, new int[]{R.id.card_exchange_list_view_portrait,R.id.card_exchange_list_view_name});
+                cEListView.setAdapter(adapter);
+            }
         }
-
 
     }
 

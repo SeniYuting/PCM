@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.sjtu.pcm.MyApplication;
@@ -94,23 +95,7 @@ public class FriendCardView extends Activity {
 
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-
-                                new Thread(){
-                                    @Override
-                                    public void run() {
-                                        CardExchangeEntity cardExchangeEntity = new CardExchangeEntity(new Long(0),new Long(0),"");
-
-                                        String uriAPI = mApp.getCardExchangeUrl() + recordId;
-
-                                        Log.e("card put", new Gson().toJson(cardExchangeEntity).toString());
-
-                                        HttpUtil.putRequest(uriAPI, new Gson().toJson(cardExchangeEntity));
-
-                                        startActivity(new Intent(FriendCardView.this,
-                                                MainActivity.class));
-                                    }
-                                }.start();
-
+                                new CardDeletHelper().execute();
                             }
                         })
                         .setNegativeButton("返回", new DialogInterface.OnClickListener() {
@@ -178,4 +163,30 @@ public class FriendCardView extends Activity {
         }
     }
 
+    class CardDeletHelper extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected String doInBackground(String... s) {
+
+            CardExchangeEntity cardExchangeEntity = new CardExchangeEntity(new Long(0),new Long(0),"");
+
+            String uriAPI = mApp.getCardExchangeUrl() + recordId;
+
+            Log.e("card put", new Gson().toJson(cardExchangeEntity).toString());
+
+            HttpUtil.putRequest(uriAPI, new Gson().toJson(cardExchangeEntity));
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+
+            Toast.makeText(FriendCardView.this, "删除成功!", Toast.LENGTH_LONG).show();
+            startActivity(new Intent(FriendCardView.this,
+                    MainActivity.class));
+            finish();
+        }
+    }
 }
