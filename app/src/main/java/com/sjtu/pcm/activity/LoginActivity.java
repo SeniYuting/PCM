@@ -18,6 +18,7 @@ import com.sjtu.pcm.entity.UserEntity;
 import com.sjtu.pcm.entity.UserList;
 import com.sjtu.pcm.util.HttpUtil;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -102,7 +103,8 @@ public class LoginActivity extends Activity {
 
                     Date t= new Date();
                     UserEntity user = userList.getUser().get(0);
-                    user.setLastlogindate(t.toString());
+                    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    user.setLastlogindate(formatter.format(t));
                     String userStr = new Gson().toJson(user);
                     HttpUtil.putRequest(mApp.getUserUrl()+user.getId(), userStr );
 
