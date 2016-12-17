@@ -219,27 +219,6 @@
                     android:text="标签:"
                     android:textColor="#808080"
                     android:textSize="16sp" />
-
-                <CheckBox
-                    android:id="@+id/user_tag_1"
-                    android:layout_width="100dip"
-                    android:layout_height="wrap_content"
-                    android:text="学生党"
-                    android:textColor="#000" />
-
-                <CheckBox
-                    android:id="@+id/user_tag_2"
-                    android:layout_width="100dip"
-                    android:layout_height="wrap_content"
-                    android:text="工作党"
-                    android:textColor="#000" />
-
-                <CheckBox
-                    android:id="@+id/user_tag_3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="在野党"
-                    android:textColor="#000" />
             </LinearLayout>
 
             <LinearLayout
@@ -248,33 +227,66 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal" >
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="fill_parent"
-                    android:padding="12dip"
-                    android:text="         "
-                    android:textColor="#808080"
-                    android:textSize="16sp" />
+                <CheckBox
+                    android:id="@+id/user_tag_1"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="33.3"
+                    android:text="学生党"
+                    android:gravity="center"
+                    android:textColor="#000" />
+
+                <CheckBox
+                    android:id="@+id/user_tag_2"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="33.3"
+                    android:text="工作党"
+                    android:gravity="center"
+                    android:textColor="#000" />
+
+                <CheckBox
+                    android:id="@+id/user_tag_3"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="33.3"
+                    android:text="在野党"
+                    android:gravity="center"
+                    android:textColor="#000" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:paddingTop="10dip"
+                android:orientation="horizontal" >
 
                 <CheckBox
                     android:id="@+id/user_tag_4"
-                    android:layout_width="100dip"
+                    android:layout_width="0dip"
                     android:layout_height="wrap_content"
+                    android:layout_weight="33.3"
                     android:text="Java"
+                    android:gravity="center"
                     android:textColor="#000" />
 
                 <CheckBox
                     android:id="@+id/user_tag_5"
-                    android:layout_width="100dip"
+                    android:layout_width="0dip"
                     android:layout_height="wrap_content"
+                    android:layout_weight="33.3"
                     android:text="C++"
+                    android:gravity="center"
                     android:textColor="#000" />
 
                 <CheckBox
                     android:id="@+id/user_tag_6"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dip"
                     android:layout_height="wrap_content"
+                    android:layout_weight="33.3"
                     android:text="Python"
+                    android:gravity="center"
                     android:textColor="#000" />
             </LinearLayout>
            
