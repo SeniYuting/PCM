@@ -159,8 +159,16 @@ public class Recommend {
 										String userStr = HttpUtil.getRequest(userUri);
 										if(userStr != null){
 											UserEntity userEntity = new Gson().fromJson(userStr, UserEntity.class);
-											if(userSimilarityMap.containsKey(userEntity))
-												userSimilarityMap.put(userEntity, userSimilarityMap.get(userEntity) + 1);
+											boolean hasUserEntity = false;
+											UserEntity userInMap = null;
+											for(UserEntity user : userSimilarityMap.keySet()){
+												if(user.getId().toString().equals(userEntity.getId().toString())){
+													hasUserEntity = true;
+													userInMap = user;
+												}
+											}
+											if(hasUserEntity)
+												userSimilarityMap.put(userInMap, userSimilarityMap.get(userInMap) + 1);
 											else
 												userSimilarityMap.put(userEntity, 1);
 										}
@@ -253,6 +261,7 @@ public class Recommend {
 		protected void onPostExecute(String result) {
 			super.onPostExecute(result);
 
+			tag = "";
 			for(String tagDescription : userTagDescription){
 				tag = tag + tagDescription + ",";
 			}
