@@ -14,8 +14,12 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.sjtu.pcm.MyApplication;
 import com.sjtu.pcm.R;
+import com.sjtu.pcm.entity.UserEntity;
 import com.sjtu.pcm.entity.UserList;
 import com.sjtu.pcm.util.HttpUtil;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * 登录界面
@@ -97,9 +101,16 @@ public class LoginActivity extends Activity {
                 if (userList!= null && userList.getUser()!= null && userList.getUser().size()> 0
                         &&  userList.getUser().get(0).getPassword().equals(password)) {
 
+                    Date t= new Date();
+                    UserEntity user = userList.getUser().get(0);
+                    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    user.setLastlogindate(formatter.format(t));
+                    String userStr = new Gson().toJson(user);
+                    HttpUtil.putRequest(mApp.getUserUrl()+user.getId(), userStr );
+
                     isOK = true;
 
-                    mApp.setUser(userList.getUser().get(0));
+                    mApp.setUser(user);
                     startActivity(new Intent(LoginActivity.this,
                             MainActivity.class));
                     finish();

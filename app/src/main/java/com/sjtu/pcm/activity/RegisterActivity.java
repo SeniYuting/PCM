@@ -18,6 +18,9 @@ import com.sjtu.pcm.entity.UserEntity;
 import com.sjtu.pcm.entity.UserList;
 import com.sjtu.pcm.util.HttpUtil;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * 注册界面
  *
@@ -108,6 +111,9 @@ public class RegisterActivity extends Activity {
 					isOK = true;
 					// 账号没有注册过
 					UserEntity user = new UserEntity(account, password);
+					Date t= new Date();
+					SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+					user.setCreatedate(formatter.format(t));
 					String userStr = new Gson().toJson(user);
 					HttpUtil.postRequest(uriAPI[0], userStr);
 

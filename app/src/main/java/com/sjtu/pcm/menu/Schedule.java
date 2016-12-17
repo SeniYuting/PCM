@@ -242,7 +242,7 @@ public class Schedule {
 
 //			String partner = (String)mPartner.getSelectedItem();
 			Long partner_id = friend_id_list.get(mPartner.getSelectedItemPosition());
-			String date = mDate.getYear() + "-" + mDate.getMonth() + "-" + mDate.getDayOfMonth();
+			String date = mDate.getYear() + "-" + (mDate.getMonth() + 1) + "-" + mDate.getDayOfMonth();
 			String place = mPlace.getText().toString();
 			String topic = mTopic.getText().toString();
 			String uNote = mUNote.getText().toString();

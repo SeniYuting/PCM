@@ -17,6 +17,7 @@ import android.widget.SimpleAdapter;
 import com.google.gson.Gson;
 import com.sjtu.pcm.MyApplication;
 import com.sjtu.pcm.R;
+import com.sjtu.pcm.activity.MainActivity;
 import com.sjtu.pcm.entity.ScheduleEntity;
 import com.sjtu.pcm.entity.ScheduleList;
 import com.sjtu.pcm.entity.UserEntity;
@@ -88,7 +89,8 @@ public class HistorySchedule extends Activity {
 
 					Map<String, Object> map;
 
-					for(int i=0; i<scheduleList.getSchedule().size(); i++) {
+					// 逆序排列
+					for(int i=scheduleList.getSchedule().size()-1; i>=0; i--) {
 
 						ScheduleEntity schedule = scheduleList.getSchedule().get(i);
 
@@ -170,7 +172,7 @@ public class HistorySchedule extends Activity {
 													ScheduleEntity scheduleEntity = new ScheduleEntity(new Long(0), new Long(0), "", "", "", "", "");
 													String uriDeleteAPI = mApp.getScheduleUrl() + resultList.get(p).get("history_schedule_id");
 													HttpUtil.putRequest(uriDeleteAPI, new Gson().toJson(scheduleEntity));
-													startActivity(new Intent(HistorySchedule.this, HistorySchedule.class));
+													startActivity(new Intent(HistorySchedule.this, MainActivity.class));
 												}
 											}.start();
 

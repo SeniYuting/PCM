@@ -13,6 +13,8 @@ public class UserEntity {
     private Integer gender;
     private String address;
     private String mobile;
+    private String createdate;
+    private String lastlogindate;
 
     public UserEntity(String account, String password) {
         this.account = account;
@@ -73,5 +75,21 @@ public class UserEntity {
 
     public void setMobile(String mobile) {
         this.mobile = mobile;
+    }
+
+    public String getCreatedate() {
+        return createdate;
+    }
+
+    public void setCreatedate(String createdate) {
+        this.createdate = createdate;
+    }
+
+    public String getLastlogindate() {
+        return lastlogindate;
+    }
+
+    public void setLastlogindate(String lastlogindate) {
+        this.lastlogindate = lastlogindate;
     }
 }

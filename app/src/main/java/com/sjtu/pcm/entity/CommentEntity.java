@@ -9,6 +9,7 @@ public class CommentEntity {
     Long user_id;
     String content;
     Integer star;
+    private String createdate;
 
     public CommentEntity(Long user_id, String content, Integer star) {
         this.user_id = user_id;
@@ -48,4 +49,11 @@ public class CommentEntity {
         this.star = star;
     }
 
+    public String getCreatedate() {
+        return createdate;
+    }
+
+    public void setCreatedate(String createdate) {
+        this.createdate = createdate;
+    }
 }

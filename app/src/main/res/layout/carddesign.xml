@@ -4,10 +4,17 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
-    <LinearLayout
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:background="#fff"
+        android:scrollbars="vertical"
+        android:fadingEdge="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:clickable="true"
         android:orientation="vertical"
         android:weightSum="1">
@@ -291,10 +298,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:scaleType="centerCrop" />
-
         </LinearLayout>
 
-
     </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>
