@@ -3,6 +3,8 @@ package com.sjtu.pcm.menu;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -10,11 +12,17 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.sjtu.pcm.MyApplication;
 import com.sjtu.pcm.R;
 import com.sjtu.pcm.activity.user.UserModifyActivity;
 import com.sjtu.pcm.anim.MyViewGroup.OnOpenListener;
+import com.sjtu.pcm.entity.TagEntity;
 import com.sjtu.pcm.entity.UserEntity;
+import com.sjtu.pcm.entity.UserTagList;
+import com.sjtu.pcm.util.HttpUtil;
+
+import java.util.HashSet;
 
 /**
  * 用户信息类
@@ -23,6 +31,8 @@ import com.sjtu.pcm.entity.UserEntity;
  */
 @SuppressWarnings("deprecation")
 public class User {
+	private UserTagList userTagList = null;
+	private HashSet<String> userTagDescription = new HashSet<>();
 	private Context mContext;
 
 	// 当前界面的View
@@ -133,8 +143,7 @@ public class User {
 		mAddress.setText(user.getAddress());
 		mMobile.setText(user.getMobile());
 
-		// TODO
-		mTag.setText("tag");
+		new TagInitHelper().execute(mApp.getUserTagUrl() + "?User_tag.user_id=" + mApp.getUser().getId().toString());
 	}
 
 	public void setOnOpenListener(OnOpenListener onOpenListener) {
@@ -147,5 +156,46 @@ public class User {
 	 */
 	public View getView() {
 		return mHome;
+	}
+
+	class TagInitHelper extends AsyncTask<String, Void, String> {
+
+		@Override
+		protected String doInBackground(String... uriAPI) {
+
+			String result_array = HttpUtil.getRequest(uriAPI[0]);
+
+			if (result_array != null){
+				Log.e("result_array", result_array);
+				userTagList = new Gson().fromJson(result_array, UserTagList.class);
+
+				if (userTagList!= null && userTagList.getUser_tag()!= null
+						&& userTagList.getUser_tag().size()> 0) {
+					for (int i = 0; i < userTagList.getUser_tag().size(); i++){
+						String userTagUri = mApp.getTagUrl() + userTagList.getUser_tag().get(i).getTag_id().toString();
+						String userTagResult = HttpUtil.getRequest(userTagUri);
+						if(userTagResult != null){
+							TagEntity tagEntity = new Gson().fromJson(userTagResult, TagEntity.class);
+							userTagDescription.add(tagEntity.getTag_description());
+						}
+					}
+				}
+			}
+
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(String result) {
+			super.onPostExecute(result);
+
+			String tag = "";
+			for(String tagDescription : userTagDescription){
+				tag = tag + tagDescription + ",";
+			}
+			if(tag.length() > 0)
+				tag = tag.substring(0, tag.length()-1);
+			mTag.setText(tag);
+		}
 	}
 }

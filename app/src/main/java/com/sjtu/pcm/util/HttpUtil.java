@@ -1,6 +1,7 @@
 package com.sjtu.pcm.util;
 
 import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpPut;
@@ -78,6 +79,23 @@ public class HttpUtil {
             e.printStackTrace();
         } finally {
             httpClient.getConnectionManager().shutdown();
+        }
+    }
+
+    public static void deletRequest(String url) {
+        HttpDelete httpRequest = new HttpDelete(url);
+        String resp = "";
+        try {
+            HttpResponse httpResponse = new DefaultHttpClient()
+                    .execute(httpRequest);
+
+            InputStream inputStream = httpResponse.getEntity()
+                    .getContent();
+            if (inputStream != null)
+                resp = convertInputStreamToString(inputStream);
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

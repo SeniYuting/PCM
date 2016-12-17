@@ -38,7 +38,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="8dip"
-                    android:text="名片识别"
+                    android:text="名片推荐"
                     android:textColor="#ffffff"
                     android:textSize="18sp" />
             </LinearLayout>
@@ -49,6 +49,20 @@
                 android:layout_marginRight="8dip"
                 android:background="@drawable/title_refresh_button" />
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/card_recommend_middle_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="还没有设置标签呦~"
+            android:textSize="20sp"
+            android:gravity="center"
+            ></TextView>
+
+        <ListView
+            android:id="@+id/card_recommend_list_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></ListView>
 
     </LinearLayout>
 

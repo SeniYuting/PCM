@@ -16,7 +16,7 @@ import com.sjtu.pcm.menu.User;
 import com.sjtu.pcm.menu.CardDesign;
 import com.sjtu.pcm.menu.CardExchange;
 import com.sjtu.pcm.menu.Schedule;
-import com.sjtu.pcm.menu.Recognize;
+import com.sjtu.pcm.menu.Recommend;
 import com.sjtu.pcm.menu.Contact;
 import com.sjtu.pcm.anim.MyViewGroup;
 import com.sjtu.pcm.anim.MyViewGroup.OnOpenListener;
@@ -36,7 +36,7 @@ public class MainActivity extends Activity implements OnOpenListener {
 	private CardDesign mCardDesign; // 名片设计界面
 	private CardExchange mCardExchange; // 名片交换界面
 	private Schedule mSchedule; // 人脉排程界面
-	private Recognize mRecognize; // 名片识别界面
+	private Recommend mRecommend; // 名片识别界面
 	private Contact mContact; // 联系我们界面
 
 	private long mExitTime; // 退出时间
@@ -100,11 +100,11 @@ public class MainActivity extends Activity implements OnOpenListener {
 					mSchedule.setOnOpenListener(MainActivity.this);
 					mRoot.close(mSchedule.getView());
 					break;
-				case ViewUtil.RECOGNIZE:
-					mRecognize = new Recognize(MainActivity.this,
+				case ViewUtil.RECOMMEND:
+					mRecommend = new Recommend(MainActivity.this,
 							MainActivity.this);
-					mRecognize.setOnOpenListener(MainActivity.this);
-					mRoot.close(mRecognize.getView());
+					mRecommend.setOnOpenListener(MainActivity.this);
+					mRoot.close(mRecommend.getView());
 					break;
 				case ViewUtil.CONTACT:
 					mContact = new Contact(MainActivity.this, MainActivity.this);

@@ -41,6 +41,14 @@ public class MyApplication extends Application {
 		return project_url + "Card_exchange/";
 	}
 
+	public String getTagUrl(){
+		return project_url + "Tag/";
+	}
+
+	public String getUserTagUrl(){
+		return project_url + "User_tag/";
+	}
+
 	public UserEntity getUser() {
 		return user;
 	}

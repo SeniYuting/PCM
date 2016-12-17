@@ -15,8 +15,8 @@ public class ViewUtil {
 	public static final int CAREXDCHANGE = 1;
 	// 人脉排程
 	public static final int SCHEDULE = 2;
-	// 名片识别
-	public static final int RECOGNIZE = 3;
+	// 名片推荐
+	public static final int RECOMMEND = 3;
 	// 联系我们
 	public static final int CONTACT = 4;
 	// 注销登录

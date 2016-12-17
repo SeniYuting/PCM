@@ -233,7 +233,7 @@ public class Desktop {
 					}
 
 					public void onAnimationEnd(Animation animation) {
-						mOnChangeViewListener.onChangeView(ViewUtil.RECOGNIZE);
+						mOnChangeViewListener.onChangeView(ViewUtil.RECOMMEND);
 						closeUgc();
 					}
 				});
@@ -315,7 +315,7 @@ public class Desktop {
 	private class DesktopAdapter extends BaseAdapter {
 
 		private Context mContext;
-		private String[] mName = { "名片设计", "名片交换", "人脉排程", "名片识别", "联系我们",
+		private String[] mName = { "名片设计", "名片交换", "人脉排程", "名片推荐", "联系我们",
 				"注销登录" };
 		private int[] mIcon = { R.drawable.card_design, R.drawable.card_exchange,
 				R.drawable.schedule, R.drawable.recognize, R.drawable.contact,
@@ -389,9 +389,9 @@ public class Desktop {
 							mOnChangeViewListener
 									.onChangeView(ViewUtil.SCHEDULE);
 							break;
-						case ViewUtil.RECOGNIZE:
+						case ViewUtil.RECOMMEND:
 							mOnChangeViewListener
-									.onChangeView(ViewUtil.RECOGNIZE);
+									.onChangeView(ViewUtil.RECOMMEND);
 							break;
 						case ViewUtil.CONTACT:
 							mOnChangeViewListener
