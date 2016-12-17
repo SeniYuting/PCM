@@ -22,6 +22,9 @@ import com.sjtu.pcm.anim.MyViewGroup.OnOpenListener;
 import com.sjtu.pcm.entity.CommentEntity;
 import com.sjtu.pcm.util.HttpUtil;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * 联系我们类
  *
@@ -137,6 +140,9 @@ public class Contact {
 			Log.i("content", content);
 
 			CommentEntity comment = new CommentEntity(mApp.getUser().getId(), content, starNum);
+			Date t= new Date();
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			comment.setCreatedate(formatter.format(t));
 			String commentStr = new Gson().toJson(comment);
 			HttpUtil.postRequest(uriAPI[0], commentStr);
 
